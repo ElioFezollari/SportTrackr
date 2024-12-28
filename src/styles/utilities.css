@@ -1,0 +1,37 @@
+.btn{
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+
+}
+.btn:hover{
+    cursor: pointer;
+}
+.b-white{
+    background-color: white; 
+    color: #31363F; 
+    border: 1px solid white;
+}
+.b-white:hover{
+    background-color: transparent;
+    color: white;
+    box-shadow: none;
+}
+.b-gray{
+    background-color: #31363F; 
+    color: white;  
+    border: 1px solid #31363F;
+}
+.b-gray:hover{
+    background-color: transparent;
+    box-shadow: none;
+    color: #31363F;
+}
+.shadow-bottom{
+    box-shadow: 0px 3px  4px black;
+}
+
+.active{
+    color: red !important;
+    text-decoration: underline !important;
+}

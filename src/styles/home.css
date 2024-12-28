@@ -1,0 +1,35 @@
+.static-home-hero-image{
+    width: 100vw;
+    height: 100vh;
+    max-width:100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.static-slogan{
+    width: 500px;
+    height: 350px;
+    position: absolute;
+    top: 55%;
+    border-radius: 10px;
+    padding: 30px 60px;
+    right: 20%;
+    transform: translate(50%,-50%);
+    background-color: rgb(49, 54, 63,0.9);
+    color: white;
+}
+
+.static-slogan h2{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.static-slogan p{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.static-slogan a{
+    font-size: 20px;
+}
+
