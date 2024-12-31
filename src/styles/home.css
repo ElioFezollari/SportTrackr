@@ -33,3 +33,47 @@
     font-size: 20px;
 }
 
+
+.static-home-work{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.static-home-work h2{
+    font-size: 60px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.static-home-work{
+    font-size: 20px;
+}
+.static-home-work p{
+    margin-top: 10px;
+}
+
+.home-phones{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 50px;
+}
+.home-phones img{
+    width: 250px;
+}
+.home-phones div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-phones div h5{
+    margin-right: 15px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+}
