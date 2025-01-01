@@ -11,10 +11,10 @@ function StaticNavbar() {
         <h1>Sport Trackr</h1>
         </div>
         <nav className='static-nav'>
-            <NavLink activeClassName='is-active' to={'/'}>Home</NavLink>
-            <NavLink activeClassName='is-active' to={'/about-us'}>About Us</NavLink>
-            <NavLink activeClassName='is-active' to={'/login'}>Login</NavLink>
-            <NavLink activeClassName='is-active' to={'/register'}>Register</NavLink>
+            <NavLink activeclassname='is-active' to={'/'}>Home</NavLink>
+            <NavLink activeclassname='is-active' to={'/about-us'}>About Us</NavLink>
+            <NavLink activeclassname='is-active' to={'/login'}>Login</NavLink>
+            <NavLink activeclassname='is-active' to={'/register'}>Register</NavLink>
         </nav>
         <Link className='btn b-gray download-app '>Download The App</Link>
     </header>

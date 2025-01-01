@@ -126,3 +126,155 @@
 .what-we-offer-text p{
     font-size: 24px;
 }
+
+.reviews{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 100px; 
+}
+
+.review{
+    min-width: 350px;
+    max-width: 350px;
+    margin-left: 20px;
+    background-color: #495464;
+    height: 250px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    border-radius: 5px;
+}
+.review-header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.reviews h2{
+    text-align: center;
+    font-size: 60px;
+}
+.review img{
+    width: 130px;
+    object-fit: contain;
+} 
+.review .stars-div{
+    align-self: flex-start;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.review p{
+    font-size: 20px;
+}
+.review-header img{
+    width: 80px;
+    border-radius: 100%;
+    margin-top: 0;
+}
+.review h5{
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.individual-reviews{
+    display: flex;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    
+}
+.review-carousel{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.arrow-r{
+    margin-left: 20px;
+}
+.arrow img{
+    width: 40px;
+}
+.arrow{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;;
+}
+.arrow:hover{
+    opacity: 0.7;
+}
+.arrow-r{
+    transform: rotate(180deg);
+}
+
+
+.faq-section{
+    margin:0 auto;
+    width: 80%;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.faq-section h2{
+    font-size: 60px;
+}
+
+.faq-list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.faq-item{
+    border-bottom: 1px solid rgb(83, 83, 83);
+    width: 100%;
+    padding: 20px;
+    cursor: pointer;
+}
+.faq-item h4{
+    font-size: 26px;
+    font-weight: normal;
+}
+.faq-item p{
+    margin-top: 20px;
+    font-size: 20px;
+}
+.faq-question{
+    display: flex;
+    justify-content: space-between;
+}
+
+.faq-arrow{
+    width: 25px;
+    border: none;
+    background-color: transparent;
+}
+
+.faq-arrow img{
+    max-width: 100%;
+    transform: rotate(-90deg);
+    transition: all 0.3s ease-in-out;
+}
+.faq-up img{
+    transform: rotate(90deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+}
+
+.faq-answer.selected {
+    max-height: 500px;
+    opacity: 1;
+}
