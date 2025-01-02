@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/staticFooter.css'
+import '../../styles/components/layouts/staticFooter.css'
 import logo from '../../assets/images/Logo3.png'
 import { Link, NavLink } from 'react-router'
 const currentYear = new Date().getFullYear();

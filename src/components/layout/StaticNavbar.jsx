@@ -1,9 +1,11 @@
-import '../../styles/staticNavbar.css'
+import '../../styles/components/layouts/staticNavbar.css'
 import logo from '../../assets/images/Logo3.png' 
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router'
+import StaticHamburger from './StaticHamburger'
 
 function StaticNavbar() {
+  const [hamburgerOpen,setHamburgerOpen] = useState(false)
   return (
     <header className='static-header'>
         <div className='static-header-logo'>
@@ -17,6 +19,12 @@ function StaticNavbar() {
             <NavLink activeclassname='is-active' to={'/register'}>Register</NavLink>
         </nav>
         <Link className='btn b-gray download-app '>Download The App</Link>
+        <button onClick={()=>setHamburgerOpen(true)} id="menu-toggle" className="menu-toggle">
+          <span className="menu-toggle-bar menu-toggle-bar--top"></span>
+          <span className="menu-toggle-bar menu-toggle-bar--middle"></span>
+          <span className="menu-toggle-bar menu-toggle-bar--bottom"></span>
+        </button>
+        {<StaticHamburger hamburgerOpen={hamburgerOpen} setHamburgerOpen={setHamburgerOpen}/>}
     </header>
   )
 }

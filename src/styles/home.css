@@ -371,5 +371,11 @@
         right: 50%;
     }
 
+}
 
+@media only screen and (max-width: 350px){
+    .static-slogan{
+        width: 300px;
+        height: 500px;
+    }
 }
