@@ -1,0 +1,89 @@
+.static-footer footer{
+    background-color: #31363F;
+    height: 20vh;
+    margin-top: 10vh;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.static-footer-image{
+    display: flex;
+    align-items: center;
+    width: 300px;
+}
+
+.footer-install-banner{
+    width: 100%;
+    background-image: linear-gradient(90deg,#696f7b ,#3a3847);
+    margin-top: -40px;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer-install-banner a{
+    font-size: 24px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+.footer-install-banner h2{
+    font-size: 25px;
+}
+
+.footer-install-banner a:hover{
+    color: white;
+}
+.static-footer-image img{
+    width: 65px;
+    margin-right: 20px;
+}
+
+footer h2{
+    font-weight: normal;
+}
+.static-footer-wrapper{
+    display: flex;
+    margin-top: 24px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.static-footer-wrapper div{
+    display: flex;
+    align-items: center;
+}
+
+.static-footer-link{
+    display: flex;
+    justify-content: space-evenly ;
+    width: 100%;
+}
+
+.static-footer-link a{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.copyright-footer{
+    background-color: #31363F;
+    border-top: 0.5px solid #545a65;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.copyright-footer h3{
+    margin: 0 auto;
+    font-weight: normal;
+    color: white;
+}
