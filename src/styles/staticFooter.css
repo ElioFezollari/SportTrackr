@@ -87,3 +87,55 @@ footer h2{
     font-weight: normal;
     color: white;
 }
+
+
+@media only screen and (max-width: 1200px) {
+
+}
+
+@media only screen and (max-width: 1000px) {
+}
+@media only screen and (max-width: 920px){
+
+}
+@media only screen and (max-width: 850px) {
+    .static-footer-wrapper {
+        flex-direction: column;
+        width: 80%;
+    }
+    .static-footer-image {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .static-footer footer{
+        height: auto;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .footer-install-banner{
+        flex-direction: column;
+        height: auto;
+    }
+    .footer-install-banner h2{
+        margin-bottom: 20px;
+    }
+    .static-footer-link{
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 10px;
+    }
+    .static-footer-link a{
+        text-align: center;
+    }
+
+}
+@media only screen and (max-width: 600px) {
+
+    .footer-install-banner div{
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-install-banner a:nth-child(2){
+        display: none;
+    }
+}
