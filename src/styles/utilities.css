@@ -35,3 +35,18 @@
     color: red !important;
     text-decoration: underline !important;
 }
+
+.no-scroll {
+    overflow: hidden;
+  }
+
+.dark-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.3;
+
+}

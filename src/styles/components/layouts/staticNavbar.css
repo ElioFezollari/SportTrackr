@@ -55,6 +55,7 @@
     border: none;
     outline: none;
     display: none;
+    z-index: 4;
   }
   
   .menu-toggle:hover {
