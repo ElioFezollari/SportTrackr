@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import StaticLayout from "./components/layout/StaticLayout";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
+import Login from "./pages/Login/Login";
 
 function App() {
 
@@ -17,9 +18,14 @@ function App() {
       {
         path:'/about-us',
         element:<About/>
-      }
-    ]
-  }])
+      },
+    ],
+  },
+  {
+    path:"/login",
+    element:<Login/>
+  }
+])
   return (
     <>
     <RouterProvider router={router}/>
