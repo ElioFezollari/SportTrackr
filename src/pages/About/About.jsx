@@ -1,10 +1,140 @@
 import React from 'react'
+import about from "../../assets/images/about/soccerfoot.jpg";
+import mission from "../../assets/images/about/football_app.avif";
+import story from "../../assets/images/about/image.png";
+import canada from "../../assets/images/about/canada.png";
+
+import "../../styles/about.css";
+
 
 function About() {
   return (
-    <>
-    <div>About</div>
-    </>
+    <div className='about-us'>
+      <div className='about-us-div'>
+        <div className='about-us-info'>
+          <h1>About Us</h1>
+          <p>
+          SportTrackr is a platform for football enthusiasts to easily find competitive leagues, track personal performance, and stay connected with their team members.
+          </p>
+        </div>
+
+        <img 
+        className='about-us-img'
+        src={about}
+        alt="Foot on ball"></img>
+      </div>
+
+
+
+      <div className='our-mission-div'>
+        <div className='our-mission-info'>
+          <h1>Our Mission</h1>
+          <p>
+          Creating both enjoyable and competitive football groups with the help of SportTrackr, football players in all levels enjoy a better football experience by keeping track of their own accomplishments, interacting with teammates.          </p>
+        </div>
+
+        <img 
+        className='our-mission-img'
+        src={mission}
+        alt="football app"></img>
+      </div>
+
+
+      <div className='our-story-div'>
+        <div className='our-story-info'>
+          <h1>Our Story</h1>
+          <p>
+            In 2024, fellow GBC undergraduated student Aum Zaveri, Mia Truong, Elio Fezoralli, Kate Labis noticed that sports enthusiasts struggle to find organized and user-friendly platforms that allow them to participate in competitive leagues, track their performance, and communicate effectively with teammates. 
+          </p>
+          <br></br>
+          <p>
+            Beside that, existing platforms often lack seamless integration of these features,most lacking all of them, leading to poor partial user experiences. As a result, Sport Trackr was born to solve these problems
+
+          </p>
+        </div>
+
+        <img 
+        className='our-story-img'
+        src={story}
+        alt="four founders"></img>
+      </div>
+
+      <div className='contact-us'>
+        <div className='contact-info-div'>
+              <h1>
+                Connect us at One of Our Locations
+              </h1>
+              <p>
+                Global Headquater
+              </p>
+              <p>
+                Toronto, Canada
+              </p>
+              <p>
+                +1 432-232-232
+              </p>
+        </div>
+
+        <img 
+        className='contact-us-img'
+        src={canada}
+        alt="canada flag"></img>
+
+      </div>
+
+      <div class="card-container"> 
+        <div class="flipping-card">
+          <div class="card-front">
+            <h2>Vietnam</h2>
+          </div>
+          <div class="card-back">
+            <h3>Get in Touch</h3>
+            <p>Email: Mia.Truong@georgebrown.ca</p>
+            <p>Phone: +84 123-456-7890</p>
+            <p>Address: Hanoi, Vietnam</p>
+          </div>
+        </div>
+
+        <div class="flipping-card">
+          <div class="card-front">
+            <h2>Albania</h2>
+          </div>
+          <div class="card-back">
+            <h3>Get in Touch</h3>
+            <p>Email: Elio.Fezoralli@georgebrown.ca</p>
+            <p>Phone: +355 123-456-7890</p>
+            <p>Address: Tirana, Albania</p>
+          </div>
+        </div>
+
+        <div class="flipping-card">
+          <div class="card-front">
+            <h2>India</h2>
+          </div>
+          <div class="card-back">
+            <h3>Get in Touch</h3>
+            <p>Email: Aum.Zaveri@georgebrown.ca</p>
+            <p>Phone: +91 123-456-7890</p>
+            <p>Address: New Delhi, India</p>
+          </div>
+        </div>
+
+        <div class="flipping-card">
+          <div class="card-front">
+            <h2>Philippines</h2>
+          </div>
+          <div class="card-back">
+            <h3>Get in Touch</h3>
+            <p>Email: Kate.Labis@georgebrown.ca</p>
+            <p>Phone: +63 123-456-7890</p>
+            <p>Address: Manila, Philippines</p>
+          </div>
+        </div>
+      </div>
+
+
+      
+    </div>
   )
 }
 
