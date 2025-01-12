@@ -20,7 +20,7 @@ function Login() {
               <input type="submit" value="Log In" />
             </form>
             <a href="">Forgot Password?</a>
-            <p>Don' t have an account? <Link href="">Sign Up</Link></p>
+            <p>Don' t have an account? <Link to="../register">Sign Up</Link></p>
               </div>
             <div className='login-image'>
               <img src={soccerPlayer} alt="player kicking ball" />

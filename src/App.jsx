@@ -4,6 +4,7 @@ import StaticLayout from "./components/layout/StaticLayout";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
 
@@ -24,6 +25,10 @@ function App() {
   {
     path:"/login",
     element:<Login/>
+  },
+  {
+    path:"/register",
+    element:<Register/>
   }
 ])
   return (
