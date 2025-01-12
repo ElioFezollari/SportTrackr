@@ -40,15 +40,17 @@ function Reviews() {
   const reviewsContainerRef = useRef(null);
 
   const scrollLeft = () => {
+    const scrollAmount = window.innerWidth <= 440 ? -270 : -380;
     reviewsContainerRef.current.scrollBy({
-      left: -380,
+      left: scrollAmount,
       behavior: 'smooth',
     });
   };
-
+  
   const scrollRight = () => {
+    const scrollAmount = window.innerWidth <= 440 ? 270 : 380;
     reviewsContainerRef.current.scrollBy({
-      left: 380,
+      left: scrollAmount,
       behavior: 'smooth',
     });
   };

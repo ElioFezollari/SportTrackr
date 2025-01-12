@@ -370,7 +370,22 @@
         height: 400px;
         right: 50%;
     }
+    .reviews{
+        width: 100%;
 
+    }
+
+
+}
+
+@media only screen and (max-width: 450px){
+    .review{
+        min-width: 240px;
+        height: 350px;
+    }
+    .individual-reviews{
+        height: 45vh;
+    }
 }
 
 @media only screen and (max-width: 350px){
