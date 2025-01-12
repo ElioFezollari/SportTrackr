@@ -36,6 +36,10 @@
     text-decoration: underline !important;
 }
 
+
+.absolute {
+    position: absolute;
+}
 .no-scroll {
     overflow: hidden;
   }

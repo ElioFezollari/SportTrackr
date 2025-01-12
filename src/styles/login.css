@@ -40,7 +40,7 @@
     outline: none;
     border-radius: 10px;
     padding: 20px 10px 20px 10px;
-    width: 300px;
+    width: 350px;
     background-color: #E8E8E8;
     filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.3));
 }
@@ -86,6 +86,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 
@@ -94,4 +95,97 @@
     height: 120px;
 }
 
+.login-image img:nth-of-type(2){
+    right: 60px;
+    bottom: 200px;
+}
+.login-image img:nth-of-type(3){   
+    left: 60px;
+    bottom: 300px;
+}
 
+.login-image img:nth-of-type(4){
+    top: 20px;
+    right: 30px;
+}
+.login-image img:nth-of-type(5){
+    top: 20px;
+    left: 180px;
+}
+
+.login-image img:nth-of-type(6){
+    bottom: 20px;
+    left: 180px;
+}
+
+.login-image img:nth-of-type(1){
+    z-index: 3;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .login-image img:nth-of-type(2){
+        right: 20px;
+        bottom: 160px;
+    }
+    .login-image img:nth-of-type(3){   
+        left: 40px;
+        bottom: 300px;
+    }
+    
+    .login-image img:nth-of-type(4){
+        top: 20px;
+        right: 0px;
+    }
+    .login-image img:nth-of-type(5){
+        top: 20px;
+        left: 150px;
+    }
+    
+    .login-image img:nth-of-type(6){
+        bottom: 20px;
+        left: 100px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+
+}
+@media only screen and (max-width: 920px){
+   .login{
+    background-color: #495464;
+    flex-direction: column;
+   } 
+   .login .login-form{
+    width: 70%;
+    height: 80vh;
+    border-radius: 10px;
+   }
+   .login-image{
+    display: none;
+   }
+   .login-form-content input{
+    width: 100%;
+   }
+
+}
+@media only screen and (max-width: 850px) {
+
+    .login .login-form{
+        width: 80%;
+        height: 90vh;
+       }
+}
+@media only screen and (max-width: 768px) {
+    .login .login-form{
+        width: 90%;
+        height: 90vh;
+       }
+}
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 350px){
+
+}
