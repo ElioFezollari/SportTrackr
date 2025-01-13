@@ -5,8 +5,10 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import PersistLogin from "./components/PersistLogin/PersistLogin";
+import PersistLogin from "./components/PersistLogin";
 import AuthContext, { AuthProvider } from "./context/AuthProvider";
+
+import AppNavbar from "./components/layout/applayout/AppNavbar";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,16 +29,20 @@ function App() {
             },
           ],
         },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path:"/app",
+          element:<AppNavbar/>
+        }
       ],
-    },
-    {
-      path: "/login",
-      element: <Login />,
-    },
-    {
-      path: "/register",
-      element: <Register />,
-    },
+    }
   ]);
 
   return (
