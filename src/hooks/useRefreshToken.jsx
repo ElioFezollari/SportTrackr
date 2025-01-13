@@ -1,5 +1,5 @@
 import useAuth from "./useAuth";
-import refreshToken from "../services/auth";
+import {refreshToken} from "../services/auth";
 
 const useRefreshToken = () => {
   const { auth, setAuth } = useAuth();

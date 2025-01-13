@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router'
 import logo from "../../assets/images/Logo3.png"
 import womanKickingBall from "../../assets/images/register/woman-kicking.svg"
@@ -7,7 +7,20 @@ import soccerAnalytics from "../../assets/images/register/soccer-analytics.svg"
 import tactics from "../../assets/images/register/tactics.svg"
 import timer from "../../assets/images/register/timer.svg"
 import "../../styles/register.css"
+import { register } from '../../services/auth'
 function Register() {
+  const [email,setEmail] = useState("")
+  const [firstName,setFirstName] = useState("")
+  const [lastName,setLastName] = useState("")
+  const [password,setPassword] = useState("")
+  const [confirmPassword,setConfirmPassword] = useState("")
+
+  const handleRegister =async (e) =>{
+    e.preventDefault()
+    const response = await register({ email,firstName,lastName,password,confirmPassword });
+    console.log(response)
+  }
+
   return (
     <div className='register-wrapper'>
         <div className='register'>
@@ -20,14 +33,14 @@ function Register() {
         </div>
             <div className='register-form'><img src={logo} alt="logo of SportTrackr" />
             <h1>Sign Up </h1>
-            <form className='register-form-content'>
-            <label htmlFor="" className='email-register' ><input placeholder='Enter your email' type="text" name="email" id="email" /></label>
+            <form className='register-form-content' onSubmit={(e)=>handleRegister(e)}>
+            <label htmlFor="" className='email-register' ><input placeholder='Enter your email' type="text" name="email" id="email"  value={email} onChange={(e)=>setEmail(e.target.value)}/></label>
               <div className='register-name'>
-              <label htmlFor=""><input placeholder='Enter your first name' type="text" name="email" id="email" /></label>
-              <label htmlFor=""><input placeholder='Enter your last name' type="text" name="email" id="email" /></label>
+              <label htmlFor="firstName"><input placeholder='Enter your first name' type="text" name="firstName" id="firstName" value={firstName} onChange={(e)=>setFirstName(e.target.value)} /></label>
+              <label htmlFor="lastName"><input placeholder='Enter your last name' type="text" name="lastName" id="lastName" value={lastName} onChange={(e)=>setLastName(e.target.value)} /></label>
               </div>
-              <label htmlFor=""><input placeholder='Enter your password' type="password" name="password" id="password" /></label>
-              <label htmlFor=""><input placeholder='Confirm your password' type="password" name="password" id="password" /></label>
+              <label htmlFor="password"><input placeholder='Enter your password' type="password" name="password" id="password" value={password} onChange={(e)=>setPassword(e.target.value)} /></label>
+              <label htmlFor="confirmPassword"><input placeholder='Confirm your password' type="password" name="confirmPassword" id="confirmPassword" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} /></label>
               <input type="submit" value="Sign Up" />
             </form>
             <p>Already have an account? <Link to="../login">Login</Link></p>

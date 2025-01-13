@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../styles/login.css'
 import soccerPlayer from "../../assets/images/login/login-player.svg"
 import shoes from "../../assets/images/login/shoes.svg"
@@ -8,15 +8,26 @@ import ball from "../../assets/images/login/soccer-ball.svg"
 import field from "../../assets/images/login/field.svg"
 import logo from "../../assets/images/Logo3.png"
 import { Link } from 'react-router'
+import { login } from '../../services/auth'
 function Login() {
+
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+  const submitLogin = async (e) =>{
+    e.preventDefault()
+    const response = await login({ email: email, password: password });
+
+  }
+
+
   return (
     <div className='login-wrapper'>
         <div className='login'>
             <div className='login-form'><img src={logo} alt="logo of SportTrackr" />
             <h1>Log In</h1>
-            <form className='login-form-content'>
-              <label htmlFor=""><input placeholder='Enter your email' type="text" name="email" id="email" /></label>
-              <label htmlFor=""><input placeholder='Enter your password' type="password" name="password" id="password" /></label>
+            <form className='login-form-content' onSubmit={(e)=>submitLogin(e)}>
+              <label htmlFor=""><input placeholder='Enter your email' type="text" value={email} onChange={e=>{setEmail(e.target.value)}} name="email" id="email" /></label>
+              <label htmlFor=""><input placeholder='Enter your password' type="password" name="password" id="password"  value={password} onChange={e=>{setPassword(e.target.value)}}/></label>
               <input type="submit" value="Log In" />
             </form>
             <a href="">Forgot Password?</a>
