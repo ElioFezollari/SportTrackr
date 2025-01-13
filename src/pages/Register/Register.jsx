@@ -14,12 +14,25 @@ function Register() {
   const [lastName,setLastName] = useState("")
   const [password,setPassword] = useState("")
   const [confirmPassword,setConfirmPassword] = useState("")
+  const [error,setError] = useState()
 
-  const handleRegister =async (e) =>{
-    e.preventDefault()
-    const response = await register({ email,firstName,lastName,password,confirmPassword });
-    console.log(response)
-  }
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      const response = await register({ email,firstName,lastName,password,confirmPassword });
+      console.log(response.data)
+      if (response.status >= 400 && response.status < 500) {
+        setError("Invalid credentials. Please try again.");
+      }
+    } catch (err) {
+      if (err.response && err.response.status >= 400 && err.response.status < 500) {
+        setError(err.response.data.message);
+      } else {
+        setError("An unexpected error occurred. Please try again later.");
+      }
+    }
+  };
 
   return (
     <div className='register-wrapper'>
@@ -43,6 +56,7 @@ function Register() {
               <label htmlFor="confirmPassword"><input placeholder='Confirm your password' type="password" name="confirmPassword" id="confirmPassword" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} /></label>
               <input type="submit" value="Sign Up" />
             </form>
+            {error && <p className='error'>{error}</p>}
             <p>Already have an account? <Link to="../login">Login</Link></p>
               </div>
         </div>

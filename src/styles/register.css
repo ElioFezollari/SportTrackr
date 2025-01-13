@@ -115,6 +115,12 @@
     filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.3));
 }
 
+.register-form p{
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .register-image img:nth-of-type(2){
     left: 0px;
     bottom: 0px;

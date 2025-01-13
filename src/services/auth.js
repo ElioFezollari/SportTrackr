@@ -7,15 +7,14 @@ const register = async(credentials)=>{
     withCredentials:true
   })
   console.log(response)
-  return response.data
+  return response
 }
 
 const login = async (credentials) =>{
   const response = await axios.post(baseUrl + "login",credentials,{
     withCredentials:true
   })
-  console.log(response)
-  return response.data
+  return response
 }
 const refreshToken = async () => {
   const response = await axios.get(baseUrl + "refresh",{

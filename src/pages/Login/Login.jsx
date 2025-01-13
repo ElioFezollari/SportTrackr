@@ -13,11 +13,25 @@ function Login() {
 
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
-  const submitLogin = async (e) =>{
-    e.preventDefault()
-    const response = await login({ email: email, password: password });
+  const [error,setError] = useState("")
 
-  }
+  const submitLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      const response = await login({ email, password });
+      console.log(response.data)
+      if (response.status >= 400 && response.status < 500) {
+        setError("Invalid credentials. Please try again.");
+      }
+    } catch (err) {
+      if (err.response && err.response.status >= 400 && err.response.status < 500) {
+        setError(err.response.data.message);
+      } else {
+        setError("An unexpected error occurred. Please try again later.");
+      }
+    }
+  };
 
 
   return (
@@ -30,6 +44,7 @@ function Login() {
               <label htmlFor=""><input placeholder='Enter your password' type="password" name="password" id="password"  value={password} onChange={e=>{setPassword(e.target.value)}}/></label>
               <input type="submit" value="Log In" />
             </form>
+            {error && <p className='error'>{error}</p>}
             <a href="">Forgot Password?</a>
             <p>Don' t have an account? <Link to="../register">Sign Up</Link></p>
               </div>
