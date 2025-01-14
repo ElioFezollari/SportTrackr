@@ -33,7 +33,13 @@
     display: flex;
     justify-content: center;
     background-color: white;
+    margin-right: 20px;
 }
 .app-header .profile-icon,.settings-icon{
     width: 40px !important;
+}
+.app-nav-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
