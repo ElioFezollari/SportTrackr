@@ -12,7 +12,9 @@
 .sidebar-closed {
     transform: translateX(-100%); 
     width: 15%;
-    padding: 0; 
+    padding: 0;
+    color: #758CA3; 
+    position: absolute;
 }
 .app-sidebar{
     display: flex;
@@ -71,4 +73,42 @@
 }
 .dashboard-div div div{
     margin-top: 0.8rem !important;
+}
+.app-sidebar button{
+    display: none;
+}
+
+
+/* 1720*/
+
+@media only screen and (max-width: 1720px) {
+    .app-sidebar-wrapper{
+        width: 25%;
+    }
+}
+@media only screen and (max-width: 1420px) {
+    .app-sidebar-wrapper{
+        width: 30%;
+    }
+}
+@media only screen and (max-width: 1224px) {
+    .app-sidebar-wrapper{
+        width: auto;
+        height: 100%;
+        background-color: white;
+        top: 0;
+        position: fixed;;
+    }
+    .sidebar-closed div{
+        display: none;
+    }
+    .app-sidebar button{
+        display: inline-block;
+        font-size: 50px;
+        width: 30px;
+        background-color: transparent;
+        margin-bottom: 20px;
+        color: #758CA3;
+    }
+    
 }

@@ -16,7 +16,7 @@ function AppNavbar({isActive,setIsActive}) {
 
     <div className='app-nav-icons'><Link><img className='profile-icon' src={profile} alt="profile icon" /></Link>
     <Link><img className='settings-icon' src={settings} alt="settings icon" /></Link></div>
-      
+
     </header>
   )
 }

@@ -58,3 +58,12 @@
 .error{
     color: red !important;
 }
+
+.app-outlet{
+    width: 100%;
+    background-color: rebeccapurple;
+    height: 200vh;
+}
+.app-content{
+    display: flex;
+}
