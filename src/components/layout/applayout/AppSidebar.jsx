@@ -5,6 +5,7 @@ import soccerBall from "../../../assets/images/appSidebar/soccerBall.svg";
 import users from "../../../assets/images/appSidebar/users.svg";
 import employee from "../../../assets/images/appSidebar/employee.svg";
 import wallet from "../../../assets/images/appSidebar/wallet.svg";
+import jersey from "../../../assets/images/appSidebar/jersey.svg";
 import questionMark from "../../../assets/images/appSidebar/question-mark.svg";
 import { Link } from "react-router";
 function AppSidebar({isActive,setIsActive}) {
@@ -42,6 +43,10 @@ function AppSidebar({isActive,setIsActive}) {
             <div>
             <img className="sidebar-icon" src={employee} alt="icon of an employee" />
               <Link>Employees</Link>
+            </div>
+            <div>
+            <img className="sidebar-icon" src={jersey} alt="icon of an employee" />
+              <Link>My Team</Link>
             </div>
           </div>
         </div>

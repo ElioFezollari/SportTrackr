@@ -21,11 +21,12 @@ function Register() {
     setError("");
     try {
       const response = await register({ email,firstName,lastName,password,confirmPassword });
-      console.log(response.data)
+      setAuth({accessToken:response.data.token,roles:response.data.roles})
       if (response.status >= 400 && response.status < 500) {
         setError("Invalid credentials. Please try again.");
       }
       navigate("../app")
+      setAuth(response.data)
     } catch (err) {
       if (err.response && err.response.status >= 400 && err.response.status < 500) {
         setError(err.response.data.message);

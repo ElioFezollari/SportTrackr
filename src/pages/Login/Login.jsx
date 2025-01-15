@@ -9,11 +9,13 @@ import field from "../../assets/images/login/field.svg"
 import logo from "../../assets/images/Logo3.png"
 import { Link, useNavigate } from 'react-router'
 import { login } from '../../services/auth'
+import useAuth from '../../hooks/useAuth'
 function Login() {
 
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [error,setError] = useState("")
+  const { auth,setAuth } = useAuth();
   const navigate = useNavigate()
   const submitLogin = async (e) => {
     e.preventDefault();
@@ -23,6 +25,7 @@ function Login() {
       if (response.status >= 400 && response.status < 500) {
         setError("Invalid credentials. Please try again.");
       }
+      setAuth({accessToken:response.data.token,roles:response.data.roles})
       navigate("../app")
     } catch (err) {
       if (err.response && err.response.status >= 400 && err.response.status < 500) {
