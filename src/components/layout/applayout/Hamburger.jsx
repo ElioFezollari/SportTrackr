@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import "../styles/components/hamburger-icon.css";
+import "../../../styles/components/hamburgerIcon.css";
 
-function Hamburger() {
-  const [isActive, setIsActive] = useState(false);
+function Hamburger({isActive,setIsActive}) {
+
 
   const handleToggle = () => {
     setIsActive(!isActive);

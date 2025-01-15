@@ -9,6 +9,7 @@ import PersistLogin from "./components/PersistLogin";
 import AuthContext, { AuthProvider } from "./context/AuthProvider";
 
 import AppNavbar from "./components/layout/applayout/AppNavbar";
+import AppLayout from "./components/layout/applayout/AppLayout";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,7 +40,7 @@ function App() {
         },
         {
           path:"/app",
-          element:<AppNavbar/>
+          element:<AppLayout/>
         }
       ],
     }

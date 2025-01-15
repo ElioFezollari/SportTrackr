@@ -4,11 +4,11 @@ import logo from "../../../assets/images/Logo3.png"
 import profile from "../../../assets/images/appNavbar/profile.svg"
 import settings from "../../../assets/images/appNavbar/settings.svg"
 import { Link } from 'react-router'
-import Hamburger from '../../Hamburger'
-function AppNavbar() {
+import Hamburger from './Hamburger'
+function AppNavbar({isActive,setIsActive}) {
   return (
     <header className='app-header'>
-      <Hamburger/>
+      <Hamburger isActive={isActive} setIsActive={setIsActive}/>
       <div className='app-logo-div'>
       <img src={logo} alt="logo of SportTrackr" />
       <h3>Sport Trackr</h3>
