@@ -7,23 +7,23 @@ import whistle from "../../assets/images/login/whistle.svg"
 import ball from "../../assets/images/login/soccer-ball.svg"
 import field from "../../assets/images/login/field.svg"
 import logo from "../../assets/images/Logo3.png"
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { login } from '../../services/auth'
 function Login() {
 
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [error,setError] = useState("")
-
+  const navigate = useNavigate()
   const submitLogin = async (e) => {
     e.preventDefault();
     setError("");
     try {
       const response = await login({ email, password });
-      console.log(response.data)
       if (response.status >= 400 && response.status < 500) {
         setError("Invalid credentials. Please try again.");
       }
+      navigate("../app")
     } catch (err) {
       if (err.response && err.response.status >= 400 && err.response.status < 500) {
         setError(err.response.data.message);

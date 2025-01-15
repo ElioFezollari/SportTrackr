@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import logo from "../../assets/images/Logo3.png"
 import womanKickingBall from "../../assets/images/register/woman-kicking.svg"
 import soccerFlag from "../../assets/images/register/soccer-flag.svg"
@@ -15,7 +15,7 @@ function Register() {
   const [password,setPassword] = useState("")
   const [confirmPassword,setConfirmPassword] = useState("")
   const [error,setError] = useState()
-
+  const navigate = useNavigate()
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
@@ -25,6 +25,7 @@ function Register() {
       if (response.status >= 400 && response.status < 500) {
         setError("Invalid credentials. Please try again.");
       }
+      navigate("../app")
     } catch (err) {
       if (err.response && err.response.status >= 400 && err.response.status < 500) {
         setError(err.response.data.message);

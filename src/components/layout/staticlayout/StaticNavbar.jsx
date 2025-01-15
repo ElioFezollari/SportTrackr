@@ -1,5 +1,5 @@
-import '../../styles/components/layouts/staticNavbar.css'
-import logo from '../../assets/images/Logo3.png' 
+import '../../../styles/components/layouts/staticNavbar.css'
+import logo from '../../../assets/images/Logo3.png' 
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import StaticHamburger from './StaticHamburger'

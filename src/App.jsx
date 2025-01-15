@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import StaticLayout from "./components/layout/StaticLayout";
+import StaticLayout from "./components/layout/staticlayout/StaticLayout";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";

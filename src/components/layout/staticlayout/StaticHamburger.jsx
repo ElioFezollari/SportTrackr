@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import '../../styles/components/layouts/staticHamburger.css';
+import '../../../styles/components/layouts/staticHamburger.css';
 import { NavLink } from 'react-router';
 
 function StaticHamburger({ hamburgerOpen,setHamburgerOpen }) {
