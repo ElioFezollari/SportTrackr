@@ -47,14 +47,20 @@ function App() {
           element:<ConfirmEmail/>
         },
         {
-          element:<RequireAuth allowedRoles={["user","admin"]}/>,
-          children:[
-            {
+          // element:<RequireAuth allowedRoles={["user","admin"]}/>,
+          // children:[
+          //   {
               path:"/app",
-              element:<AppLayout/>
+              element:<AppLayout/>,
+              children:[
+                {
+                  path: "match-upload",
+                  element:<MatchUpload/>
+                }
+              ]
             }
-          ]
-        },
+        //   ]
+        // },
 
       ],
     }

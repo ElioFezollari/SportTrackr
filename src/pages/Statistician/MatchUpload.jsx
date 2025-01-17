@@ -117,7 +117,7 @@ const MatchUpload = () => {
               ))}
             </tbody>
           </table>
-          <button className="upload-button">Upload for Skenderbeu ></button>
+          <button className="upload-button">Upload for Skenderbeu</button>
         </div>
       </div>
     );
