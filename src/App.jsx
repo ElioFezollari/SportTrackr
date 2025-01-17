@@ -10,6 +10,7 @@ import AuthContext, { AuthProvider } from "./context/AuthProvider";
 
 import AppNavbar from "./components/layout/applayout/AppNavbar";
 import AppLayout from "./components/layout/applayout/AppLayout";
+import ConfirmEmail from "./pages/ConfirmEmail/ConfirmEmail";
 
 function App() {
   const router = createBrowserRouter([
@@ -37,6 +38,10 @@ function App() {
         {
           path: "/register",
           element: <Register />,
+        },
+        {
+          path:"/confirm-email",
+          element:<ConfirmEmail/>
         },
         {
           path:"/app",

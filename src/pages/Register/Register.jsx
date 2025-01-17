@@ -8,12 +8,14 @@ import tactics from "../../assets/images/register/tactics.svg"
 import timer from "../../assets/images/register/timer.svg"
 import "../../styles/register.css"
 import { register } from '../../services/auth'
+import useAuth from '../../hooks/useAuth'
 function Register() {
   const [email,setEmail] = useState("")
   const [firstName,setFirstName] = useState("")
   const [lastName,setLastName] = useState("")
   const [password,setPassword] = useState("")
   const [confirmPassword,setConfirmPassword] = useState("")
+  const {auth,setAuth} = useAuth()
   const [error,setError] = useState()
   const navigate = useNavigate()
   const handleRegister = async (e) => {
@@ -25,12 +27,16 @@ function Register() {
       if (response.status >= 400 && response.status < 500) {
         setError("Invalid credentials. Please try again.");
       }
-      navigate("../app")
       setAuth(response.data)
+
+      navigate("../confirm-email")
+ 
     } catch (err) {
       if (err.response && err.response.status >= 400 && err.response.status < 500) {
         setError(err.response.data.message);
-      } else {
+      } else {    
+
+
         setError("An unexpected error occurred. Please try again later.");
       }
     }

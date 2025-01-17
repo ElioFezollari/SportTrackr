@@ -6,7 +6,7 @@ const register = async(credentials)=>{
   const response = await axios.post(baseUrl + "register",credentials,{
     withCredentials:true
   })
-  console.log(response)
+
   return response
 }
 
