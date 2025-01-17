@@ -3,7 +3,6 @@ import {refreshToken} from "../services/auth";
 
 const useRefreshToken = () => {
   const { auth, setAuth } = useAuth();
-  console.log(auth)
   const refresh = async () => {
     const response = await refreshToken();
     setAuth(prev => {

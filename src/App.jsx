@@ -11,6 +11,7 @@ import AuthContext, { AuthProvider } from "./context/AuthProvider";
 import AppNavbar from "./components/layout/applayout/AppNavbar";
 import AppLayout from "./components/layout/applayout/AppLayout";
 import ConfirmEmail from "./pages/ConfirmEmail/ConfirmEmail";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   const router = createBrowserRouter([
@@ -44,9 +45,15 @@ function App() {
           element:<ConfirmEmail/>
         },
         {
-          path:"/app",
-          element:<AppLayout/>
-        }
+          element:<RequireAuth allowedRoles={["user","admin"]}/>,
+          children:[
+            {
+              path:"/app",
+              element:<AppLayout/>
+            }
+          ]
+        },
+
       ],
     }
   ]);
