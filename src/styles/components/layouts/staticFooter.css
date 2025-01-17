@@ -1,141 +1,202 @@
-.static-footer footer{
+.static-footer footer {
     background-color: #31363F;
-    height: 20vh;
-    margin-top: 10vh;
-    padding: 20px;
+    padding: 40px 20px;
     color: white;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
-.static-footer-image{
+.static-footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.static-footer-image {
     display: flex;
     align-items: center;
-    width: 300px;
+    justify-content: flex-start;
 }
 
-.footer-install-banner{
+.static-footer-image img {
+    width: 65px;
+    margin-right: 15px;
+}
+
+.static-footer-image h1 {
+    font-size: 40px;
+    font-weight: normal;
+    justify-content: center;
+}
+
+footer h2 {
+    font-weight: normal;
+    font-size: 24px;
+}
+
+.footer-install-banner {
     width: 100%;
-    background-image: linear-gradient(90deg,#696f7b ,#3a3847);
-    margin-top: -40px;
+    background-color: #696f7b;
+    margin-top: -20px;
     padding: 20px;
     border-radius: 5px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-install-banner div {
+    display: flex;
+    gap: 50px;
     align-items: center;
 }
 
-.footer-install-banner a{
-    font-size: 24px;
-    text-decoration: none;
-    margin-left: 10px;
-}
-.footer-install-banner h2{
-    font-size: 25px;
-}
-
-.footer-install-banner a:hover{
-    color: white;
-}
-.static-footer-image img{
-    width: 65px;
+.footer-install-banner h2 {
+    font-size: 28px;
+    font-weight: normal;
     margin-right: 20px;
 }
 
-footer h2{
-    font-weight: normal;
-}
-.static-footer-wrapper{
-    display: flex;
-    margin-top: 24px;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.static-footer-wrapper div{
-    display: flex;
-    align-items: center;
-}
-
-.static-footer-link{
-    display: flex;
-    justify-content: space-evenly ;
-    width: 100%;
-}
-
-.static-footer-link a{
-    font-size: 20px;
-    text-decoration: none;
+.footer-install-banner a {
+    padding: 15px 25px;
+    background-color: #4c5c6f;
     color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
 }
 
-.copyright-footer{
+.footer-install-banner a:hover {
+    background-color: #3a4856;
+}
+
+.static-footer-link {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 100%;
+    justify-items: center;
+    margin-top: 20px;
+}
+
+.static-footer-link a {
+    margin: 10px 20px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.static-footer-link a:hover {
+    color: #1da1f2;
+}
+
+.follow-us-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start; /* Ensure it's aligned to the left */
+    margin-top: 20px;
+    width: 100%; /* Ensure it's 100% width */
+}
+
+.follow-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+
+.follow-us h2 {
+    font-size: 28px;
+    margin-left: 0;
+}
+
+.social-media-links {
+    display: flex;
+    width: 100%;
+    gap: 80px;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.social-media-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    width: 50px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    border-radius: 50%; /* Makes the element circular */
+    background-color: #696f7b; /* Set the background color of the circle */
+    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease; /* Add smooth transition for hover effects */
+    text-decoration: none; /* Remove underline */
+}
+
+.social-media-links a:hover {
+    transform: scale(1.1);
+    color: #1da1f2;
+    background-color: #C4C4C4;
+}
+
+.copyright-footer {
     background-color: #31363F;
     border-top: 0.5px solid #545a65;
     width: 100%;
-    margin-bottom: 0;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.copyright-footer h3{
-    margin: 0 auto;
+
+.copyright-footer h4 {
+    margin: 0;
     font-weight: normal;
     color: white;
 }
 
-
-@media only screen and (max-width: 1200px) {
-
-}
-
-@media only screen and (max-width: 1000px) {
-}
-@media only screen and (max-width: 920px){
-
-}
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 768px) {
     .static-footer-wrapper {
         flex-direction: column;
-        width: 80%;
-    }
-    .static-footer-image {
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-    .static-footer footer{
-        height: auto;
-    }
-}
-@media only screen and (max-width: 768px) {
-    .footer-install-banner{
-        flex-direction: column;
-        height: auto;
-    }
-    .footer-install-banner h2{
-        margin-bottom: 20px;
-    }
-    .static-footer-link{
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        row-gap: 10px;
-    }
-    .static-footer-link a{
-        text-align: center;
+        align-items: center;
     }
 
+    .static-footer-link {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .social-media-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .follow-us {
+        align-items: center;
+        width: 100%;
+    }
 }
+
 @media only screen and (max-width: 600px) {
-
-    .footer-install-banner div{
-        display: flex;
-        flex-direction: column;
-    }
-    .footer-install-banner a:nth-child(2){
+    .footer-install-banner a:nth-child(2) {
         display: none;
     }
 }
