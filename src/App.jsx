@@ -5,6 +5,8 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import MatchUpload from "./pages/Statistician/MatchUpload";
+
 import PersistLogin from "./components/PersistLogin";
 import AuthContext, { AuthProvider } from "./context/AuthProvider";
 
@@ -45,7 +47,13 @@ function App() {
         },
         {
           path:"/app",
-          element:<AppLayout/>
+          element:<AppLayout/>,
+          children: [
+            {
+              path:"match-upload",
+              element:<MatchUpload/>
+            }
+          ]
         }
       ],
     }
