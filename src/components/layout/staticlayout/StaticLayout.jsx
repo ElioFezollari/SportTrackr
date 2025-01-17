@@ -5,11 +5,12 @@ import StaticFooter from './StaticFooter'
 
 function StaticLayout() {
   return (
-    <><StaticNavbar/>
-    <Outlet/>
-    <StaticFooter/>
-    </>
-  )
+      <>
+        <StaticNavbar />
+        <Outlet />
+        <StaticFooter />
+      </>
+  );
 }
 
-export default StaticLayout
+export default StaticLayout;
