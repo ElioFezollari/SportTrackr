@@ -63,7 +63,7 @@ body {
   width: 200px;           
   height: 200px;           
   border-radius: 50%;    
-  background-image: url('../assets/images/about/ballButton.webp'); 
+  background-image: url('../assets/images/about/ballButton.jpg'); 
   background-size: 110%; 
   background-position: center; 
   border: none;            
@@ -253,7 +253,7 @@ body {
 
 .about-us-info p,
 .our-mission-info p,
-.our-story-info p {
+.our-story-info h1 {
   font-size: 2.0rem;
   line-height: 1.8;
 }
