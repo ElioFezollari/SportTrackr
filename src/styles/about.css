@@ -1,222 +1,113 @@
+/* General Reset */
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f7f6;
-  }
-  
-  .about-us {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .about-us-div,
-  .our-mission-div, 
-  .our-story-div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 5rem 2rem;
-    gap: 2rem;
-  }
-  
-  .about-us-div:nth-child(odd),
-  .our-mission-div:nth-child(odd), 
-  .our-story-div:nth-child(odd) {
-    background-color: #cecece; 
-    color: #333;
-  }
-  
-  .about-us-div:nth-child(even),
-  .our-mission-div:nth-child(even),
-  .our-story-div:nth-child(even) {
-    background-color: #0c2c0e;
-    color: white; 
-  }
-  
-  .about-us-div {
-    flex-direction: row;
-  }
-  
-  .our-mission-div {
-    flex-direction: row-reverse;
-  }
-  
-  .about-us-img,
-  .our-mission-img,
-  .our-story-img {
-    flex: 1;
-    max-width: 40%;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /*info */
-  .about-us-info,
-  .our-mission-info {
-    flex: 1;
-    text-align: left;
-  }
-  
-  .about-us-info h1,
-  .our-mission-info h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .about-us-div:nth-child(odd) h1,
-  .our-mission-div:nth-child(odd) h1 {
-    color: #333; 
-  }
-  
-  .about-us-div:nth-child(even) h1,
-  .our-mission-div:nth-child(even) h1 {
-    color: #fff; 
-  }
-  
-  .about-us-info p,
-  .our-mission-info p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-  }
-  
-  @media (max-width: 1024px) {
-    .about-us-div,
-    .our-mission-div {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .about-us-img,
-    .our-mission-img {
-      max-width: 100%;
-      margin-bottom: 2rem;
-    }
-  
-    .about-us-info,
-    .our-mission-info {
-      text-align: center;
-    }
-  }
-  /*CONTACT*/
-  .contact-head h1 {
-    font-size: 3rem;
-    color: #333;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .card-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #f4f7f6;
-  }
-
-  .flipping-card {
-    width: 300px;
-    height: 200px;
-    perspective: 1000px;
-    margin: 20px;
-  }
-
-  .card-front,
-  .card-back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.6s ease-in-out;
-  }
-
-  .card-front {
-    background-color: #0c2c0e;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    transform: rotateY(0deg);
-  }
-
-  .card-back {
-    background-color: #f0f0f0;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    transform: rotateY(180deg);
-  }
-
-  .flipping-card:hover .card-front {
-    transform: rotateY(-180deg);
-  }
-
-  .flipping-card:hover .card-back {
-    transform: rotateY(0deg);
-  }
-
-  .card-front h2, .card-back h3 {
-    margin-bottom: 10px;
-  }
-
-  .card-back p {
-    margin: 5px 0;
-  }
-  
-
-.contact-us {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 5rem 2rem;
-  background-color: #f4f7f6;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  scroll-behavior: smooth;
 }
 
-.contact-info-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem;
-  max-width: 600px; 
-  margin-bottom: 2rem;
-}
-
-.contact-info-div h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.contact-info-div p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin: 5px 0;
-}
-
-.contact-us-img {
+.about-page {
   width: 100%;
-  max-width: 200px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.static-about-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: 1; 
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; 
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.7); 
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.7); /* Black background with transparency */
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.hero-buttons {
+  position: relative;
+  display: flex;
+  gap: 15px;
+}
+.hero-buttons button {
+  width: 200px;           
+  height: 200px;           
+  border-radius: 50%;    
+  background-image: url('../assets/images/about/ballButton.webp'); 
+  background-size: 110%; 
+  background-position: center; 
+  border: none;            
+  cursor: pointer;        
+  margin: 5px;  
+  position: absolute;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for scale and shadow */
+}
+
+.hero-buttons button:hover {
+  transform: scale(1.1);         
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+.hero-buttons button:nth-child(1) {
+  width: 200px;            
+  height: 200px;
+  top: 60px; left: 50%;
+}
+.hero-buttons button:nth-child(2) {
+  width: 175px;           
+  height: 175px;
+  top: -90px; left: -90%;
+}
+.hero-buttons button:nth-child(3) {
+  top: 30px; left: -20%;
+}
+.hero-buttons button:nth-child(4) {
+  top: 170%; left: 140%;
+}
+
+.hero-buttons button:hover {
+  background-color: #006600;
+}
+
+.hero-buttons button span {
+  top: -18px;                
+  left: -130px;              
+  transform: translateX(-50%) rotate(0deg); 
+  color: black; 
+  background-color:  rgba(219, 218, 218, 0.7);
+  border-radius: 50%;     
+  font-weight: bold;         
+  font-size: 20px;          
+  text-align: center;        
+  transform-origin: center center;
 }
