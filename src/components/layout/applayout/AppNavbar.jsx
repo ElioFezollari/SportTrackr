@@ -6,6 +6,7 @@ import settings from "../../../assets/images/appNavbar/settings.svg"
 import { Link } from 'react-router'
 import Hamburger from './Hamburger'
 function AppNavbar({isActive,setIsActive}) {
+
   return (
     <header className='app-header'>
       <Hamburger isActive={isActive} setIsActive={setIsActive}/>

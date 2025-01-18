@@ -12,6 +12,7 @@ import AppNavbar from "./components/layout/applayout/AppNavbar";
 import AppLayout from "./components/layout/applayout/AppLayout";
 import ConfirmEmail from "./pages/ConfirmEmail/ConfirmEmail";
 import RequireAuth from "./components/RequireAuth";
+import MyLeagues from "./pages/MyLeagues/MyLeagues";
 
 function App() {
   const router = createBrowserRouter([
@@ -49,7 +50,13 @@ function App() {
           children:[
             {
               path:"/app",
-              element:<AppLayout/>
+              element:<AppLayout/>,
+              children: [
+                {
+                  path: "my-leagues", 
+                  element: <MyLeagues />,
+                },
+              ],
             }
           ]
         },
