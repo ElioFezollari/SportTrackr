@@ -177,6 +177,9 @@
             width: 120px;
             height: 120px;
         }
+        .emp-options button{
+            margin-top: 10px;
+        }
     }    
     @media only screen and (max-width: 460px){
         .league-listings-wrapper {
