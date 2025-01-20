@@ -29,7 +29,7 @@ function AppSidebar({ isActive, setIsActive }) {
               <span>&gt;</span> General
             </h2>
             <div>
-              <Link>
+              <Link to={"./dashboard"}>
                 {" "}
                 <img
                   className="sidebar-icon"

@@ -13,6 +13,7 @@ import AppLayout from "./components/layout/applayout/AppLayout";
 import ConfirmEmail from "./pages/ConfirmEmail/ConfirmEmail";
 import RequireAuth from "./components/RequireAuth";
 import MyLeagues from "./pages/MyLeagues/MyLeagues";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   const router = createBrowserRouter([
@@ -46,7 +47,7 @@ function App() {
           element:<ConfirmEmail/>
         },
         {
-          element:<RequireAuth allowedRoles={["user","admin"]}/>,
+         
           children:[
             {
               path:"/app",
@@ -56,6 +57,10 @@ function App() {
                   path: "my-leagues", 
                   element: <MyLeagues />,
                 },
+                {
+                  path:"dashboard",
+                  element: <Dashboard/>
+                }
               ],
             }
           ]
