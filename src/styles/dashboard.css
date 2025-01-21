@@ -17,5 +17,7 @@
     .main-stats{
         grid-template-columns: 1fr;
     }
-
+    .main-stats div div:nth-child(1){
+        height: 500px !important;
+    }
 }

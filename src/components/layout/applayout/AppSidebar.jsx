@@ -11,7 +11,7 @@ import { Link } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 function AppSidebar({ isActive, setIsActive }) {
   const { auth } = useAuth();
-  console.log(auth);
+
   const [dashboard, setDashboard] = useState(true);
   const [leagues, setLeagues] = useState(true);
   const [transactions, setTransactions] = useState(true);

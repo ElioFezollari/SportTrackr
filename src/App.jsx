@@ -39,7 +39,7 @@ function App() {
           element: <Login />,
         },
         {
-          path: "/register",
+          path: "/register/:token",
           element: <Register />,
         },
         {

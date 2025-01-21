@@ -2,8 +2,8 @@ import axios from 'axios'
 const baseUrl = 'http://localhost:5000/v1/auth/'
 
 
-const register = async(credentials)=>{
-  const response = await axios.post(baseUrl + "register",credentials,{
+const register = async(credentials,token)=>{
+  const response = await axios.post(baseUrl + "register/" + token,credentials,{
     withCredentials:true
   })
 
