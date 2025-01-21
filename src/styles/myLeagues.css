@@ -66,6 +66,7 @@
     display: flex;
     align-items: center;
     background-color: transparent;
+    
 }
 .emp-options button:hover{
     opacity: 0.8;
@@ -119,6 +120,7 @@
     font-size: 20px;
     text-decoration: none;
     border-radius: 10px;
+    filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.3));
 }
 .league-card a:hover{
     opacity: 0.8;

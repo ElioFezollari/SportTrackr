@@ -8,9 +8,11 @@ import seriaa from "../../assets/temp/teamLogos/seriaa.png";
 import { Link } from "react-router";
 import { getLeagues } from "../../services/leagues";
 import useAuth from "../../hooks/useAuth";
+import SkeletonLeague from "../../components/skeletons/SkeletonLeague.jsx";
 
 function MyLeaguesDisplay({ leagues, setLeagues }) {
   const { auth } = useAuth();
+  const skeletonLeagues = [1,2,3,4,5,6]
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -28,11 +30,13 @@ function MyLeaguesDisplay({ leagues, setLeagues }) {
   }, [auth.accessToken]);
 
   return (
+
     <div className="league-listings-wrapper">
       {error ? (
         <p className="error">{error}</p>
       ) : leagues ? (
         leagues.map((league) => (
+          <>
           <div className="league-card" key={league.id}>
             <img src={league.logo_url} alt={league.league_name + " logo"} />
             <div>
@@ -41,9 +45,12 @@ function MyLeaguesDisplay({ leagues, setLeagues }) {
               <Link to={`/leagues/${league.id}`}>More Info</Link>
             </div>
           </div>
+          </>
         ))
       ) : (
-        <p>Loading Leagues...</p>
+        skeletonLeagues.map(()=>{
+          return <SkeletonLeague/>
+        })
       )}
     </div>
   );
