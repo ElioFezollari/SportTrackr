@@ -214,3 +214,37 @@
   width: 20px;
   height: auto;
 }
+
+
+@media screen and (max-width: 520px) {
+  .stats-container,
+  .player-details,
+  .stat-box {
+    width: 100%; 
+  }
+
+  .stats {
+    flex-direction: column; 
+    gap: 15px;
+  }
+
+  .counter {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .cards-select {
+    width: 100%; 
+  }
+  .upload-button {
+    font-size: 14px; 
+    padding: 8px 15px;
+  }
+
+}
+
+body {
+  min-width: 520px;
+  min-height: 690px;
+  overflow: auto; 
+}
