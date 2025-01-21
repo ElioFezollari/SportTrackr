@@ -23,21 +23,19 @@ function Register() {
     setError("");
     try {
       const response = await register({ firstName,lastName,password,confirmPassword },token);
-
       setAuth({accessToken:response.data.token,roles:response.data.roles})
       if (response.status >= 400 && response.status < 500) {
-        setError("Invalid credentials. Please try again.");
+        setError(err.response.data.message);
       }
       setAuth(response.data)
 
       navigate("../confirm-email")
  
     } catch (err) {
+      console.log(err)
       if (err.response && err.response.status >= 400 && err.response.status < 500) {
         setError(err.response.data.message);
       } else {    
-
-
         setError("An unexpected error occurred. Please try again later.");
       }
     }

@@ -159,6 +159,9 @@
 
 }
 
+.register{
+    min-height: 100vh;
+}
 @media only screen and (max-width: 1000px) {
 
 }
@@ -182,8 +185,6 @@
    .register{
     height: auto;
    }
-
-   
 
 }
 @media only screen and (max-width: 850px) {
