@@ -5,8 +5,6 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import MatchUpload from "./pages/Statistician/MatchUpload";
-
 import PersistLogin from "./components/PersistLogin";
 import AuthContext, { AuthProvider } from "./context/AuthProvider";
 
@@ -16,6 +14,8 @@ import ConfirmEmail from "./pages/ConfirmEmail/ConfirmEmail";
 import RequireAuth from "./components/RequireAuth";
 import MyLeagues from "./pages/MyLeagues/MyLeagues";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import MatchUpload from "./pages/Statistician/MatchUpload";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -49,7 +49,7 @@ function App() {
           element:<ConfirmEmail/>
         },
         {
-
+         
           children:[
             {
               path:"/app",
@@ -69,7 +69,8 @@ function App() {
                 }
               ],
             }
-
+          ]
+        },
 
       ],
     }
