@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link, useNavigate, useParams } from 'react-router'
 import logo from "../../assets/images/Logo3.png"
 import womanKickingBall from "../../assets/images/register/woman-kicking.svg"
 import soccerFlag from "../../assets/images/register/soccer-flag.svg"
@@ -10,7 +10,7 @@ import "../../styles/register.css"
 import { register } from '../../services/auth'
 import useAuth from '../../hooks/useAuth'
 function Register() {
-  const [email,setEmail] = useState("")
+  const {token} = useParams("token")
   const [firstName,setFirstName] = useState("")
   const [lastName,setLastName] = useState("")
   const [password,setPassword] = useState("")
@@ -22,7 +22,8 @@ function Register() {
     e.preventDefault();
     setError("");
     try {
-      const response = await register({ email,firstName,lastName,password,confirmPassword });
+      const response = await register({ firstName,lastName,password,confirmPassword },token);
+
       setAuth({accessToken:response.data.token,roles:response.data.roles})
       if (response.status >= 400 && response.status < 500) {
         setError("Invalid credentials. Please try again.");
@@ -55,7 +56,7 @@ function Register() {
             <div className='register-form'><img src={logo} alt="logo of SportTrackr" />
             <h1>Sign Up </h1>
             <form className='register-form-content' onSubmit={(e)=>handleRegister(e)}>
-            <label htmlFor="" className='email-register' ><input placeholder='Enter your email' type="text" name="email" id="email"  value={email} onChange={(e)=>setEmail(e.target.value)}/></label>
+            
               <div className='register-name'>
               <label htmlFor="firstName"><input placeholder='Enter your first name' type="text" name="firstName" id="firstName" value={firstName} onChange={(e)=>setFirstName(e.target.value)} /></label>
               <label htmlFor="lastName"><input placeholder='Enter your last name' type="text" name="lastName" id="lastName" value={lastName} onChange={(e)=>setLastName(e.target.value)} /></label>

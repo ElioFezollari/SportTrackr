@@ -1,0 +1,23 @@
+.dashboard-wrapper{
+    height: 100vh;
+}
+.main-stats{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20px;
+}
+
+.main-stats div  h2{
+    text-align: center;
+}
+
+
+@media only screen and (max-width:900px){
+    .main-stats{
+        grid-template-columns: 1fr;
+    }
+    .main-stats div div:nth-child(1){
+        height: 500px !important;
+    }
+}
