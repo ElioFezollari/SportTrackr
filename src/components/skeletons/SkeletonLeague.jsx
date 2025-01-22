@@ -1,20 +1,47 @@
 import React from 'react'
-import "../../styles/components/skeleton/skeleton.css"
 import SkeletonElement from './SkeletonElement'
+import "../../styles/components/skeleton/skeleton.css"
 import Shimmer from './Shimmer'
 function SkeletonLeague() {
   return (
-    <div className='skeleton-wrapper'>
-        <div className='skeleton-league'>
-            <SkeletonElement type={"logo"}/>
+    <div className='skeleton-info'>
+        <div className='skeleton-info-back'>
+            <SkeletonElement type="title"/>
+            <SkeletonElement type="title"/>
+            
+        </div>
+        <div className='skeleton-main'>
+        <SkeletonElement type="logo"/>
+        <div className='skeleton-description'>
+            <div className='skeleton-description-header'>
+            <SkeletonElement type="title"/>
             <div>
-            <SkeletonElement type={"title"}/>
-            <SkeletonElement type={"text"}/>
-            <SkeletonElement type={"button"}/>
+            <SkeletonElement type="title"/>
+            <SkeletonElement type="title"/>
+            </div>
+            </div>            <div>
+                <SkeletonElement type={"text"}/>
+                <SkeletonElement type={"text"}/>
+                <SkeletonElement type={"text"}/>
+                <SkeletonElement type={"text"}/>
+                <SkeletonElement type={"text"}/>
             </div>
         </div>
-        <Shimmer/>
-    </div>
+        </div>
+        <div className='league-stats'>
+        <div><SkeletonElement type={"logo"}/>
+        <SkeletonElement type={"text"}/></div>
+        <div><SkeletonElement type={"logo"}/>
+        <SkeletonElement type={"text"}/></div>
+        <div><SkeletonElement type={"logo"}/>
+        <SkeletonElement type={"text"}/></div>
+        <div><SkeletonElement type={"logo"}/>
+        <SkeletonElement type={"text"}/></div>
+
+
+
+        </div>
+        </div>
   )
 }
 

@@ -54,7 +54,7 @@ function App() {
               element:<AppLayout/>,
               children: [
                 {
-                  path: "my-leagues", 
+                  path: "leagues", 
                   element: <MyLeagues />,
                 },
                 {
@@ -62,7 +62,7 @@ function App() {
                   element: <Dashboard/>
                 },
                 {
-                  path:"league/:id",
+                  path:"leagues/:id",
                   element:<League/>
                 }
               ],

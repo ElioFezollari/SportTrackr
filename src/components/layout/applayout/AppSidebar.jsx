@@ -58,7 +58,7 @@ function AppSidebar({ isActive, setIsActive }) {
               <span>&gt;</span> Leagues
             </h2>
             <div>
-              <Link to="./my-leagues">
+              <Link to="./leagues">
                 {" "}
                 <img
                   className="sidebar-icon"

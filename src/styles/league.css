@@ -4,9 +4,7 @@
     text-align: end;
     margin-top: 50px;
 }
-.main-league-wrapper{
-    margin-top: 0px ;
-}
+
 
 .league-nav-history{
     width: 100%;
@@ -92,4 +90,51 @@
 
 .league-header span{
     color: #758CA3;
+}
+
+
+
+@media only screen and (max-width: 876px) {
+    .league-header{
+        flex-direction: column;
+    }
+    .league-header div{
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    .main-div{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .league-nav-history p:nth-child(2){
+        display: none;
+    }
+    .league-information{
+        display: flex;
+        flex-direction: column;
+    }
+    .league-wrapper{
+        margin-bottom: 20px;
+    }
+    .league-description{
+        margin-left: 0;
+        height: 300px;
+    }
+    .league-header div{
+        
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .league-stats{
+        display: flex;
+        flex-direction: column;
+    }
+    .league-description{
+        height: 400px;
+    }
+    
 }

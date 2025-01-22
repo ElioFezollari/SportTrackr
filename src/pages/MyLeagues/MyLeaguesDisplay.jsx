@@ -8,7 +8,7 @@ import seriaa from "../../assets/temp/teamLogos/seriaa.png";
 import { Link } from "react-router";
 import { getLeagues } from "../../services/leagues";
 import useAuth from "../../hooks/useAuth";
-import SkeletonLeague from "../../components/skeletons/SkeletonLeague.jsx";
+import SkeletonLeagues from "../../components/skeletons/SkeletonLeagues";
 
 function MyLeaguesDisplay({ leagues, setLeagues }) {
   const { auth } = useAuth();
@@ -41,13 +41,13 @@ function MyLeaguesDisplay({ leagues, setLeagues }) {
             <div>
               <h3>{league.leagueName}</h3>
               <p>Starts {league.startTime}</p>
-              <Link to={`../league/${league.id}`}>More Info</Link>
+              <Link to={`../leagues/${league.id}`}>More Info</Link>
             </div>
           </div>
         ))
       ) : (
         skeletonLeagues.map((_, index) => (
-          <SkeletonLeague key={index} />
+          <SkeletonLeagues key={index} />
         ))
       )}
     </div>
