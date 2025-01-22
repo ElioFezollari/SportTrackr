@@ -11,13 +11,28 @@ const getLeagues = async (credentials) => {
     
     try {
       const response = await axios.get(baseUrl, config);
-      console.log(response);
       return response;
     } catch (error) {
       console.error('Error fetching leagues:', error);
     }
   };
 
+const getLeague = async (credentials,id) =>{
+  const config = {
+    headers: {
+      Authorization: `Bearer ${credentials}`, 
+    },
+  };
+  
+  try {
+    const response = await axios.get(`${baseUrl}/${id}` , config);
+    console.log(response)
+    return response;
+  } catch (error) {
+    console.error('Error fetching leagues:', error);
+  }
+}
 
 
-export {getLeagues}
+
+export {getLeagues,getLeague}

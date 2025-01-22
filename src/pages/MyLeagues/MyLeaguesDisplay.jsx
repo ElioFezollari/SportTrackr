@@ -36,21 +36,19 @@ function MyLeaguesDisplay({ leagues, setLeagues }) {
         <p className="error">{error}</p>
       ) : leagues ? (
         leagues.map((league) => (
-          <>
           <div className="league-card" key={league.id}>
-            <img src={league.logo_url} alt={league.league_name + " logo"} />
+            <img src={league.logoUrl} alt={league.leagueName + " logo"} />
             <div>
-              <h3>{league.league_name}</h3>
-              <p>Starts {new Date(league.start_time).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
-              <Link to={`/leagues/${league.id}`}>More Info</Link>
+              <h3>{league.leagueName}</h3>
+              <p>Starts {league.startTime}</p>
+              <Link to={`../league/${league.id}`}>More Info</Link>
             </div>
           </div>
-          </>
         ))
       ) : (
-        skeletonLeagues.map(()=>{
-          return <SkeletonLeague/>
-        })
+        skeletonLeagues.map((_, index) => (
+          <SkeletonLeague key={index} />
+        ))
       )}
     </div>
   );

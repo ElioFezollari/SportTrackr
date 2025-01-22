@@ -14,6 +14,7 @@ import ConfirmEmail from "./pages/ConfirmEmail/ConfirmEmail";
 import RequireAuth from "./components/RequireAuth";
 import MyLeagues from "./pages/MyLeagues/MyLeagues";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import League from "./pages/League/League";
 
 function App() {
   const router = createBrowserRouter([
@@ -47,7 +48,6 @@ function App() {
           element:<ConfirmEmail/>
         },
         {
-         
           children:[
             {
               path:"/app",
@@ -60,12 +60,15 @@ function App() {
                 {
                   path:"dashboard",
                   element: <Dashboard/>
+                },
+                {
+                  path:"league/:id",
+                  element:<League/>
                 }
               ],
             }
           ]
         },
-
       ],
     }
   ]);
