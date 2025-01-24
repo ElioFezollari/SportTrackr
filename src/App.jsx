@@ -15,6 +15,7 @@ import RequireAuth from "./components/RequireAuth";
 import MyLeagues from "./pages/MyLeagues/MyLeagues";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import League from "./pages/League/League";
+import CreateTeam from "./pages/CreateTeam/CreateTeam";
 
 function App() {
   const router = createBrowserRouter([
@@ -64,6 +65,10 @@ function App() {
                 {
                   path:"leagues/:id",
                   element:<League/>
+                },
+                {
+                  path:"team/create",
+                  element:<CreateTeam/>
                 }
               ],
             }
