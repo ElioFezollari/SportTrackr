@@ -14,7 +14,9 @@ import ConfirmEmail from "./pages/ConfirmEmail/ConfirmEmail";
 import RequireAuth from "./components/RequireAuth";
 import MyLeagues from "./pages/MyLeagues/MyLeagues";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import MatchUpload from "./pages/Statistician/MatchUpload";
 import League from "./pages/League/League";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -62,6 +64,8 @@ function App() {
                   element: <Dashboard/>
                 },
                 {
+                  path: "match-upload",
+                  element:<MatchUpload/>
                   path:"leagues/:id",
                   element:<League/>
                 }
