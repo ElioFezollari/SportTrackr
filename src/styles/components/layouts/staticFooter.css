@@ -1,103 +1,99 @@
-.static-footer footer {
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
     background-color: #31363F;
-    padding: 40px 20px;
     color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    padding: 20px 0;
 }
 
-.static-footer-wrapper {
+.footer-right {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.footer-bottom {
+.social-media-links {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.social-media-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 28px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #d6e4f0;
+    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.social-media-links a:hover {
+    color: #1da1f2;
+    transform: scale(1.2);
+}
+
+hr {
+    width: 90%;
+    border: 1px solid #545a65;
 }
 
 .static-footer-image {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.static-footer-image h1 {
+    font-size: 45px;
+}
+
+.footer-contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 22px;
+}
+
+.static-footer-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    gap: 120px;
+    padding: 10px;
+}
+
+.static-footer-image {
+    display: flex;
+    font-size: 20px;
+    margin-top: 30px;
     align-items: center;
-    justify-content: flex-start;
+    gap: 20px;
 }
 
 .static-footer-image img {
     width: 65px;
-    margin-right: 15px;
-}
-
-.static-footer-image h1 {
-    font-size: 40px;
-    font-weight: normal;
-    justify-content: center;
-}
-
-footer h2 {
-    font-weight: normal;
-    font-size: 24px;
-}
-
-.footer-install-banner {
-    width: 100%;
-    background-color: #696f7b;
-    margin-top: -20px;
-    padding: 20px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-.footer-install-banner div {
-    display: flex;
-    gap: 50px;
-    align-items: center;
-}
-
-.footer-install-banner h2 {
-    font-size: 28px;
-    font-weight: normal;
-    margin-right: 20px;
-}
-
-.footer-install-banner a {
-    padding: 15px 25px;
-    background-color: #4c5c6f;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-}
-
-.footer-install-banner a:hover {
-    background-color: #3a4856;
+    height: 65px;
 }
 
 .static-footer-link {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
     width: 100%;
-    justify-items: center;
-    margin-top: 20px;
+    margin-top: 80px;
 }
 
 .static-footer-link a {
-    margin: 10px 20px;
-    font-size: 20px;
     color: white;
     text-decoration: none;
+    font-size: 22px;
     transition: color 0.3s ease;
 }
 
@@ -105,61 +101,47 @@ footer h2 {
     color: #1da1f2;
 }
 
-.follow-us-container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start; /* Ensure it's aligned to the left */
-    margin-top: 20px;
-    width: 100%; /* Ensure it's 100% width */
+.footer-install-banner {
+    background-color: #696f7b;
+    padding: 50px 40px;
+    border-radius: 10px;
+    max-width: 80%;
+    flex-shrink: 0;
+    text-align: center;
 }
 
-.follow-us {
+.footer-install-banner h2 {
+    margin-bottom: 50px;
+    font-size: 30px;
+}
+
+.install-buttons {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     align-items: center;
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    padding-left: 0;
 }
 
-.follow-us h2 {
-    font-size: 28px;
-    margin-left: 0;
+.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #000000;
+    background-color: lightgrey;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: background-color 0.3s;
+    margin: 5px;
 }
 
-.social-media-links {
-    display: flex;
-    width: 100%;
-    gap: 80px;
-    justify-content: flex-end;
-    margin-top: 10px;
-}
-
-.social-media-links a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 25px;
-    width: 50px; /* Set a fixed width */
-    height: 50px; /* Set a fixed height */
-    border-radius: 50%; /* Makes the element circular */
-    background-color: #696f7b; /* Set the background color of the circle */
-    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease; /* Add smooth transition for hover effects */
-    text-decoration: none; /* Remove underline */
-}
-
-.social-media-links a:hover {
-    transform: scale(1.1);
-    color: #1da1f2;
-    background-color: #C4C4C4;
+.btn:hover {
+    background-color: grey;
 }
 
 .copyright-footer {
     background-color: #31363F;
-    border-top: 0.5px solid #545a65;
-    width: 100%;
+    border-top: 1px solid #545a65;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -167,35 +149,32 @@ footer h2 {
 }
 
 .copyright-footer h4 {
-    margin: 0;
-    font-weight: normal;
     color: white;
+    margin: 0;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .static-footer-wrapper {
         flex-direction: column;
         align-items: center;
     }
 
+    .footer-right {
+        flex-direction: column;
+    }
+
     .static-footer-link {
-        flex-direction: column;
-        align-items: center;
         width: 100%;
+        text-align: center;
     }
 
-    .social-media-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .follow-us {
-        align-items: center;
+    .footer-install-banner {
         width: 100%;
+        margin-top: 20px;
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
     .footer-install-banner a:nth-child(2) {
         display: none;
     }
