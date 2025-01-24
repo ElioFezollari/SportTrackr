@@ -65,7 +65,8 @@ function App() {
                 },
                 {
                   path: "match-upload",
-                  element:<MatchUpload/>
+                  element:<MatchUpload/>},
+                  {
                   path:"leagues/:id",
                   element:<League/>
                 }
