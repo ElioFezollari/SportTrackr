@@ -1,19 +1,3 @@
-.my-leagues-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 90vh;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.my-leagues{
-    width: 95%;
-    background-color: #31363F;
-    border-radius: 20px;
-    min-height: 80vh;
-    padding: 20px;
-}
 
 .my-leagues h1{
     text-align: center;
@@ -53,6 +37,7 @@
     font-size: 26px;
 }
 .emp-options a{
+    height: 40px;
     background-color: #758CA3;
     padding: 10px;
     border-radius: 5px;
@@ -60,6 +45,9 @@
     color: white;
     text-decoration: none;
     filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.3));
+}
+.emp-options a:hover{
+    opacity: 0.9;
 }
 
 .emp-options button{
@@ -196,6 +184,7 @@
         }
         .league-card a{
             width: auto;
+            padding: 15px 15px;
         }
     }    
 

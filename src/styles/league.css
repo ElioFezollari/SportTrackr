@@ -1,0 +1,140 @@
+.league-wrapper{
+    width: 90%;
+    margin: 0 auto;
+    text-align: end;
+    margin-top: 50px;
+}
+
+
+.league-nav-history{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.league-nav-history p{
+    font-size: 34px;
+    color: #BBBFCA;
+    text-shadow: 3px 2px #495464;
+    background-clip: text;
+}
+
+.league-nav-history a{
+    text-decoration: none;
+    text-decoration: underline;
+    font-size: 34px;
+    color: #BBBFCA;
+    text-shadow: 3px 2px #495464;
+    background-clip: text;
+}
+
+.league-information img{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+
+}
+
+.league-information{
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+.league-description{
+    height: 100%;
+    background-color: #D9D9D9;
+    height: 250px;
+    width: 100%;
+    padding: 20px;
+    margin-left: 30px;
+    border-radius: 10px;
+    overflow-y:auto
+}
+.league-description h3{
+    color: #758CA3;
+    font-size: 28px;
+}
+.league-description p{
+    font-size: 22px;
+    color: #31363F;
+}
+
+.league-stats p{
+    color: white;
+    margin-left: 5px;
+    font-size: 20px;
+}
+.league-stats div{
+    display: flex;
+    align-items: center;
+}
+.league-stats img{
+    width: 40px;
+}
+
+.league-stats{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    align-content: start;
+    gap: 10px;
+}
+
+.league-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.league-header span{
+    color: #758CA3;
+}
+
+
+
+@media only screen and (max-width: 876px) {
+    .league-header{
+        flex-direction: column;
+    }
+    .league-header div{
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    .main-div{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .league-nav-history p:nth-child(2){
+        display: none;
+    }
+    .league-information{
+        display: flex;
+        flex-direction: column;
+    }
+    .league-wrapper{
+        margin-bottom: 20px;
+    }
+    .league-description{
+        margin-left: 0;
+        height: 300px;
+    }
+    .league-header div{
+        
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .league-stats{
+        display: flex;
+        flex-direction: column;
+    }
+    .league-description{
+        height: 400px;
+    }
+    
+}

@@ -93,12 +93,12 @@
 }
 @media only screen and (max-width: 1700px) {
     .app-sidebar-wrapper{
-        width: 18.5%;
+        width: 21%;
     }
 }
 @media only screen and (max-width: 1420px) {
     .app-sidebar-wrapper{
-        width: 22%;
+        width: 25%;
     }
 }
 @media only screen and (max-width: 1224px) {
@@ -107,7 +107,7 @@
         height: 100%;
         background-color: white;
         top: 0;
-        position: fixed;;
+        position: fixed;
     }
     .sidebar-closed div{
         display: none;

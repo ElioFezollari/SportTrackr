@@ -69,6 +69,51 @@
     box-shadow: 0 0 30pxx 30px rgba(255, 255, 255, 0.05);
 }
 
+.skeleton-info-back{
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+.skeleton-info-back .skeleton.title{
+  width: 300px;
+}
+.skeleton-main{
+  display: flex;
+  margin-top: 65px;
+}
+
+.skeleton-description .skeleton.title,.skeleton-description .skeleton.text{
+  background-color: #ebebeb;
+}
+.skeleton-description .skeleton.title{
+  width: 300px;
+}
+.skeleton-main .skeleton.logo{
+  width: 200px;
+  height: 200px;
+}
+.skeleton-description{
+  padding: 20px;
+  height: 250px;
+  background-color: #D9D9D9;
+  width: 80%;
+  margin-left: 30px;
+  border-radius: 10px;
+}
+.skeleton-description-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.league-stats .skeleton.logo{
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.league-stats .skeleton.text{
+  width: 200px;
+}
+
 @keyframes loading{
     0%{transform: translateX(-150%);}
     50%{transform: translateX(-60%);}

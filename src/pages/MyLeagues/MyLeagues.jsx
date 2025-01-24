@@ -6,8 +6,8 @@ import MyLeagueSelection from "./MyLeagueSelection";
 function MyLeagues() {
   const [leagues,setLeagues] = useState()
   return (
-    <div className="my-leagues-wrapper">
-      <div className="my-leagues">
+    <div className="main-div-wrapper my-leagues-wrapper">
+      <div className="main-div my-leagues">
         <h1>Browse Leagues</h1>
         <MyLeagueSelection/>
         <MyLeaguesDisplay leagues={leagues} setLeagues={setLeagues}/>
