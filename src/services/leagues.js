@@ -26,7 +26,6 @@ const getLeague = async (credentials,id) =>{
   
   try {
     const response = await axios.get(`${baseUrl}/${id}` , config);
-    console.log(response)
     return response;
   } catch (error) {
     console.error('Error fetching leagues:', error);

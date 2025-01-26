@@ -243,8 +243,3 @@
 
 }
 
-body {
-  min-width: 520px;
-  min-height: 690px;
-  overflow: auto; 
-}
