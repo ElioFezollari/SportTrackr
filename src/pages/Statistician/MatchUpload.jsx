@@ -148,7 +148,11 @@ const MatchUpload = () => {
                   <td>{player.name}</td>
                   <td>{player.position}</td>
                   <td>{player.number}</td>
-                  <td className="more-info">▼</td>
+                  <td className="more-info">
+                    <span className={`arrow ${ activePlayer === player.id ? "rotated" : ""}`}>
+                    &gt;
+                   </span>
+                  </td>
                 </tr>
                 {activePlayer === player.id && (
                   <tr className="player-details">

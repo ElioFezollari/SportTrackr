@@ -10,6 +10,13 @@ import AuthContext, { AuthProvider } from "./context/AuthProvider";
 
 import AppNavbar from "./components/layout/applayout/AppNavbar";
 import AppLayout from "./components/layout/applayout/AppLayout";
+import ConfirmEmail from "./pages/ConfirmEmail/ConfirmEmail";
+import RequireAuth from "./components/RequireAuth";
+import MyLeagues from "./pages/MyLeagues/MyLeagues";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import MatchUpload from "./pages/Statistician/MatchUpload";
+import League from "./pages/League/League";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -35,13 +42,37 @@ function App() {
           element: <Login />,
         },
         {
-          path: "/register",
+          path: "/register/:token",
           element: <Register />,
         },
         {
-          path:"/app",
-          element:<AppLayout/>
-        }
+          path:"/confirm-email",
+          element:<ConfirmEmail/>
+        },
+        {
+          children:[
+            {
+              path:"/app",
+              element:<AppLayout/>,
+              children: [
+                {
+                  path: "leagues", 
+                  element: <MyLeagues />,
+                },
+                {
+                  path:"dashboard",
+                  element: <Dashboard/>
+                },
+                {
+                  path: "match-upload",
+                  element:<MatchUpload/>
+                  path:"leagues/:id",
+                  element:<League/>
+                }
+              ],
+            }
+          ]
+        },
       ],
     }
   ]);
