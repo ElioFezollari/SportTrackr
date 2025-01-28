@@ -15,6 +15,7 @@ import RequireAuth from "./components/RequireAuth";
 import MyLeagues from "./pages/MyLeagues/MyLeagues";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import MatchUpload from "./pages/Statistician/MatchUpload";
+import HighlightUpload from "./pages/Statistician/HighlightUpload";
 import League from "./pages/League/League";
 
 
@@ -65,10 +66,15 @@ function App() {
                 },
                 {
                   path: "match-upload",
-                  element:<MatchUpload/>},
-                  {
+                  element:<MatchUpload/>
+                },
+                {
                   path:"leagues/:id",
                   element:<League/>
+                },
+                {
+                  path:"hightlight-upload",
+                  element:<HighlightUpload/>
                 }
               ],
             }
