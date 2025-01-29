@@ -18,7 +18,6 @@ function AppSidebar({ isActive, setIsActive }) {
 
   const isAdmin = auth.roles && auth.roles.includes("admin");
 
-  console.log(auth)
   useEffect(() => {
 
   }, [auth.roles]);
