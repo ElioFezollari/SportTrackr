@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import CustomDropdown from "./CustomDropdown"; // Import the custom dropdown
+import CustomDropdown from "./CustomDropdown";
 import "../../styles/users.css";
 
 function UserSearch({ onSearchChange, onLeagueChange, onTeamChange, selectedLeague, selectedTeam }) {

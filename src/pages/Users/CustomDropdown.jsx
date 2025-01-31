@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "../../styles/users.css";
 
-function CustomDropdown({ options = [], selectedValue, onChange, placeholder }) { // Default to empty array
+function CustomDropdown({ options = [], selectedValue, onChange, placeholder }) {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {

@@ -22,7 +22,7 @@ function Users() {
             goals: 20,
         },
         {
-            image: "https://via.placeholder.com/50", // Placeholder image
+            image: "https://via.placeholder.com/50",
             name: "Neymar Jr.",
             league: "Ligue 1",
             position: "Forward",
@@ -30,7 +30,7 @@ function Users() {
             goals: 15,
         },
         {
-            image: "https://via.placeholder.com/50", // Placeholder image
+            image: "https://via.placeholder.com/50",
             name: "Kevin De Bruyne",
             league: "Premier League",
             position: "Midfielder",
@@ -38,7 +38,7 @@ function Users() {
             goals: 10,
         },
         {
-            image: "https://via.placeholder.com/50", // Placeholder image
+            image: "https://via.placeholder.com/50",
             name: "Kylian Mbappé",
             league: "Ligue 1",
             position: "Forward",
@@ -46,7 +46,7 @@ function Users() {
             goals: 22,
         },
         {
-            image: "https://via.placeholder.com/50", // Placeholder image
+            image: "https://via.placeholder.com/50",
             name: "Virgil van Dijk",
             league: "Premier League",
             position: "Defender",
@@ -56,8 +56,8 @@ function Users() {
     ]);
 
     const [searchTerm, setSearchTerm] = useState("");
-    const [selectedLeague, setSelectedLeague] = useState(""); // Initialize to empty string
-    const [selectedTeam, setSelectedTeam] = useState(""); // Initialize to empty string
+    const [selectedLeague, setSelectedLeague] = useState("");
+    const [selectedTeam, setSelectedTeam] = useState("");
 
     const handleSearchChange = (term) => {
         setSearchTerm(term);
