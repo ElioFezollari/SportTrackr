@@ -1,0 +1,214 @@
+.main-div-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    width: 100%;
+}
+
+.title {
+    font-size: 45px;
+    font-weight: bold;
+    color: #d9dbe2;
+    text-shadow: 3px 2px #495464;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.main-div {
+    width: 100%; /* Ensure it takes full width */
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-item {
+    background: #e9ecef;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    color: #495057;
+}
+
+.no-users-message {
+    font-size: 16px;
+    color: #868e96;
+    margin-top: 20px;
+}
+
+.player-search-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-users {
+    width: 100%; /* Ensure the user list is centered */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%; /* Allow the input to take available space */
+    max-width: 200px; /* Set a max width for the input */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition for input */
+}
+
+.user-search-wrapper {
+    display: flex; /* Use flexbox to arrange items in a row */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: 25px; /* Space between items */
+    margin-bottom: 20px; /* Space below the search wrapper */
+    width: 100%; /* Ensure it takes full width */
+}
+
+.dropdowns {
+    display: flex;
+    gap: 10px;
+}
+
+.custom-dropdown {
+    position: relative;
+    width: 150px; /* Set a fixed width for dropdowns */
+}
+
+.dropdown-header {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Use flexbox to align items */
+    justify-content: space-between; /* Space between text and arrow */
+    align-items: center; /* Center items vertically */
+}
+
+.dropdown-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #495464; /* Arrow color */
+    transition: transform 0.3s ease; /* Transition for rotation */
+}
+
+.dropdown-arrow.open {
+    transform: rotate(180deg); /* Rotate arrow when dropdown is open */
+}
+
+.dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 200px; /* Set a max height */
+    overflow-y: auto; /* Allow scrolling if needed */
+    opacity: 1; /* Show dropdown */
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1; /* Change background on hover */
+}
+
+.player-list {
+    width: 100%; /* Ensure it takes full width */
+}
+
+.player-list-header {
+    display: flex;
+    font-weight: bold; /* Make header text bold */
+    background-color: #f1f1f1; /* Light background for header */
+    padding: 10px;
+    border-bottom: 2px solid #dee2e6; /* Bottom border for separation */
+}
+
+.header-item {
+    flex: 1; /* Allow each header item to take equal space */
+    text-align: center; /* Center align text */
+}
+
+.player-row {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.player-image {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border-radius: 50%; /* Make it circular */
+    margin-right: 15px; /* Space between image and text */
+}
+
+.player-name, .player-league, .player-position, .matches-played, .goals-scored {
+    flex: 1; /* Allow each item to take equal space */
+    text-align: center; /* Center align text */
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.player-league, .player-position, .matches-played, .goals-scored {
+    color: #6c757d; /* Grey color for other details */
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .main-div {
+        padding: 15px;
+    }
+
+    .user-item {
+        font-size: 14px;
+    }
+
+    .no-users-message {
+        font-size: 14px;
+    }
+}

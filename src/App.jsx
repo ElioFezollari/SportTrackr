@@ -15,7 +15,9 @@ import RequireAuth from "./components/RequireAuth";
 import MyLeagues from "./pages/MyLeagues/MyLeagues";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import MatchUpload from "./pages/Statistician/MatchUpload";
+import HighlightUpload from "./pages/Statistician/HighlightUpload";
 import League from "./pages/League/League";
+import Users from "./pages/Users/Users";
 
 
 function App() {
@@ -56,7 +58,7 @@ function App() {
               element:<AppLayout/>,
               children: [
                 {
-                  path: "leagues", 
+                  path: "leagues",
                   element: <MyLeagues />,
                 },
                 {
@@ -66,8 +68,18 @@ function App() {
                 {
                   path: "match-upload",
                   element:<MatchUpload/>
+                },
+                {
                   path:"leagues/:id",
                   element:<League/>
+                },
+                {
+                  path:"hightlight-upload",
+                  element:<HighlightUpload/>
+                },
+                {
+                  path: "users",
+                  element: <Users />,
                 }
               ],
             }
@@ -78,11 +90,11 @@ function App() {
   ]);
 
   return (
-    <>
-    <AuthProvider>
-      <RouterProvider router={router} />
-      </AuthProvider>
-    </>
+      <>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </>
   );
 }
 
