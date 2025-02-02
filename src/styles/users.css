@@ -18,7 +18,7 @@
 }
 
 .main-div {
-    width: 100%; /* Ensure it takes full width */
+    width: 100%;
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -151,33 +151,38 @@
 
 .player-list {
     width: 100%;
+    border-collapse: collapse;
 }
 
 .player-list-header {
     display: flex;
-    font-weight: bold;
     background-color: #f1f1f1;
-    padding: 10px;
-    border-bottom: 2px solid #dee2e6;
+    font-weight: bold;
 }
 
 .header-item {
     flex: 1;
-    text-align: center;
+    padding: 10px;
+    text-align: left;
 }
 
-.player-row {
+.players-row {
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.row-item {
+    flex: 1;
     padding: 10px;
-    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
 }
 
 .player-image {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 .player-name, .player-league, .player-position, .matches-played, .goals-scored {

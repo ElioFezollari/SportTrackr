@@ -1,21 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../styles/users.css"; // Ensure to create this CSS file for styling
+import "../../styles/users.css";
 
-function PlayerRow({ player }) {
+function PlayersRow({ player }) {
     return (
-        <div className="player-row">
-            <img src={player.image} alt={player.name} className="player-image" />
-            <div className="player-name">{player.name}</div>
-            <div className="player-league">{player.league}</div>
-            <div className="player-position">{player.position}</div>
-            <div className="matches-played">{player.matchesPlayed}</div>
-            <div className="goals-scored">{player.goals}</div>
+        <div className="players-row">
+            <div className="row-item">
+                <img src={player.image} alt={player.name} className="player-image" />
+            </div>
+            <div className="row-item">{player.name}</div>
+            <div className="row-item">{player.league}</div>
+            <div className="row-item">{player.position}</div>
+            <div className="row-item">{player.matchesPlayed}</div>
+            <div className="row-item">{player.goals}</div>
         </div>
     );
 }
 
-PlayerRow.propTypes = {
+PlayersRow.propTypes = {
     player: PropTypes.shape({
         image: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
@@ -26,4 +28,4 @@ PlayerRow.propTypes = {
     }).isRequired,
 };
 
-export default PlayerRow;
+export default PlayersRow;

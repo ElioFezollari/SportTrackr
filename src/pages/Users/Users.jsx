@@ -5,54 +5,12 @@ import PlayerList from "./PlayerList";
 
 function Users() {
     const [players] = useState([
-        {
-            image: "https://via.placeholder.com/50",
-            name: "Lionel Messi",
-            league: "Ligue 1",
-            position: "Forward",
-            matchesPlayed: 30,
-            goals: 25,
-        },
-        {
-            image: "https://via.placeholder.com/50",
-            name: "Cristiano Ronaldo",
-            league: "Premier League",
-            position: "Forward",
-            matchesPlayed: 28,
-            goals: 20,
-        },
-        {
-            image: "https://via.placeholder.com/50",
-            name: "Neymar Jr.",
-            league: "Ligue 1",
-            position: "Forward",
-            matchesPlayed: 25,
-            goals: 15,
-        },
-        {
-            image: "https://via.placeholder.com/50",
-            name: "Kevin De Bruyne",
-            league: "Premier League",
-            position: "Midfielder",
-            matchesPlayed: 30,
-            goals: 10,
-        },
-        {
-            image: "https://via.placeholder.com/50",
-            name: "Kylian Mbappé",
-            league: "Ligue 1",
-            position: "Forward",
-            matchesPlayed: 29,
-            goals: 22,
-        },
-        {
-            image: "https://via.placeholder.com/50",
-            name: "Virgil van Dijk",
-            league: "Premier League",
-            position: "Defender",
-            matchesPlayed: 30,
-            goals: 5,
-        },
+        { image: "https://via.placeholder.com/50", name: "Lionel Messi", league: "Ligue 1", position: "Forward", matchesPlayed: 30, goals: 25 },
+        { image: "https://via.placeholder.com/50", name: "Cristiano Ronaldo", league: "Premier League", position: "Forward", matchesPlayed: 28, goals: 20 },
+        { image: "https://via.placeholder.com/50", name: "Neymar Jr.", league: "Ligue 1", position: "Forward", matchesPlayed: 25, goals: 15 },
+        { image: "https://via.placeholder.com/50", name: "Kevin De Bruyne", league: "Premier League", position: "Midfielder", matchesPlayed: 30, goals: 10 },
+        { image: "https://via.placeholder.com/50", name: "Kylian Mbappé", league: "Ligue 1", position: "Forward", matchesPlayed: 29, goals: 22 },
+        { image: "https://via.placeholder.com/50", name: "Virgil van Dijk", league: "Premier League", position: "Defender", matchesPlayed: 30, goals: 5 },
     ]);
 
     const [searchTerm, setSearchTerm] = useState("");
@@ -71,9 +29,13 @@ function Users() {
         setSelectedTeam(team);
     };
 
-    const filteredPlayers = players.filter(player =>
-        player.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredPlayers = players.filter(player => {
+        const matchesSearchTerm = player.name.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesLeague = selectedLeague ? player.league === selectedLeague : true;
+        const matchesTeam = selectedTeam ? player.team === selectedTeam : true; // Assuming player object has a team property
+
+        return matchesSearchTerm && matchesLeague && matchesTeam;
+    });
 
     return (
         <div className="main-div-wrapper">
