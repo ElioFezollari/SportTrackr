@@ -16,7 +16,7 @@ function AppSidebar({ isActive, setIsActive }) {
   const [leagues, setLeagues] = useState(true);
   const [transactions, setTransactions] = useState(true);
 
-  const isAdmin = auth.roles && auth.roles.includes("admin");
+  const isAdmin = auth.roles && auth.roles.includes("owner");
 
   useEffect(() => {
 
