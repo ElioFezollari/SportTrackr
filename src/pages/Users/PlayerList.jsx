@@ -1,5 +1,5 @@
 import React from "react";
-import PlayersRow from "./PlayersRow"; // Ensure the correct path
+import PlayersRow from "./PlayersRow";
 
 function PlayerList({ players }) {
     return (
