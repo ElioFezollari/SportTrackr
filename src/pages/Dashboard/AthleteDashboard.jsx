@@ -26,12 +26,11 @@ import AuthContext from "../../context/AuthProvider";
 function AthleteDashboard() {
     const {auth} = useContext(AuthContext)
     const [mainData, setMainData] = useState([]);
-      console.log(mainData)
         useEffect(() => {
           const fetchData = async () => {
             try {
               const matchData = await getMatch(auth.accessToken); 
-              console.log(matchData)
+              
               setMainData(matchData.data.stats); 
             } catch (error) {
               console.error("Error fetching match data:", error);

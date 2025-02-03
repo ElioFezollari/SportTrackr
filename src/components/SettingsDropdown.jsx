@@ -9,7 +9,7 @@ function SettingsDropdown({isProfileVisible,setIsProfileVisible}) {
       };
       const handleLogout = async ()=>{
         const logoutStatus=await logout()
-        console.log("hi")
+
         if(logoutStatus.status === 204){
             navigate("/")
         }
