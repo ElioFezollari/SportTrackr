@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/statistician.css";
+import mls from "../../assets/temp/teamLogos/mls.webp";
+import Bayern from "../../assets/temp/teamLogos/Bayern.png";
 
 const MatchUpload = () => {
   const [activePlayer, setActivePlayer] = useState(null);
@@ -115,15 +117,15 @@ const MatchUpload = () => {
       <header className="header">
         <h1>
           Match #50 Player Stats Upload -{" "}
-          <img src="bayern-logo.png" alt="Bayern Munchen" /> Bayern Munchen vs{" "}
-          <img src="skenderbeu-logo.png" alt="Skenderbeu" /> Skenderbeu
+          <img src={Bayern} alt="Bayern Munchen" className="team-logo"/> Bayern Munchen vs{" "} 
+          <img src={mls} alt="Skenderbeu" className="team-logo" /> Skenderbeu
         </h1>
       </header>
       <div className="team-container">
         <div className="team-header">
           <img
             // Placeholder for now
-            src=""
+            src={Bayern}
             alt="Bayern Munchen Logo"
             className="team-logo"
           />
@@ -214,8 +216,8 @@ const MatchUpload = () => {
         {/* THIS NEED TO BE ADJUST WHEN IMPLEMENT DB */}
         <div className="page-container">
           <button className="upload-button">
-            <img src="logo-path.png" alt="Logo" className="upload-logo" />
-            Upload for Skenderbeu
+            <img src={Bayern} alt="Logo" className="upload-logo" />
+            &nbsp;Upload for Skenderbeu
           </button>
         </div>
       </div>
