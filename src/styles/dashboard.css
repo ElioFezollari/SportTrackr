@@ -8,8 +8,9 @@
     margin-top: 20px;
 }
 
-.main-stats div  h2{
+.dashboard-wrapper div  h2{
     text-align: center;
+    margin: 20px 0;
 }
 
 

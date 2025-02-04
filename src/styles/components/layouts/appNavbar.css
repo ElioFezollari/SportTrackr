@@ -37,9 +37,25 @@
 }
 .app-header .profile-icon,.settings-icon{
     width: 40px !important;
+    
+}
+.settings-button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer; 
+    transition: transform 0.3s ease; 
+}
+
+.settings-button:hover {
+    transform: rotate(60deg);
+    opacity: 0.8;
 }
 .app-nav-icons{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
+  

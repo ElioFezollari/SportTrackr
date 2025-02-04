@@ -15,6 +15,15 @@ const login = async (credentials) =>{
   })
   return response
 }
+
+const logout = async () => {
+  try {
+    const response = await axios.post(baseUrl + 'logout', {}, { withCredentials: true });
+    return response;
+  } catch (error) {
+    return error.response || { status: 500, message: "Internal error" };
+  }
+};
 const refreshToken = async () => {
   const response = await axios.get(baseUrl + "refresh",{
     withCredentials:true,
@@ -23,4 +32,4 @@ const refreshToken = async () => {
 }
 
 
-export {login,refreshToken,register}
+export {login,refreshToken,register,logout}

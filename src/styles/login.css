@@ -47,7 +47,7 @@
     font-size: 28px;
     width: 130px;
     padding: 15px;
-    margin: 0 auto;
+    margin: 0 auto !important;
     cursor: pointer;    
     background-color: #495464;
     border-radius: 14px;
@@ -124,6 +124,14 @@
     z-index: 3;
 }
 
+.login-form-content div{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+.login-form input:nth-of-type(1){
+    margin-top: 20px;
+}
 
 @media only screen and (max-width: 1200px) {
     .login-image img:nth-of-type(2){
@@ -184,8 +192,11 @@
         height: 90vh;
        }
 }
-@media only screen and (max-width: 600px) {
-
+@media only screen and (max-width: 4550px) {
+    .login-form div{
+        width: auto;
+        padding: 30px;
+    }
 }
 
 @media only screen and (max-width: 350px){
