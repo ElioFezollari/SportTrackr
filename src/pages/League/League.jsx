@@ -46,7 +46,7 @@ function League() {
       </div>
 
       <div className="main-div-wrapper main-league-wrapper">
-        <div className="main-div">
+        <div className="main-div league-main-div">
           {loading ? (
             <SkeletonLeague/>
           ) : error ? (
@@ -64,11 +64,13 @@ function League() {
                     {league.leagueName}
                   </p>
                 </div>
+                <div className="league-content-wrapper">
                 <div className="league-information">
                   <img
                     src={league.logoUrl}
                     alt={`logo of ${league.leagueName}`}
                   />
+
                   <div className="league-description">
                     <div className="league-header">
                       <h3>About {league.leagueName}</h3>{" "}
@@ -90,6 +92,7 @@ function League() {
                   <div><img src={team} alt="Icon of 2 people tied in a circle" /> <p>Team Starter Size: {league.teamStarterSize}</p></div>
                   <div><img src={maxTeam} alt="Icon of a person with a checkmark" /> <p>Max Team Size: {league.maxTeamSize}</p></div>
                   <div><img src={coin} alt="Icon of two coins" /> <p>Price Per Team: {league.price}$</p></div>
+                </div>
                 </div>
               </>
             )

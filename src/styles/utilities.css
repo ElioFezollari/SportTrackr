@@ -95,3 +95,11 @@
 .main-btn:hover{
     opacity: 0.8;
 }
+
+.static-home-hero-image{
+    width: 100vw;
+    height: 100vh;
+    max-width:100%;
+    object-fit: cover;
+    position: relative;
+}

@@ -1,0 +1,80 @@
+.error-page-wrapper{
+    background-color: #31363F;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.error-page-wrapper p{
+    font-size: 23px;
+}
+
+.error-page-wrapper h1{
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.error-page-wrapper button,.error-page-wrapper a{
+    padding: 15px 30px;
+    background-color: #495464;
+    display: inline-block;
+
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in;
+
+}
+
+.error-page-wrapper button:hover{
+    background-color: white;
+}
+
+.error-page-wrapper a{
+    background-color: transparent;
+    border: 1px solid white;
+    margin-left: 20px;
+}
+.error-page-wrapper a:hover{
+    background-color: white;
+    color: #495464;
+}
+
+.error-page-wrapper div{
+    padding: 30px;
+}
+.error-buttons{
+    padding: 0 !important;
+}
+
+@media only screen and (max-width: 890px) {
+    .error-page-wrapper p{
+        font-size: 20px;
+    }
+    .error-page-wrapper img{
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 668px) {
+    .error-page-wrapper p{
+        font-size: 20px;
+    }
+    .error-page-wrapper img{
+        display: none;
+    }
+    .error-page-wrapper h1,.error-page-wrapper p{
+        text-align: center;
+    }
+    .error-buttons{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}

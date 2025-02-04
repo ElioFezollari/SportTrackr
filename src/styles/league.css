@@ -76,11 +76,13 @@
 .league-stats{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    
     width: 50%;
     margin: 0 auto;
     margin-top: 20px;
     align-content: start;
     gap: 10px;
+    justify-items: center;
 }
 
 .league-header{
@@ -90,6 +92,13 @@
 
 .league-header span{
     color: #758CA3;
+}
+.league-content-wrapper{
+    flex-direction: column;
+    display: flex;
+    height: 80%;
+    justify-content: center;
+
 }
 
 
@@ -107,6 +116,10 @@
     }
 }
 
+.league-main-div{
+    position: relative;
+    height: 80vh;
+}
 @media only screen and (max-width: 700px) {
     .league-nav-history p:nth-child(2){
         display: none;
@@ -114,6 +127,9 @@
     .league-information{
         display: flex;
         flex-direction: column;
+    }
+    .league-information img{
+        margin-bottom: 20px;
     }
     .league-wrapper{
         margin-bottom: 20px;
@@ -125,6 +141,9 @@
     .league-header div{
         
         margin-bottom: 15px;
+    }
+    .league-main-div{
+        height: auto;
     }
 }
 

@@ -43,8 +43,10 @@ function Login() {
             <div className='login-form'><img src={logo} alt="logo of SportTrackr" />
             <h1>Log In</h1>
             <form className='login-form-content' onSubmit={(e)=>submitLogin(e)}>
-              <label htmlFor=""><input placeholder='Enter your email' type="text" value={email} onChange={e=>{setEmail(e.target.value)}} name="email" id="email" /></label>
-              <label htmlFor=""><input placeholder='Enter your password' type="password" name="password" id="password"  value={password} onChange={e=>{setPassword(e.target.value)}}/></label>
+              <div>
+              <label htmlFor="email"><input placeholder='Enter your email' type="text" value={email} onChange={e=>{setEmail(e.target.value)}} name="email" id="email" /></label>
+              <label htmlFor="password"><input placeholder='Enter your password' type="password" name="password" id="password"  value={password} onChange={e=>{setPassword(e.target.value)}}/></label>
+              </div>
               <input type="submit" value="Log In" />
             </form>
             {error && <p className='error'>{error}</p>}
