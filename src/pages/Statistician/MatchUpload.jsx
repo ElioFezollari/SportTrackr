@@ -114,8 +114,8 @@ const MatchUpload = () => {
 
   return (
     <div className="stats-container">
-      <header className="header">
-        <h1>
+      <header className="match-upload-header">
+        <h1 className>
           Match #50 Player Stats Upload -{" "}
           <img src={Bayern} alt="Bayern Munchen" className="team-logo"/> Bayern Munchen vs{" "} 
           <img src={mls} alt="Skenderbeu" className="team-logo" /> Skenderbeu

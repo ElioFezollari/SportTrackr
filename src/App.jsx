@@ -73,7 +73,7 @@ function App() {
                   element:<League/>
                 },
                 {
-                  path:"hightlight-upload",
+                  path:"highlight-upload",
                   element:<HighlightUpload/>
                 }
               ],

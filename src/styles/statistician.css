@@ -5,7 +5,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.header h1 {
+.match-upload-header h1 {
   text-align: left;
   font-size: 30px;
   margin-bottom: 20px;
@@ -265,94 +265,4 @@ body {
   text-align: center;
   justify-content: space-between;
 
-}
-
-
-/*for Highlight Upload*/
-
-.match-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: black;
-}
-
-
-
-team-logo {
-  height: 24px;
-  vertical-align: middle;
-  margin: 0 5px;
-}
-
-.upload-box {
-  background: #2d2d3a;
-  padding: 20px;
-  border-radius: 10px;
-  display: inline-block;
-  text-align: center;
-  color: white;
-}
-
-.highlight-type {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: none;
-  font-size: 16px;
-}
-
-.upload-area {
-  width: 100px;
-  height: 100px;
-  border: 2px dashed #aaa;
-  border-radius: 10px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.submit-btn {
-  background: #ccc;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.uploaded-files {
-  margin-top: 20px;
-}
-
-.files-list {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.file-item {
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-  width: 120px;
-}
-
-.file-thumbnail {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.file-item p {
-  font-weight: bold;
-}
-
-.file-item span {
-  font-size: 12px;
-  color: gray;
 }
