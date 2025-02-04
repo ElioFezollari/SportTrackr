@@ -74,7 +74,11 @@ const router = createBrowserRouter([
               {
                 path:"hightlight-upload",
                 element:<HighlightUpload/>
-              }
+              },
+               {
+                 path:"team/create",
+                 element:<CreateTeam/>
+                }
             ],
           }
         ]
