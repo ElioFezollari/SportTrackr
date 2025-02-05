@@ -1,4 +1,5 @@
-.container {
+/* createTeam.css */
+.create-team-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,23 +8,24 @@
   padding: 20px;
 }
 
-.header-container {
+.create-team-header-container {
   display: flex;
   justify-items: center;
   align-items: center;
+  padding-bottom: 2em;
 }
 
-.league-name {
-  font-size: 30px;
+.create-team-league-name {
+  font-size: 80px;
+  padding-left: 0.25em;
   color: #BBBFCA;
 }
 
-form {
+.create-team-form {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
   padding: 20px;
-  max-width: 800px;
   margin: 0 auto;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -31,113 +33,125 @@ form {
   background-color: #31363F;
 }
 
-form > div:nth-child(1) {
+.create-team-row-1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   justify-content: space-between;
 }
 
-form > div:nth-child(2) {
+.create-team-row-2 {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 20px;
 }
 
-form > div:nth-child(3) {
+.create-team-row-3 {
   display: flex;
   flex-direction: column;
 }
 
-form > div:nth-child(3) label {
+.create-team-row-3 .create-team-label {
   margin-bottom: 10px;
   color: #BBBFCA;
   font-weight: bold;
+  font-size: 20px;
 }
 
-form > div:nth-child(3) > div {
+#teamDescription{
+  height: 85%;
+}
+
+.create-team-logo-upload{
+  height: 100%;
+}
+
+.create-team-row-3 .create-team-visibility-options {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-form > div:nth-child(3) input[type="text"] {
+.create-team-row-3 .create-team-private-key-input {
   margin-left: 20px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-form > div:nth-child(4) {
+.create-team-row-4 {
   text-align: center;
 }
 
-form button {
+.create-team-submit-button {
   padding: 10px 50px;
   background-color: #BBBFCA;
   color: black;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-form button:hover {
-  background-color: #0056b3;
+.create-team-submit-button:hover {
+  background-color: #3B4252;
 }
 
-input, textarea {
+.create-team-private-key-input{
+  width: 30%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.create-team-input, .create-team-textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 20px;
+  box-sizing: border-box;
 }
 
-textarea {
+.create-team-textarea {
   resize: vertical;
 }
 
-label {
+.create-team-label {
   font-weight: bold;
   margin-bottom: 5px;
   display: block;
   color: #BBBFCA;
+  font-size: 20px;
 }
 
-input[type="file"] {
+.create-team-file-input {
   padding: 8px;
-  font-size: 14px;
+  font-size: 20px;
   background-color: #f9f9f9;
 }
 
-.dropdown {
-  display: inline-block;
-  width: 100%;
-}
-
-img {
-  width: 50px;
-  height: 50px;
+.create-team-league-logo {
+  width: 5em;
+  height: 5rem;
   border-radius: 50%;
   margin-right: 10px;
 }
 
-h2 {
-  display: inline-block;
+.create-team-visibility-label{
+  padding: 12px;
   font-size: 20px;
-  vertical-align: middle;
-  margin: 0;
 }
 
-.file-upload {
+.create-team-file-upload {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  max-width: 300px;
   margin: 0 auto;
   width: 100%;
   height: 85%;
@@ -146,82 +160,88 @@ h2 {
   background-color: #fff;
 }
 
-.file-upload:hover {
+.create-team-file-upload:hover {
   border-color: #0080FF;
   background-color: #3B4252;
 }
 
-.file-upload .icon {
+.create-team-file-icon {
   font-size: 50px;
   color: #BBBFCA;
-  margin-bottom: 10px;
   transition: color 0.3s;
+  width: 50%;
 }
 
-.file-upload:hover .icon {
-  color: #0080FF;
+.create-team-file-upload:hover .create-team-file-icon {
+  color: #3B4252;
 }
 
-.file-upload .text {
-  font-size: 16px;
+.create-team-file-text {
+  font-size: 20px;
   color: #BBBFCA;
   text-align: center;
   transition: color 0.3s;
 }
 
-.file-upload:hover .text {
+.create-team-file-upload:hover .create-team-file-text {
   color: #ffffff;
 }
 
-.file-upload input[type="file"] {
+.create-team-file-input {
   display: none;
 }
 
+@media (max-width: 768px) {
+  #teamName:placeholder-shown, #teamDescription:placeholder-shown, .create-team-file-text{
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 600px) {
-  .container {
+  .create-team-container {
     padding: 10px;
   }
 
-  form {
+  .create-team-form {
     grid-template-columns: 1fr;
     padding: 10px;
     width: 100%;
   }
 
-  form > div:nth-child(1) {
+  .create-team-row-1 {
     grid-template-columns: 1fr;
     grid-gap: 10px;
   }
 
-  form > div:nth-child(2) {
+  .create-team-row-2 {
     grid-template-columns: 1fr;
     grid-gap: 10px;
   }
 
-  form > div:nth-child(3) {
+  .create-team-row-3 {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  form button {
+  .create-team-submit-button {
     width: 100%;
     padding: 12px;
   }
 
-  input, textarea {
+  .create-team-input, .create-team-textarea, .create-team-private-key-input {
     font-size: 14px;
   }
 
-  .file-upload {
+  .create-team-file-upload {
     max-width: 100%;
     padding: 10px;
   }
 
-  .file-upload .icon {
+  .create-team-file-icon {
     font-size: 40px;
   }
 
-  .file-upload .text {
+  .create-team-file-text {
     font-size: 14px;
   }
 }

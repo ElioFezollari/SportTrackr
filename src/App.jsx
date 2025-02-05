@@ -17,6 +17,7 @@ import MatchUpload from "./pages/Statistician/MatchUpload";
 import HighlightUpload from "./pages/Statistician/HighlightUpload";
 import League from "./pages/League/League";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import CreateTeam from "./pages/CreateTeam/CreateTeam"
 
 function App() {
 const router = createBrowserRouter([
