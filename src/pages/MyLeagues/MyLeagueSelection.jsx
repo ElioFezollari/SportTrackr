@@ -37,7 +37,7 @@ function MyLeagueSelection() {
       )}
 
       {/**For employeed users to filter leagues they work in */}
-      {!isAdmin && auth.roles.length > 1 && (
+      {auth.roles &&!isAdmin && auth.roles.length > 1 && (
         <div className="emp-options">
           <div>
             <button onClick={() => setEmployeedLeagues((prev) => !prev)}>

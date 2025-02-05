@@ -17,6 +17,7 @@ import MatchUpload from "./pages/Statistician/MatchUpload";
 import HighlightUpload from "./pages/Statistician/HighlightUpload";
 import League from "./pages/League/League";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import Help from "./pages/Help/Help";
 
 function App() {
 const router = createBrowserRouter([
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
         element: <StaticLayout />,
         children: [
           {
-            path: "/",
+            index:true,
             element: <Home />,
           },
           {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             path:"/app",
             element:<AppLayout/>,
             children: [
+              {
+                index:true,
+                element:<Help/>
+              },
               {
                 path: "leagues", 
                 element: <MyLeagues />,
