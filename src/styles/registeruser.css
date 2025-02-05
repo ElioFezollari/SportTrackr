@@ -1,0 +1,198 @@
+.main-div-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    width: 100%;
+}
+
+.title {
+    font-size: 45px;
+    font-weight: bold;
+    color: #d9dbe2;
+    text-shadow: 3px 2px #495464;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.main-div {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-item {
+    background: #e9ecef;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    color: #495057;
+}
+
+.no-users-message {
+    font-size: 16px;
+    color: #868e96;
+    margin-top: 20px;
+}
+
+.player-search-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-users {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-search-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.dropdowns {
+    display: flex;
+    gap: 10px;
+}
+
+.dropdown {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    max-width: 200px;
+    width: 100%;
+}
+
+.dropdown:focus {
+    outline: none;
+    border-color: #495464;
+    box-shadow: 0 0 5px rgba(72, 90, 102, 0.4);
+}
+
+.dropdown-option {
+    padding: 10px;
+    background-color: #ffffff;
+    color: #495464;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-option:hover {
+    background-color: #f1f1f1;
+}
+
+.player-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.player-list-header {
+    display: flex;
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.header-item {
+    flex: 1;
+    padding: 10px;
+    text-align: left;
+}
+
+.players-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.row-item {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.player-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.player-name, .player-league, .player-position, .matches-played, .goals-scored {
+    flex: 1;
+    text-align: center;
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.player-league, .player-position, .matches-played, .goals-scored {
+    color: #6c757d;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .main-div {
+        padding: 15px;
+    }
+
+    .user-item {
+        font-size: 14px;
+    }
+
+    .no-users-message {
+        font-size: 14px;
+    }
+
+    .dropdown {
+        max-width: 150px;
+    }
+}
