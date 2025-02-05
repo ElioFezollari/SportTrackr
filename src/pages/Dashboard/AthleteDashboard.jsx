@@ -26,6 +26,7 @@ import AuthContext from "../../context/AuthProvider";
 function AthleteDashboard() {
     const {auth} = useContext(AuthContext)
     const [mainData, setMainData] = useState([]);
+    console.log(mainData)
         useEffect(() => {
           const fetchData = async () => {
             try {
@@ -49,7 +50,7 @@ function AthleteDashboard() {
       <div className="main-stats">
         <div>
           <h2>Main Statistics</h2>
-          <ResponsiveContainer width="100%" height="95%">
+          <ResponsiveContainer width="100%" height="90%">
             <BarChart
               width={500}
               height={300}
@@ -81,7 +82,7 @@ function AthleteDashboard() {
         </div>
         <div>
           <h2>Top 3 Goal Scorers Throughout the season</h2>
-          <ResponsiveContainer width="100%" height="95%">
+          <ResponsiveContainer width="100%" height="90%">
             <ComposedChart
               width={600}
               height={400}
@@ -124,7 +125,7 @@ function AthleteDashboard() {
         </div>
         <div>
           <h2>Top 5 Shot Takers</h2>
-          <ResponsiveContainer width="100%" height="95%">
+          <ResponsiveContainer width="100%" height="90%">
             <PieChart width={400} height={400}>
               <Pie
                 dataKey="value"
@@ -150,7 +151,7 @@ function AthleteDashboard() {
         </div>
         <div>
           <h2>Top 3 Interceptors</h2>
-          <ResponsiveContainer width="100%" height="95%">
+          <ResponsiveContainer width="100%" height="90%">
             <AreaChart
               width={500}
               height={400}
