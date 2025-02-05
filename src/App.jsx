@@ -18,6 +18,7 @@ import HighlightUpload from "./pages/Statistician/HighlightUpload";
 import League from "./pages/League/League";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Help from "./pages/Help/Help";
+import Teams from "./pages/Teams/Teams";
 
 function App() {
 const router = createBrowserRouter([
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
               {
                 path: "leagues", 
                 element: <MyLeagues />,
+              },
+              {
+                path:"teams",
+                element:<Teams/>
               },
               {
                 path:"dashboard",

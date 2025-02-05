@@ -1,7 +1,9 @@
 .help-wrapper{
     width: 100%;
+
+    width: 90%;
+    margin: 0 auto;
     margin-top: 30px;
-    padding: 20px;
 }
 
 .help-wrapper h1{
@@ -10,6 +12,9 @@
 
     background-clip: text;
     font-size: 50px;
+}
+.help-wrapper div{
+    padding: 20px;
 }
 
 .help-wrapper hr{

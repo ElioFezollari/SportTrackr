@@ -7,6 +7,7 @@ function Help() {
     <div className="help-wrapper">
       <h1>SportTrackr Guide</h1>
       <hr />
+      <div>
       <h2>Navigating the SportTrackr web portal</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec
@@ -38,6 +39,7 @@ function Help() {
             ? "employees"
             : "athletes")} - introduction video
       </h2>
+      </div>
     </div>
   );
 }
