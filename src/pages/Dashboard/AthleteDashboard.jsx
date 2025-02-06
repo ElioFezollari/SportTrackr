@@ -26,7 +26,6 @@ import AuthContext from "../../context/AuthProvider";
 function AthleteDashboard() {
     const {auth} = useContext(AuthContext)
     const [mainData, setMainData] = useState([]);
-    console.log(mainData)
         useEffect(() => {
           const fetchData = async () => {
             try {
