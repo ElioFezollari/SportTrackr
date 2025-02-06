@@ -9,12 +9,9 @@ const createTeam = async (formData, token)=> {
     },
   };
 
-  try {
-    const response = await axios.post(baseUrl, formData, config);
-    return response;
-  } catch (error) {
-    console.error('Error fetching leagues:', error);
-  }
+  const response = await axios.post(baseUrl, formData, config);
+  return response;
+  
 }
 
 const getTeam = async (id, token)=>{

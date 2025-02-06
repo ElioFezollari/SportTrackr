@@ -74,15 +74,13 @@ function MyTeam() {
                 console.error("Error fetching team:", e);
                 setTeamError("Error Fetching Team");
             }
-            console.log(team)
-            console.log(league)
         };
 
         getMyTeam();
-    }, [auth.accessToken]);
+    }, [auth.accessToken, team, league]);
 
     return (
-        <div className="create-team-container">
+        <div className="my-team-container">
             {loading ? (
                 <SkeletonTeam />
             ) : error ? (

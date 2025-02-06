@@ -1,5 +1,4 @@
-/* myTeam.css */
-.create-team-container {
+.my-team-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,7 +144,6 @@
     margin-top: 20px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .team-card {
         flex-direction: column;
@@ -206,7 +204,6 @@
     }
 }
 
-/* Small screen adjustments */
 @media (max-width: 500px) {
     .team-logo {
         width: 140px;
