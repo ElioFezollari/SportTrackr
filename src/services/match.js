@@ -13,7 +13,7 @@ const getMatch = async (credentials) => {
       const response = await axios.get(`${baseUrl}stats` , config);
       return response;
     } catch (error) {
-      console.error('Error fetching leagues:', error);
+      console.error('Error fetching match:', error);
     }
   };
 

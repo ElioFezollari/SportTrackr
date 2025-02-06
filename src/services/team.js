@@ -28,5 +28,19 @@ const getTeam = async (id, token)=>{
   }
 }
 
+const getTeamsByLeagueId = async (credentials, leagueId) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${credentials}`,
+    },
+  };
 
-export {createTeam, getTeam}
+  try {
+    const response = await axios.get(`${baseUrl}league/${leagueId}`, config);
+    return response;
+  } catch (error) {
+    console.error('Error fetching teams:', error);
+  }
+};
+
+export {createTeam, getTeam, getTeamsByLeagueId}

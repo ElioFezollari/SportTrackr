@@ -103,3 +103,10 @@
     object-fit: cover;
     position: relative;
 }
+
+
+.selection-filter{
+
+    margin: 0 auto;
+    margin-top: 20px;
+}

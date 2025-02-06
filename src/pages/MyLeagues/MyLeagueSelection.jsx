@@ -3,14 +3,13 @@ import useAuth from "../../hooks/useAuth";
 import trophy from "../../assets/images/myLeagues/trophy.svg";
 import { Link } from "react-router";
 
-
 function MyLeagueSelection() {
-      const { auth } = useAuth();
-      const isAdmin = auth.roles && auth.roles.includes("admin");
-      const [ownedLeagues, setOwnedLeagues] = useState(false);
-      const [employeedLeagues, setEmployeedLeagues] = useState(false);
-      const [animate, setAnimate] = useState(true);
-      
+  const { auth } = useAuth();
+  const isAdmin = auth.roles && auth.roles.includes("owner");
+  const [ownedLeagues, setOwnedLeagues] = useState(false);
+  const [employeedLeagues, setEmployeedLeagues] = useState(false);
+  const [animate, setAnimate] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => setAnimate(false), 1500);
 
@@ -38,26 +37,23 @@ function MyLeagueSelection() {
       )}
 
       {/**For employeed users to filter leagues they work in */}
-      <div className="emp-options">
-        <div>
-          <button
-            onClick={() => {
-              setEmployeedLeagues(!employeedLeagues);
-            }}
-          >
-            {" "}
-            <img
-              className={!animate ? "no-animation" : ""}
-              style={{
-                backgroundColor: employeedLeagues == true ? "#36b495" : "",
-              }}
-              src={trophy}
-              alt=""
-            />{" "}
-            <h2>Leagues Employeed In</h2>
-          </button>{" "}
+      {auth.roles &&!isAdmin && auth.roles.length > 1 && (
+        <div className="emp-options">
+          <div>
+            <button onClick={() => setEmployeedLeagues((prev) => !prev)}>
+              <img
+                className={!animate ? "no-animation" : ""}
+                style={{
+                  backgroundColor: employeedLeagues ? "#36b495" : "transparent",
+                }}
+                src={trophy}
+                alt="Trophy Icon"
+              />
+              <h2>Leagues Employed In</h2>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
