@@ -6,52 +6,17 @@ import uploadLogo from "../../assets/images/statistician/uploadLogo.png";
 
 function HighlightUpload() {
   const [highlights, setHighlights] = useState([]);
+  const [highlightType, setHighlightType] = useState("");
+  const [selectedPlayerId, setSelectedPlayerId] = useState("");
+  const [error, setError] = useState("");
 
   const [players, setPlayers] = useState([
-    {
-      id: 1,
-      name: "Manuel Neuer (C)",
-      position: "Goalkeeper",
-      number: 8,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 2,
-      name: "Dayot Upamecano",
-      position: "Defender",
-      number: 11,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 3,
-      name: "Eric Dier",
-      position: "Defender",
-      number: 69,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 4,
-      name: "Alphonso Davies",
-      position: "Defender",
-      number: 7,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 5,
-      name: "Aleksandar Pavlović",
-      position: "Midfielder",
-      number: 19,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    }
+    { id: 1, name: "Manuel Neuer (C)", position: "Goalkeeper" },
+    { id: 2, name: "Dayot Upamecano", position: "Defender" },
+    { id: 3, name: "Eric Dier", position: "Defender" },
+    { id: 4, name: "Alphonso Davies", position: "Defender" },
+    { id: 5, name: "Aleksandar Pavlović", position: "Midfielder" },
   ]);
-
-  const [highlightType, setHighlightType] = useState("");
-  const [error, setError] = useState("");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -60,6 +25,11 @@ function HighlightUpload() {
 
     if (highlights.length >= 3) {
       setError("You can only upload a maximum of 3 videos.");
+      return;
+    }
+
+    if (!highlightType || !selectedPlayerId) {
+      setError("Please select a highlight type and a player.");
       return;
     }
 
@@ -87,7 +57,8 @@ function HighlightUpload() {
         const newHighlight = {
           id: highlights.length + 1,
           name: `Highlight ${highlights.length + 1}`,
-          type: highlightType || "Custom",
+          type: highlightType,
+          playerId: selectedPlayerId, // Store playerId instead of name
           thumbnail: thumbnail,
         };
 
@@ -100,23 +71,32 @@ function HighlightUpload() {
   };
 
   return (
-    <>
-      <header className="highlight-upload-header">
-        <h1>
-          Match #50 -{" "}
-          <img src={Bayern} alt="Bayern Munchen" className="team-logo" /> Bayern Munchen vs{" "}
-          <img src={Skenderbeu} alt="Skenderbeu" className="team-logo" /> Skenderbeu
-        </h1>
-      </header>
+
 
       <div className="highlight-upload-container">
+        <header className="highlight-upload-header">
+          <h1>
+            Match #50 -{" "}
+            <img src={Bayern} alt="Bayern Munchen" className="team-logo" /> Bayern Munchen vs{" "}
+            <img src={Skenderbeu} alt="Skenderbeu" className="team-logo" /> Skenderbeu
+          </h1>
+        </header>
         <div className="upload-box">
           <div className="highlight-upload-box">
             <select className="highlight-type" onChange={(e) => setHighlightType(e.target.value)}>
-              <option value="">Highlight Type</option>
+              <option value="">Select Highlight Type</option>
               <option value="Goal">Goal</option>
               <option value="Save">Save</option>
               <option value="Dribble">Dribble</option>
+            </select>
+
+            <select className="highlight-type" onChange={(e) => setSelectedPlayerId(e.target.value)}>
+              <option value="">Select Player</option>
+              {players.map((player) => (
+                <option key={player.id} value={player.id}>
+                  {player.name} ({player.position})
+                </option>
+              ))}
             </select>
 
             <div className="upload-area">
@@ -140,14 +120,13 @@ function HighlightUpload() {
                 <div key={highlight.id} className="file-item">
                   <img src={highlight.thumbnail} alt={highlight.name} className="file-thumbnail" />
                   <p>{highlight.name}</p>
-                  <span className="highlight-label">{highlight.type}</span>
+                  <span className="highlight-label">{highlight.type}</span><br></br>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </>
   );
 }
 
