@@ -22,7 +22,8 @@ import MyTeam from "./pages/MyTeam/MyTeam";
 import Help from "./pages/Help/Help";
 import Teams from "./pages/Teams/Teams";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
-
+import ForgotPasswordEmail from "./pages/ForgotPassword/ForgotPasswordEmail";
+import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 function App() {
 const router = createBrowserRouter([
   {
@@ -57,6 +58,14 @@ const router = createBrowserRouter([
       {
         path:"/confirm-email",
         element:<ConfirmEmail/>
+      },
+      {
+        path:"/forgot",
+        element: <ForgotPasswordEmail/>
+      },
+      {
+        path:"/reset/:token",
+        element:<ResetPassword/>
       },
       {
         children:[

@@ -36,4 +36,14 @@ const sendVerificationEmail = async(email) => {
   return response;
 }
 
-export {login,refreshToken,register,logout, sendVerificationEmail}
+const sendForgotPasswordEmail = async(email) => {
+  const response = await axios.post(baseUrl + 'forgot', email);
+  return response;
+}
+
+const resetPassword = async(token, data) => {
+  const response = await axios.post(baseUrl + `reset/${token}`, data);
+  return response;
+}
+
+export {login,refreshToken,register,logout, sendVerificationEmail, sendForgotPasswordEmail, resetPassword}
