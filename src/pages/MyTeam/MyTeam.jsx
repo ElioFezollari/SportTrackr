@@ -30,6 +30,8 @@ function MyTeam() {
 
     useEffect(() => {
         const getMyTeam = async () => {
+            setLoading(true);
+
             const decodedToken = decodeJWT(auth.accessToken);
 
             if (!decodedToken || !decodedToken.teamId) {
@@ -39,45 +41,52 @@ function MyTeam() {
             }
 
             try {
-                const response = await getTeam(decodedToken.teamId, auth.accessToken);
-                if (response.status === 200 || response.status === 201) {
-                    setTeam(response.data.team);
-                    setTeamError(null);
+                const teamResponse = await getTeam(decodedToken.teamId, auth.accessToken);
+                if (teamResponse.status === 200 || teamResponse.status === 201) {
+                    const teamData = teamResponse.data.team;
 
                     try {
-                        const res = await getLeague(auth.accessToken, response.data.team.league_id);
-                        if (res.status === 200 || res.status === 201) {
-                            setLeague(res.data.league);
-                            setLeagueError(null);
+                        const leagueResponse = await getLeague(auth.accessToken, teamData.league_id);
+                        if (leagueResponse.status === 200 || leagueResponse.status === 201) {
+                            const leagueData = leagueResponse.data.league;
+
+                            try {
+                                const userResponse = await getUser(teamData.owner_id, auth.accessToken);
+                                if (userResponse.status === 200 || userResponse.status === 201) {
+                                    setTeam(teamData);
+                                    setLeague(leagueData);
+                                    setTeamOwner(userResponse.data.user);
+                                    setLoading(false);
+                                    setError(null); 
+                                } else {
+                                    setError("Error fetching team owner");
+                                    setLoading(false);
+                                }
+                            } catch (userError) {
+                                setError("Error fetching team owner");
+                                setLoading(false);
+                            }
+
                         } else {
                             setLeagueError("Error Fetching League");
-                        }
-                    } catch (e) {
-                        console.error("Error fetching league:", e);
-                        setLeagueError("Error Fetching League");
-                    }
-
-                    try{
-                        const response = await getUser(team.owner_id, auth.accessToken);
-                        if (response.status === 200 || response.status === 201) {
-                            setTeamOwner(response.data.user);
                             setLoading(false);
                         }
-                    }catch(e){
-                        console.log(e)
+                    } catch (leagueError) {
+                        setLeagueError("Error Fetching League");
+                        setLoading(false);
                     }
-
                 } else {
                     setTeamError("Error Fetching Team");
+                    setLoading(false);
                 }
-            } catch (e) {
-                console.error("Error fetching team:", e);
+            } catch (teamError) {
                 setTeamError("Error Fetching Team");
+                setLoading(false);
             }
         };
-
+        console.log("")
         getMyTeam();
-    }, [auth.accessToken, team, league]);
+    }, [auth.accessToken]);
 
     return (
         <div className="my-team-container">
