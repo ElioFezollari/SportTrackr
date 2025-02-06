@@ -18,6 +18,7 @@ import HighlightUpload from "./pages/Statistician/HighlightUpload";
 import League from "./pages/League/League";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import CreateTeam from "./pages/CreateTeam/CreateTeam"
+import MyTeam from "./pages/MyTeam/MyTeam";
 
 function App() {
 const router = createBrowserRouter([
@@ -76,10 +77,14 @@ const router = createBrowserRouter([
                 path:"hightlight-upload",
                 element:<HighlightUpload/>
               },
-               {
-                 path:"team/create",
+              {
+                 path:"leagues/:id/create-team",
                  element:<CreateTeam/>
-                }
+              },
+              {
+                path:"myteam",
+                element:<MyTeam/>
+              }
             ],
           }
         ]

@@ -99,7 +99,7 @@ function AppSidebar({ isActive, setIsActive }) {
               </div>
             )}
             <div>
-              <Link>
+              <Link to="./myteam">
                 {" "}
                 <img
                   className="sidebar-icon"

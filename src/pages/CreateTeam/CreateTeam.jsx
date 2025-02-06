@@ -1,23 +1,27 @@
 import React from "react";
-import { useState } from "react";
-import "../../styles/createTeam.css"; // Keep this import for general styles if needed
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import "../../styles/createTeam.css";
 import Dropdown from "../../components/layout/applayout/Dropdown";
 import file_upload from '../../assets/images/createTeam/file_upload.svg'
+import useAuth from "../../hooks/useAuth";
+import {createTeam} from "../../services/team";
+import { getLeague } from "../../services/leagues";
 
 function CreateTeam() {
 
-    const League = {
-     name: "First League",
-     logoUrl: 'https://cdn2.vectorstock.com/i/1000x1000/82/21/football-league-logo-vector-34398221.jpg',
-     price: 3000   
-    }
     const [teamName, setTeamName] = useState('');
     const [primaryColor, setPrimaryColor] = useState('');
     const [secondaryColor, setSecondaryColor] = useState('');
     const [teamDescription, setTeamDescription] = useState('');
     const [teamLogo, setTeamLogo] = useState();
-    const [teamVisibility, setTeamVisibility] = useState('private')
+    const [teamVisibility, setTeamVisibility] = useState(false)
     const [privateKey, setPrivateKey] = useState('');
+    const { id } = useParams("id");
+    const [league, setLeague] = useState(null);
+    const { auth } = useAuth();
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const colorOptions = [
         { value: 'red', label: 'Red' },
@@ -42,20 +46,81 @@ function CreateTeam() {
         { value: 'lavender', label: 'Lavender' },
     ];
 
+    useEffect(() => {
+        const getOneLeague = async () => {
+          try {
+            console.log(auth.accessToken)
+            const res = await getLeague(auth.accessToken, id);
+            console.log(res)
+            setLeague(res.data.league);
+            setLoading(false)
+          } catch (e) {
+            console.log(e)
+            setError(
+              "There was an error fetching this league. Please try again later."
+            );
+            setLoading(false)
+          }
+        };
+    
+        getOneLeague();
+    }, [auth.accessToken, id]);
+    
     const handleVisibilityChange = (value) => {
         setTeamVisibility(value);
         if (value !== 'private') {
           setPrivateKey('');
         }
-      };
+    };
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+    
+        if (teamVisibility && !privateKey) {
+            console.log("Error: Private key is required for private teams.");
+            return;
+        }
+        
+        let formData = new FormData();
+
+        let teamInfo = `
+            "name":"${teamName}",
+            "leagueId":6,
+            "homeColor":"${primaryColor.value}",
+            "awayColor":"${secondaryColor.value}",
+            "teamDescription":"${teamDescription}"
+            "teamVisibility":"${teamVisibility}"
+        `
+        
+        if (teamVisibility){
+            teamInfo += `,"password":"${privateKey}"`
+        }
+
+        formData.append("teamInfo", teamInfo);
+
+        await createTeam(formData, auth.accessToken).then((res)=>{
+            console.log(res.status)
+            if(res.status === 500){
+                console.log(res)
+                console.log(res.statusText)
+            }
+        }).catch((e)=>{
+            console.log(e);
+        })
+
+    };
+    
   return (
     <div className="create-team-container">
-        <div className="create-team-header-container">
-            <img src={League.logoUrl} alt="league-logo" className="create-team-league-logo"/>
-            <h2 className="create-team-league-name">{League.name}</h2>
-        </div>
-        <form className="create-team-form">
+        {error ? (
+            <p className="error">{error}</p>
+          ) : (
+            <div className="create-team-header-container">
+                <img src={league.logoUrl} alt="league-logo" className="create-team-league-logo"/>
+                <h2 className="create-team-league-name">{league.leagueName}</h2>
+            </div>
+        )}
+        <form className="create-team-form" onSubmit={handleSubmit}>
             <div className="create-team-row-1">
                 <div className="create-team-name-input">
                     <label htmlFor="teamName" className="create-team-label">Team Name *</label>
@@ -63,11 +128,11 @@ function CreateTeam() {
                 </div>
                 <div className="create-team-primary-color">
                     <label htmlFor="primaryColor" className="create-team-label">Primary Color *</label>
-                    <Dropdown className="dropdown" options={colorOptions} onSelect={e=>{setPrimaryColor(e.target.value)}} label="Select Color"/>
+                    <Dropdown className="dropdown" options={colorOptions} label="Select Color" onSelect={setPrimaryColor}/>
                 </div>
                 <div className="create-team-secondary-color">
                     <label htmlFor="primaryColor" className="create-team-label">Secondary Color *</label>
-                    <Dropdown className="dropdown" options={colorOptions} onSelect={e=>{setSecondaryColor(e.target.value)}} label="Select Color"/>
+                    <Dropdown className="dropdown" options={colorOptions} label="Select Color" onSelect={setSecondaryColor}/>
                 </div>
             </div>
             <div className="create-team-row-2">
@@ -83,13 +148,14 @@ function CreateTeam() {
                             type="file" 
                             id="team-logo-upload" 
                             className="create-team-file-input" 
-                            style={{ display: "none" }} 
+                            style={{ display: "none" }}
+                            onChange={(e) => setTeamLogo(e.target.files[0])}
+                            accept="image/png, image/jpeg"
                         />
                         <img className="create-team-file-icon" src={file_upload} alt="file_upload"/>
                         <span className="create-team-file-text">Upload file here</span>
                     </div>
                 </div>
-
             </div>    
             <div className="create-team-row-3">
                 <label htmlFor="teamVisibility" className="create-team-label">
@@ -101,8 +167,8 @@ function CreateTeam() {
                         type="radio"
                         name="visibility"
                         value="private"
-                        checked={teamVisibility === 'private'}
-                        onChange={() => handleVisibilityChange('private')}
+                        checked={teamVisibility === true}
+                        onChange={() => handleVisibilityChange(true)}
                         className="radio-button-input"
                     />
                     <span className="create-team-visibility-span">Private</span>
@@ -112,13 +178,13 @@ function CreateTeam() {
                         type="radio"
                         name="visibility"
                         value="public"
-                        checked={teamVisibility === 'public'}
-                        onChange={() => handleVisibilityChange('public')}
+                        checked={teamVisibility === false}
+                        onChange={() => handleVisibilityChange(false)}
                         className="radio-button-input"
                     />
                     <span className="create-team-visibility-span">Public</span>
                     </label>
-                    {teamVisibility === 'private' && (
+                    {teamVisibility && (
                     <>
                     <input
                         type="text"
