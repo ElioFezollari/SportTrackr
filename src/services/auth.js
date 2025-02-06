@@ -31,5 +31,9 @@ const refreshToken = async () => {
   return response.data
 }
 
+const sendVerificationEmail = async(email) => {
+  const response = await axios.post(baseUrl + 'verify', email);
+  return response;
+}
 
-export {login,refreshToken,register,logout}
+export {login,refreshToken,register,logout, sendVerificationEmail}

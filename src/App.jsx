@@ -21,6 +21,7 @@ import CreateTeam from "./pages/CreateTeam/CreateTeam"
 import MyTeam from "./pages/MyTeam/MyTeam";
 import Help from "./pages/Help/Help";
 import Teams from "./pages/Teams/Teams";
+import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 
 function App() {
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <VerifyEmail/>,
       },
       {
         path: "/register/:token",
