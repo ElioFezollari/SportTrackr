@@ -35,7 +35,7 @@ const LeagueSchedule = () => {
         setLoading(true);
         try {
           const teamsResponse = await getTeamsByLeagueId(auth.accessToken, selectedLeague); 
-          setTeams(teamsResponse.data);
+          setTeams(teamsResponse.data.teams);
 
           const matchPromises = teamsResponse.data.map(async (team) => {
             return getMatch(auth.accessToken, team.id); 
