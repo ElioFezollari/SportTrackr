@@ -1,17 +1,17 @@
-.league-container {
+.schedule-container {
     text-align: center;
     padding: 30px;
     color: black;
 }
 
-.league-title {
+.schedule-title {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #646464;
 }
 
-.league-dropdown {
+.schedule-league-dropdown {
     width: 250px;
     padding: 10px;
     border-radius: 5px;
@@ -21,7 +21,7 @@
     background: #f8f8f8;
 }
 
-.export-button {
+.schedule-export-button {
     background: none;
     border: none;
     font-size: 14px;
@@ -36,35 +36,37 @@
     border-collapse: collapse;
     background: white;
 }
-.schedule-table th{
+
+.schedule-table th {
     border-bottom: 1.5px solid black;
     color: black;
     background: white;
     font-weight: bold;
-
 }
-.schedule-table th, .schedule-table td {
+
+.schedule-table th,
+.schedule-table td {
     padding: 12px;
     text-align: center;
 }
 
-
-
-.team-logo {
+.schedule-team-logo {
     font-size: 24px;
+    width: 10px;
+    height: 10px;
 }
 
-.team-name {
+.schedule-team-name {
     font-weight: bold;
     color: #444;
 }
 
-.match-result {
+.schedule-match-result {
     font-weight: bold;
     font-size: 18px;
 }
 
-.update-button {
+.schedule-update-button {
     background: #ddd;
     border: none;
     padding: 8px 12px;
@@ -73,31 +75,32 @@
     font-size: 14px;
 }
 
-.update-button:hover {
+.schedule-update-button:hover {
     background: #ccc;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .league-container {
+    .schedule-container {
         padding: 20px;
     }
 
-    .league-title {
+    .schedule-title {
         font-size: 24px;
     }
 
-    .league-dropdown {
+    .schedule-league-dropdown {
         width: 100%;
         font-size: 14px;
     }
 
-    .schedule-table th, .schedule-table td {
+    .schedule-table th,
+    .schedule-table td {
         padding: 8px;
         font-size: 12px;
     }
 
-    .update-button {
+    .schedule-update-button {
         font-size: 12px;
         padding: 6px 10px;
     }

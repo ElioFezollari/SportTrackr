@@ -77,8 +77,8 @@ function HighlightUpload() {
         <header className="highlight-upload-header">
           <h1>
             Match #50 -{" "}
-            <img src={Bayern} alt="Bayern Munchen" className="team-logo" /> Bayern Munchen vs{" "}
-            <img src={Skenderbeu} alt="Skenderbeu" className="team-logo" /> Skenderbeu
+            <img src={Bayern} alt="Bayern Munchen" className="team-logo-highlight" /> Bayern Munchen vs{" "}
+            <img src={Skenderbeu} alt="Skenderbeu" className="team-logo-highlight" /> Skenderbeu
           </h1>
         </header>
         <div className="upload-box">
