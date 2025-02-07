@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5000/v1/league/emp/'
+const baseUrl = 'http://localhost:5001/v1/league/emp/'
 
 
 const getDashboardStats = async (credentials) => {
@@ -13,7 +13,7 @@ const getDashboardStats = async (credentials) => {
       const response = await axios.get(`${baseUrl}dashboard` , config);
       return response;
     } catch (error) {
-      console.error('Error fetching leagues:', error);
+      console.error('Error fetching employees:', error);
     }
   };
 

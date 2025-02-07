@@ -1,0 +1,246 @@
+.create-team-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+}
+
+.create-team-header-container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding-bottom: 2em;
+}
+
+.create-team-league-name {
+  font-size: 80px;
+  padding-left: 0.25em;
+  color: #BBBFCA;
+}
+
+.create-team-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #31363F;
+}
+
+.create-team-row-1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  justify-content: space-between;
+}
+
+.create-team-row-2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+}
+
+.create-team-row-3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-team-row-3 .create-team-label {
+  margin-bottom: 10px;
+  color: #BBBFCA;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#teamDescription{
+  height: 85%;
+}
+
+.create-team-logo-upload{
+  height: 100%;
+}
+
+.create-team-row-3 .create-team-visibility-options {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.create-team-row-3 .create-team-private-key-input {
+  margin-left: 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.create-team-row-4 {
+  text-align: center;
+}
+
+.create-team-submit-button {
+  padding: 10px 50px;
+  background-color: #BBBFCA;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-team-submit-button:hover {
+  background-color: #3B4252;
+}
+
+.create-team-private-key-input{
+  width: 30%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.create-team-input, .create-team-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.create-team-textarea {
+  resize: vertical;
+}
+
+.create-team-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  color: #BBBFCA;
+  font-size: 20px;
+}
+
+.create-team-file-input {
+  padding: 8px;
+  font-size: 20px;
+  background-color: #f9f9f9;
+}
+
+.create-team-league-logo {
+  width: 6em;
+  height: 6rem;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.create-team-visibility-label{
+  padding: 12px;
+  font-size: 20px;
+}
+
+.create-team-file-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin: 0 auto;
+  width: 100%;
+  height: 85%;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+  background-color: #fff;
+}
+
+.create-team-file-upload:hover {
+  border-color: #0080FF;
+  background-color: #3B4252;
+}
+
+.create-team-file-icon {
+  font-size: 50px;
+  color: #BBBFCA;
+  transition: color 0.3s;
+  width: 50%;
+}
+
+.create-team-file-upload:hover .create-team-file-icon {
+  color: #3B4252;
+}
+
+.create-team-file-text {
+  font-size: 20px;
+  color: #BBBFCA;
+  text-align: center;
+  transition: color 0.3s;
+}
+
+.create-team-file-upload:hover .create-team-file-text {
+  color: #ffffff;
+}
+
+.create-team-file-input {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #teamName:placeholder-shown, #teamDescription:placeholder-shown, .create-team-file-text{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .create-team-container {
+    padding: 10px;
+  }
+
+  .create-team-form {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .create-team-row-1 {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+
+  .create-team-row-2 {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+
+  .create-team-row-3 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .create-team-submit-button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .create-team-input, .create-team-textarea, .create-team-private-key-input {
+    font-size: 14px;
+  }
+
+  .create-team-file-upload {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .create-team-file-icon {
+    font-size: 40px;
+  }
+
+  .create-team-file-text {
+    font-size: 14px;
+  }
+}

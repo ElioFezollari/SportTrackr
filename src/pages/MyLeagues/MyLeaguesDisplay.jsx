@@ -25,16 +25,14 @@ function MyLeaguesDisplay({ leagues, setLeagues }) {
         setError('There was an error fetching the leagues. Please try again later.');
       }
     };
-
+    
     getAllLeagues();
   }, [auth.accessToken]);
 
   return (
 
     <div className="league-listings-wrapper">
-      {error ? (
-        <p className="error">{error}</p>
-      ) : leagues ? (
+      { leagues ? (
         leagues.map((league) => (
           <div className="league-card" key={league.id}>
             <img src={league.logoUrl} alt={league.leagueName + " logo"} />

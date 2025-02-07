@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5000/v1/league/'
+const baseUrl = 'http://localhost:5001/v1/league/'
 
 
 const getLeagues = async (credentials) => {
@@ -32,6 +32,33 @@ const getLeague = async (credentials,id) =>{
   }
 }
 
+const getLeagueList = async (credentials) => {
 
+  const config = {
+    headers: {
+      Authorization: `Bearer ${credentials}`, 
+    },
+  };
+  
+  try {
+    const response = await axios.get(baseUrl+"leagues-by-owner", config);
+    return response;
+  } catch (error) {
+    console.error('Error fetching leagues:', error);
+  }
+};
 
-export {getLeagues,getLeague}
+const createLeague = async (credentials, formData) => {
+  const config = {
+    headers : {
+      Authorization : `Bearer ${credentials}`,
+      "Content-Type": "multipart/form-data",
+    }
+  }
+
+  const response = await axios.post(baseUrl, formData, config);
+  return response;
+
+}
+
+export {getLeagues,getLeague,getLeagueList, createLeague}

@@ -40,7 +40,7 @@ function League() {
   return (
     <>
       <div className="league-wrapper">
-        <Link className="main-btn" href="">
+        <Link className="main-btn" to='./create-team'>
           + Create A Team For This League
         </Link>
       </div>

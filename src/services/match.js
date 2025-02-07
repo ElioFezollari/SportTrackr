@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5000/v1/match/'
+const baseUrl = 'http://localhost:5001/v1/match/'
 
 
 const getMatch = async (credentials) => {
@@ -13,7 +13,7 @@ const getMatch = async (credentials) => {
       const response = await axios.get(`${baseUrl}stats` , config);
       return response;
     } catch (error) {
-      console.error('Error fetching leagues:', error);
+      console.error('Error fetching match:', error);
     }
   };
 

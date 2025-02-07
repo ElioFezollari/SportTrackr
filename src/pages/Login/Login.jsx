@@ -50,7 +50,7 @@ function Login() {
               <input type="submit" value="Log In" />
             </form>
             {error && <p className='error'>{error}</p>}
-            <a href="">Forgot Password?</a>
+            <a href="./forgot">Forgot Password?</a>
             <p>Don' t have an account? <Link to="../register">Sign Up</Link></p>
               </div>
             <div className='login-image'>

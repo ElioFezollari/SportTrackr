@@ -29,7 +29,7 @@ function Register() {
       }
       setAuth(response.data)
 
-      navigate("../confirm-email")
+      navigate("../app")
  
     } catch (err) {
       if (err.response && err.response.status >= 400 && err.response.status < 500) {

@@ -114,6 +114,25 @@
   width: 200px;
 }
 
+.league-heading{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-self: center;
+}
+
+.league-heading .skeleton.logo{
+  width: 10em;
+  height: 6rem;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.league-heading .skeleton.text{
+  font-size: 80px;
+  padding-left: 0.25em;
+}
+
 @keyframes loading{
     0%{transform: translateX(-150%);}
     50%{transform: translateX(-60%);}
