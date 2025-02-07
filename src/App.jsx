@@ -17,6 +17,14 @@ import MatchUpload from "./pages/Statistician/MatchUpload";
 import HighlightUpload from "./pages/Statistician/HighlightUpload";
 import League from "./pages/League/League";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import CreateTeam from "./pages/CreateTeam/CreateTeam"
+import MyTeam from "./pages/MyTeam/MyTeam";
+import Help from "./pages/Help/Help";
+import Teams from "./pages/Teams/Teams";
+import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
+import ForgotPasswordEmail from "./pages/ForgotPassword/ForgotPasswordEmail";
+import ResetPassword from "./pages/ForgotPassword/ResetPassword";
+import CreateLeague from "./pages/CreateLeague/CreateLeague";
 
 function App() {
 const router = createBrowserRouter([
@@ -28,7 +36,7 @@ const router = createBrowserRouter([
         element: <StaticLayout />,
         children: [
           {
-            path: "/",
+            index:true,
             element: <Home />,
           },
           {
@@ -42,6 +50,10 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/register",
+        element: <VerifyEmail/>,
+      },
+      {
         path: "/register/:token",
         element: <Register />,
       },
@@ -50,14 +62,34 @@ const router = createBrowserRouter([
         element:<ConfirmEmail/>
       },
       {
+        path:"/forgot",
+        element: <ForgotPasswordEmail/>
+      },
+      {
+        path:"/reset/:token",
+        element:<ResetPassword/>
+      },
+      {
         children:[
           {
             path:"/app",
             element:<AppLayout/>,
             children: [
               {
+                index:true,
+                element:<Help/>
+              },
+              {
                 path: "leagues", 
                 element: <MyLeagues />,
+              },
+              {
+                path : "create-league",
+                element: <CreateLeague/>
+              },
+              {
+                path:"teams",
+                element:<Teams/>
               },
               {
                 path:"dashboard",
@@ -74,6 +106,14 @@ const router = createBrowserRouter([
               {
                 path:"hightlight-upload",
                 element:<HighlightUpload/>
+              },
+              {
+                 path:"leagues/:id/create-team",
+                 element:<CreateTeam/>
+              },
+              {
+                path:"myteam",
+                element:<MyTeam/>
               }
             ],
           }
