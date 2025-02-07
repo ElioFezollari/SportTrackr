@@ -74,7 +74,7 @@ function AppSidebar({ isActive, setIsActive }) {
             </div>
             {isAdmin && (
               <div>
-                <Link>
+                <Link to={"./users"}>
                   {" "}
                   <img
                     className="sidebar-icon"
@@ -87,7 +87,7 @@ function AppSidebar({ isActive, setIsActive }) {
             )}
             {isAdmin && (
               <div>
-                <Link>
+                <Link to={"./employees"}>
                   {" "}
                   <img
                     className="sidebar-icon"
