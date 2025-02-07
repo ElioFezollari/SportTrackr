@@ -66,7 +66,7 @@ function Employees() {
           setSelectedLeague={setEmployeeLeagues}
         />
       </div>
-      <div>
+      <div className="listing-button-wrapper">
         <button
           onClick={() => setAddEmployeePopUp(!addEmployeePopUp)}
           className="listing-button"

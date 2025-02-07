@@ -209,3 +209,16 @@
   }
   
   
+
+  @media only screen and (max-width: 1000px) {
+        .listings-filter{
+            flex-direction: column;
+        }
+        .listing-button-wrapper{
+            justify-content: center;
+            display: flex;
+        }
+        .listings-filter .selection-filter {
+            margin: 20px 0px 0px 0px;
+        }
+  }
