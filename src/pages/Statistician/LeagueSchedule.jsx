@@ -18,7 +18,7 @@ const LeagueSchedule = () => {
       setLoading(true);
       try {
         const response = await getLeagues(auth.accessToken); 
-        setLeagues(response.data); 
+        setLeagues(response.data.leagues); 
       } catch (error) {
         console.error("Error fetching leagues:", error);
       } finally {
@@ -69,7 +69,7 @@ const LeagueSchedule = () => {
           {leagues.length > 0 ? (
             leagues.map((league) => (
               <option key={league.id} value={league.id}>
-                {league.name}
+                {league.leagueName}
               </option>
             ))
           ) : (
@@ -87,10 +87,10 @@ const LeagueSchedule = () => {
           <thead>
             <tr>
               <th className="schedule-header-team-logo">Logo</th>
-              <th className="schedule-header-team-name">Team 1</th>
+              <th className="schedule-header-team-name">Team A</th>
               <th className="schedule-header-result">Result</th>
               <th className="schedule-header-team-logo">Logo</th>
-              <th className="schedule-header-team-name">Team 2</th>
+              <th className="schedule-header-team-name">Team B</th>
               <th className="schedule-header-match-time">Match Time</th>
               <th className="schedule-header-actions">Actions</th>
             </tr>
