@@ -29,7 +29,32 @@ const LeagueSchedule = () => {
     fetchLeagues();
   }, [auth.accessToken]);
 
- 
+  useEffect(() => {
+    if (selectedLeague) {
+      const fetchLeagueData = async () => {
+        setLoading(true);
+        try {
+          const teamsResponse = await getTeamsByLeagueId(auth.accessToken, selectedLeague); 
+          setTeams(teamsResponse.data);
+
+          const matchPromises = teamsResponse.data.map(async (team) => {
+            return getMatch(auth.accessToken, team.id); 
+          });
+
+          const matchResponses = await Promise.all(matchPromises);
+          const allMatches = matchResponses.map((response) => response.data);
+          setMatches(allMatches); 
+        } catch (error) {
+          console.error("Error fetching league or match data:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchLeagueData();
+    }
+  }, [selectedLeague, auth.accessToken]);
+
   return (
     <div className="schedule-container">
       <h1 className="schedule-title">League Schedule</h1>
