@@ -1,0 +1,177 @@
+.create-league-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    min-height: 80vh;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.create-league-heading{
+    color: #BBBFCA;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.create-league-form {
+    background-color: #31363F;
+    padding: 50px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 1200px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.outer-row-one-two {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.inner-row-one-two {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.row-one, .row-two {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.logo-half {
+    flex: 0.5;
+    align-self: center;
+    margin-left: 20px;
+}
+
+.create-league-label {
+    color: #BBBFCA;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.create-league-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #E8E8E8;
+    color: #31363F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.create-league-file-upload {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px dashed #BBBFCA;
+    padding: 50px 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    height: fit-content;
+    margin-bottom: 20px;
+}
+
+.create-league-file-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.create-league-file-text {
+    color: #BBBFCA;
+    font-size: 20px;
+}
+
+.create-league-submit-button {
+    background-color: #495464;
+    color: #BBBFCA;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 14px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.3);
+    margin: 5px auto;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .outer-row-one-two, .row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .logo-half {
+        flex: 1;
+        align-self: start;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .create-league-file-upload {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .create-league-file-icon {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 630px) {
+    .outer-row-one-two {
+        flex-direction: column;
+    }
+
+    .logo-half {
+        order: -1;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .row-one, .row-two {
+        flex-direction: column;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    .create-league-file-upload {
+        padding: 20px 10px;
+    }
+}

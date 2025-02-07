@@ -1,5 +1,32 @@
-import axios from 'axios';
-const baseUrl = 'http://localhost:5000/v1/team/';
+import axios from 'axios'
+const baseUrl = 'http://localhost:5001/v1/team'
+
+const createTeam = async (formData, token)=> {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  const response = await axios.post(baseUrl, formData, config);
+  return response;
+  
+}
+
+const getTeam = async (id, token)=>{
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+  }
+  try{
+    const response = await axios.get(baseUrl + `/${id}`, config);
+    return response
+  }catch(e){
+    console.log(e);
+  }
+}
 
 const getTeamsByLeagueId = async (credentials, leagueId) => {
   const config = {
@@ -31,4 +58,5 @@ const getTeamsByLeagueOwner = async (credentials)=>{
   }
 };
 
-export { getTeamsByLeagueId,getTeamsByLeagueOwner };
+export { getTeamsByLeagueId,getTeamsByLeagueOwner,createTeam, getTeam, };
+

@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5000/v1/league/'
+const baseUrl = 'http://localhost:5001/v1/league/'
 
 
 const getLeagues = async (credentials) => {
@@ -48,6 +48,17 @@ const getLeagueList = async (credentials) => {
   }
 };
 
+const createLeague = async (credentials, formData) => {
+  const config = {
+    headers : {
+      Authorization : `Bearer ${credentials}`,
+      "Content-Type": "multipart/form-data",
+    }
+  }
 
+  const response = await axios.post(baseUrl, formData, config);
+  return response;
 
-export {getLeagues,getLeague,getLeagueList}
+}
+
+export {getLeagues,getLeague,getLeagueList, createLeague}
