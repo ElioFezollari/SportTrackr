@@ -1,18 +1,18 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5001/v1/user'
+const baseUrl = 'http://localhost:5000/v1/transaction'
 
-const getUser = async (id, token)=>{
+const getLeagueOwnerTransactions = async (token)=>{
     const config = {
       headers: {
         Authorization: `Bearer ${token}`
       },
     }
     try{
-      const response = await axios.get(baseUrl + `/${id}`, config);
+      const response = await axios.get(baseUrl, config);
       return response
     }catch(e){
       console.log(e);
     }
   }
 
-export {getUser}
+export {getLeagueOwnerTransactions}

@@ -15,6 +15,7 @@ import MyLeagues from "./pages/MyLeagues/MyLeagues";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import MatchUpload from "./pages/Statistician/MatchUpload";
 import HighlightUpload from "./pages/Statistician/HighlightUpload";
+import LeagueSchedule from "./pages/Statistician/LeagueSchedule";
 import League from "./pages/League/League";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import CreateTeam from "./pages/CreateTeam/CreateTeam"
@@ -25,7 +26,11 @@ import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import ForgotPasswordEmail from "./pages/ForgotPassword/ForgotPasswordEmail";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 import CreateLeague from "./pages/CreateLeague/CreateLeague";
-
+import TeamCreationConfetti from "./pages/SuccessConfetti/teamCreationConfetti";
+import LeagueConfetti from "./pages/SuccessConfetti/leagueOnboardConfetti";
+import Transactions from "./pages/Transactions/Transactions";
+import Step1Confetti from "./pages/SuccessConfetti/leagueOwnerOnboardingStep1"
+import FailureOnboarding from './pages/FailurePages/FailureOnboarding'
 function App() {
 const router = createBrowserRouter([
   {
@@ -70,6 +75,22 @@ const router = createBrowserRouter([
         element:<ResetPassword/>
       },
       {
+        path: "/success-team-creation",
+        element: <TeamCreationConfetti/>,
+      },
+      {
+        path: "/success-onboard",
+        element: <LeagueConfetti/>,
+      },
+      {
+        path: "/success-onboard-step1",
+        element: <Step1Confetti/>,
+      },
+      {
+        path: "/fail-onboarding",
+        element: <FailureOnboarding/>
+      },
+      {
         children:[
           {
             path:"/app",
@@ -108,13 +129,21 @@ const router = createBrowserRouter([
                 element:<HighlightUpload/>
               },
               {
-                 path:"leagues/:id/create-team",
-                 element:<CreateTeam/>
+                path:"leagues/:id/create-team",
+                element:<CreateTeam/>
+             },
+             {
+               path:"myteam",
+               element:<MyTeam/>
+             },
+             {
+              path:"league-schedule",
+              element:<LeagueSchedule/>
               },
               {
-                path:"myteam",
-                element:<MyTeam/>
-              }
+                path:"transactions",
+                element: <Transactions/>
+              },
             ],
           }
         ]
