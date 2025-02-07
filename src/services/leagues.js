@@ -48,6 +48,17 @@ const getLeagueList = async (credentials) => {
   }
 };
 
+const createLeague = async (credentials) => {
+  const config = {
+    headers : {
+      Authorization : `Bearer ${credentials}`,
+      "Content-Type": "multipart/form-data",
+    }
+  }
 
+  const response = await axios.post(baseUrl, formData, config);
+  return response;
 
-export {getLeagues,getLeague,getLeagueList}
+}
+
+export {getLeagues,getLeague,getLeagueList, createLeague}

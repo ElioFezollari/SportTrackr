@@ -24,6 +24,8 @@ import Teams from "./pages/Teams/Teams";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import ForgotPasswordEmail from "./pages/ForgotPassword/ForgotPasswordEmail";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
+import CreateLeague from "./pages/CreateLeague/CreateLeague";
+
 function App() {
 const router = createBrowserRouter([
   {
@@ -80,6 +82,10 @@ const router = createBrowserRouter([
               {
                 path: "leagues", 
                 element: <MyLeagues />,
+              },
+              {
+                path : "create-league",
+                element: <CreateLeague/>
               },
               {
                 path:"teams",

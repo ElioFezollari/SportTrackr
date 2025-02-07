@@ -32,7 +32,7 @@ function MyLeagueSelection() {
               <h2>Created leagues</h2>
             </button>{" "}
           </div>
-          <Link>+ Create new league</Link>
+          <Link to='../create-league'>+ Create new league</Link>
         </div>
       )}
 
