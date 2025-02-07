@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5000/v1/league/emp/'
+const baseUrl = 'http://localhost:5001/v1/league/emp/'
 
 
 const getDashboardStats = async (credentials) => {

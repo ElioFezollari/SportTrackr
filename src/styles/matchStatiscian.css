@@ -1,0 +1,120 @@
+.match-statiscian-box {
+    background: #2d2d2d;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row; /* Keep teams side by side */
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: 20px auto;
+  }
+  
+  .match-statiscian-team {
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack elements inside each team */
+    align-items: center;
+    gap: 10px; /* Space between elements */
+  }
+  
+  .match-statiscian-team-icon {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .match-statiscian-upload-btn,
+  .match-statiscian-forfeit-btn {
+    width: 200px; /* Make buttons uniform */
+    font-size: large;
+  }
+  
+  .match-statiscian-vs {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 30px; /* Space between the teams */
+  }
+  
+
+.match-statiscian-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .match-statiscian-title {
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+  }
+  
+  .match-statiscian-number {
+    font-weight: normal;
+  }
+  
+  .match-statiscian-team-logo {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .match-statiscian-box {
+    background: #2d2d2d;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 900px;
+    margin: 20px auto;
+  }
+  
+  .match-statiscian-team {
+    text-align: center;
+  }
+  
+  .match-statiscian-team-icon {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .match-statiscian-upload-btn {
+    background: #d3d3d3;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .match-statiscian-forfeit-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .match-statiscian-vs {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .match-statiscian-upload-highlights {
+    background: #d3d3d3;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: large;
+  }
+  

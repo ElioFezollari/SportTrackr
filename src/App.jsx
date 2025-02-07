@@ -33,6 +33,9 @@ import LeagueConfetti from "./pages/SuccessConfetti/leagueOnboardConfetti";
 import Transactions from "./pages/Transactions/Transactions";
 import Step1Confetti from "./pages/SuccessConfetti/leagueOwnerOnboardingStep1"
 import FailureOnboarding from './pages/FailurePages/FailureOnboarding'
+import MatchSchedule from './pages/Schedule/matchSchedule'
+import MatchStatiscian from './pages/Statistician/MatchStatiscian'
+
 
 function App() {
 const router = createBrowserRouter([
@@ -155,6 +158,14 @@ const router = createBrowserRouter([
                 path:"transactions",
                 element: <Transactions/>
               },
+              {
+                path:"match-schedule",
+                element: <MatchSchedule/>
+              },
+              {
+                path:"match-statiscian",
+                element: <MatchStatiscian/>
+              }
             ],
           }
         ]
