@@ -242,27 +242,3 @@
   }
 
 }
-
-body {
-  min-width: 520px;
-  min-height: 690px;
-  overflow: auto; 
-}
-
-.arrow {
-  display: inline-block;
-  transform: rotate(90deg);
-  transition: transform 0.2s ease-in;
-  font-size: 1.2em; 
-  cursor: pointer;
-}
-
-.arrow.rotated {
-  transform: rotate(270deg);
-}
-
-.more-info {
-  text-align: center;
-  justify-content: space-between;
-
-}

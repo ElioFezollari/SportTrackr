@@ -1,0 +1,99 @@
+.about-hero{
+    filter: saturate(0.6);
+}
+.static-about h2{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.static-about p{
+    font-size: 20px;
+}
+
+.about-text{
+    position: absolute;
+    width: 600px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color:rgb(49, 54, 63,0.9);
+    padding: 30px 60px;
+    border-radius: 10px;
+}
+
+.what-drives-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-direction: column;
+}
+.what-drives-us h2{
+    font-size: 50px;
+}
+.what-drives-us h2, .what-drives-us p{
+    width: 90%;
+    text-align: center;
+}
+.what-drives-us p{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.about-us-topics p{
+    width: 100%;
+    text-align: start;
+}
+
+.about-us-topics {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.about-us-topics h3{
+
+    font-size: 26px;
+}
+
+.about-us-topics div{
+    padding: 30px;
+    margin-top: 20px;
+    width: 70%;
+}
+
+.about-us-topics div:nth-child(even){
+    align-self: flex-end;
+}
+
+
+@media only screen and (max-width: 650px) {
+
+    .about-text{
+        width: 400px;
+        height: auto;
+    }
+    .about-us-topics div{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    .about-text{
+        width: 300px;
+        height: 500px;
+        padding: 30px 20px ;
+    }
+    .static-about h2{
+        font-size: 26px;
+    }
+    .about-us-topics div{
+        width: 100%;
+    }
+}

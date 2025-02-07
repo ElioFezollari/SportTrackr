@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../styles/components/layouts/appSideBar.css";
 import dashboardimg from "../../../assets/images/appSidebar/dashboard.svg";
 import soccerBall from "../../../assets/images/appSidebar/soccerBall.svg";
@@ -16,7 +16,11 @@ function AppSidebar({ isActive, setIsActive }) {
   const [leagues, setLeagues] = useState(true);
   const [transactions, setTransactions] = useState(true);
 
-  const isAdmin = auth.roles && auth.roles.includes("admin");
+  const isAdmin = auth.roles && auth.roles.includes("owner");
+
+  useEffect(() => {
+
+  }, [auth.roles]);
   return (
     <div
       className={`${isActive ? "app-sidebar-wrapper" : "sidebar-closed"}   `}
