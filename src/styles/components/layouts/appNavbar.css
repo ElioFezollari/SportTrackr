@@ -39,6 +39,14 @@
     width: 40px !important;
     
 }
+.profile-button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer; 
+    transition: transform 0.3s ease;
+    height: fit-content;
+}
 .settings-button {
     background-color: transparent;
     outline: none;
