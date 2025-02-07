@@ -22,6 +22,8 @@ import CreateTeam from "./pages/CreateTeam/CreateTeam"
 import MyTeam from "./pages/MyTeam/MyTeam";
 import Help from "./pages/Help/Help";
 import Teams from "./pages/Teams/Teams";
+import Employees from "./pages/Employees/Employees";
+import Users from "./pages/Users/Users";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import ForgotPasswordEmail from "./pages/ForgotPassword/ForgotPasswordEmail";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
@@ -31,6 +33,7 @@ import LeagueConfetti from "./pages/SuccessConfetti/leagueOnboardConfetti";
 import Transactions from "./pages/Transactions/Transactions";
 import Step1Confetti from "./pages/SuccessConfetti/leagueOwnerOnboardingStep1"
 import FailureOnboarding from './pages/FailurePages/FailureOnboarding'
+
 function App() {
 const router = createBrowserRouter([
   {
@@ -111,6 +114,14 @@ const router = createBrowserRouter([
               {
                 path:"teams",
                 element:<Teams/>
+              },
+              {
+                path:"employees",
+                element:<Employees/>
+              },
+              {
+                path:"users",
+                element:<Users/>
               },
               {
                 path:"dashboard",
