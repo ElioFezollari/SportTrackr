@@ -17,6 +17,30 @@ const getDashboardStats = async (credentials) => {
     }
   };
 
+  const getFilteredEmployees = async(credentials,leagueId,roleId,name)=>{
+    const config = {
+      headers: {
+        Authorization: `Bearer ${credentials}`, 
+      },
+    };
+
+    if (isNaN(leagueId)) {
+      leagueId = ""; 
+    }
+  
+    if (isNaN(roleId)) {
+      roleId = ""; 
+    }
+
+    console.log(`${baseUrl}filtered?league=${leagueId}&role=${roleId}&name=${name}`)
+    try {
+      const response = await axios.get(`${baseUrl}filtered?league=${leagueId}&role=${roleId}&name=${name}` , config);
+      return response;
+    } catch (error) {
+      console.error('Error fetching employees:', error);
+    }
+  }
 
 
-export {getDashboardStats}
+
+export {getDashboardStats,getFilteredEmployees}

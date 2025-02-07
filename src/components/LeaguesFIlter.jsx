@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Dropdown from '../../components/Dropdown'
-import { getLeagueList } from '../../services/leagues'
-import useAuth from '../../hooks/useAuth'
-function TeamsFilter({optionPicked,setOptionPicked,setSelectedLeague,selectedLeague}) {
+import Dropdown from './Dropdown'
+import { getLeagueList } from '../services/leagues'
+import useAuth from '../hooks/useAuth'
+function LeaguesFilter({optionPicked,setOptionPicked,setSelectedLeague,selectedLeague}) {
   const {auth} = useAuth()
 
   useEffect(()=>{
@@ -27,4 +27,4 @@ function TeamsFilter({optionPicked,setOptionPicked,setSelectedLeague,selectedLea
   )
 }
 
-export default TeamsFilter
+export default LeaguesFilter

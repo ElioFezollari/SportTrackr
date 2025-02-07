@@ -19,6 +19,7 @@ import League from "./pages/League/League";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Help from "./pages/Help/Help";
 import Teams from "./pages/Teams/Teams";
+import Employees from "./pages/Employees/Employees";
 
 function App() {
 const router = createBrowserRouter([
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
               {
                 path:"teams",
                 element:<Teams/>
+              },
+              {
+                path:"employees",
+                element:<Employees/>
               },
               {
                 path:"dashboard",

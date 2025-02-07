@@ -106,7 +106,36 @@
 
 
 .selection-filter{
-
     margin: 0 auto;
     margin-top: 20px;
+}
+.listings-wrapper{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.listings-wrapper .dropdown{
+    font-size: 18px;
+    color: #323232;
+}
+
+.listings-wrapper h1{
+    text-align: center;
+    color: #d9dbe2;
+    text-shadow: 3px 2px #495464;
+    background-clip: text;
+    font-size: 50px;
+}
+
+
+
+.listings-filter{
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    margin: 0 auto;
+    align-items: center;
+}
+.listings-filter .selection-filter{
+    margin:20px 20px 0px 0px;
 }

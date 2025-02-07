@@ -1,7 +1,7 @@
 .table-container {
     width: 100%;
-    overflow-x: auto; /* Allows horizontal scrolling */
-    -webkit-overflow-scrolling: touch; /* Optional: smooth scrolling on iOS */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
 }
 
 .table {
@@ -15,7 +15,8 @@
 .table th, .table td {
     text-align: center;
     font-size: 18px;
-    padding: 10px; /* Adds space between columns */
+    padding: 10px; 
+    text-transform: capitalize;
 }
 
 .table th {
