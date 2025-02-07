@@ -15,6 +15,7 @@ import MyLeagues from "./pages/MyLeagues/MyLeagues";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import MatchUpload from "./pages/Statistician/MatchUpload";
 import HighlightUpload from "./pages/Statistician/HighlightUpload";
+import LeagueSchedule from "./pages/Statistician/LeagueSchedule";
 import League from "./pages/League/League";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import CreateTeam from "./pages/CreateTeam/CreateTeam"
@@ -25,6 +26,8 @@ import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import ForgotPasswordEmail from "./pages/ForgotPassword/ForgotPasswordEmail";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 import CreateLeague from "./pages/CreateLeague/CreateLeague";
+import TeamCreationConfetti from "./pages/SuccessConfetti/teamCreationConfetti";
+import LeagueConfetti from "./pages/SuccessConfetti/leagueOnboardConfetti";
 import Transactions from "./pages/Transactions/Transactions";
 
 function App() {
@@ -71,6 +74,15 @@ const router = createBrowserRouter([
         element:<ResetPassword/>
       },
       {
+        path: "/success-team-creation",
+        element: <TeamCreationConfetti/>,
+      },
+      {
+        path: "/success-league-onboard",
+        element: <LeagueConfetti/>,
+      },
+    
+      {
         children:[
           {
             path:"/app",
@@ -109,17 +121,21 @@ const router = createBrowserRouter([
                 element:<HighlightUpload/>
               },
               {
-                 path:"leagues/:id/create-team",
-                 element:<CreateTeam/>
-              },
-              {
-                path:"myteam",
-                element:<MyTeam/>
+                path:"leagues/:id/create-team",
+                element:<CreateTeam/>
+             },
+             {
+               path:"myteam",
+               element:<MyTeam/>
+             },
+             {
+              path:"league-schedule",
+              element:<LeagueSchedule/>
               },
               {
                 path:"transactions",
                 element: <Transactions/>
-              }
+            }
             ],
           }
         ]
