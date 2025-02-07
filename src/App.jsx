@@ -26,6 +26,8 @@ import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import ForgotPasswordEmail from "./pages/ForgotPassword/ForgotPasswordEmail";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 import CreateLeague from "./pages/CreateLeague/CreateLeague";
+import TeamCreationConfetti from "./pages/SuccessConfetti/teamCreationConfetti";
+import LeagueConfetti from "./pages/SuccessConfetti/leagueOnboardConfetti";
 
 function App() {
 const router = createBrowserRouter([
@@ -70,6 +72,15 @@ const router = createBrowserRouter([
         path:"/reset/:token",
         element:<ResetPassword/>
       },
+      {
+        path: "/success-team-creation",
+        element: <TeamCreationConfetti/>,
+      },
+      {
+        path: "/success-league-onboard",
+        element: <LeagueConfetti/>,
+      },
+    
       {
         children:[
           {
