@@ -20,6 +20,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Help from "./pages/Help/Help";
 import Teams from "./pages/Teams/Teams";
 import Employees from "./pages/Employees/Employees";
+import Users from "./pages/Users/Users";
 
 function App() {
 const router = createBrowserRouter([
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
               {
                 path:"employees",
                 element:<Employees/>
+              },
+              {
+                path:"users",
+                element:<Users/>
               },
               {
                 path:"dashboard",
