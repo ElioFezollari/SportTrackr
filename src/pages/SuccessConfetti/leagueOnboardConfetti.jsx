@@ -41,7 +41,7 @@ const leagueOnboardConfetti = () => {
           </div>
           <h1>League Owner Onboarding Succeeded!</h1>
           <p>Enjoy the League</p>
-          <a href="#" className="button">Your dashboard</a>
+          <a href="./app" className="button">Your dashboard</a>
         </div>
       )}
     </section>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../../styles/teamCreationConfetti.css";
 import confetti from "canvas-confetti";
 
-const TeamCreationConfetti = () => {
+const leagueOwnerOnboardingStep1 = () => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
@@ -39,8 +39,8 @@ const TeamCreationConfetti = () => {
               </svg>
             </div>
           </div>
-          <h1>Team Creation Succeeded!</h1>
-          <p>Thank you for choosing us.</p>
+          <h1>You have successfully completed Step 1</h1>
+          <p>Email has been sent to you For Step 2</p>
           <a href="./app" className="button">Your dashboard</a>
         </div>
       )}
@@ -48,4 +48,4 @@ const TeamCreationConfetti = () => {
   );
 };
 
-export default TeamCreationConfetti;
+export default leagueOwnerOnboardingStep1;

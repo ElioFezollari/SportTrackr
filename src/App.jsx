@@ -29,7 +29,8 @@ import CreateLeague from "./pages/CreateLeague/CreateLeague";
 import TeamCreationConfetti from "./pages/SuccessConfetti/teamCreationConfetti";
 import LeagueConfetti from "./pages/SuccessConfetti/leagueOnboardConfetti";
 import Transactions from "./pages/Transactions/Transactions";
-
+import Step1Confetti from "./pages/SuccessConfetti/leagueOwnerOnboardingStep1"
+import FailureOnboarding from './pages/FailurePages/FailureOnboarding'
 function App() {
 const router = createBrowserRouter([
   {
@@ -78,10 +79,17 @@ const router = createBrowserRouter([
         element: <TeamCreationConfetti/>,
       },
       {
-        path: "/success-league-onboard",
+        path: "/success-onboard",
         element: <LeagueConfetti/>,
       },
-    
+      {
+        path: "/success-onboard-step1",
+        element: <Step1Confetti/>,
+      },
+      {
+        path: "/fail-onboarding",
+        element: <FailureOnboarding/>
+      },
       {
         children:[
           {
@@ -135,7 +143,7 @@ const router = createBrowserRouter([
               {
                 path:"transactions",
                 element: <Transactions/>
-            }
+              },
             ],
           }
         ]
