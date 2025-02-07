@@ -39,8 +39,8 @@ const TeamCreationConfetti = () => {
               </svg>
             </div>
           </div>
-          <h1>League Owner Onboarding Succeeded!</h1>
-          <p>Enjoy the League!</p>
+          <h1>Team Creation Succeeded!</h1>
+          <p>Thank you for choosing us.</p>
           <a href="#" className="button">Your dashboard</a>
         </div>
       )}
