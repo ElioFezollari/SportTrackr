@@ -22,6 +22,7 @@ const baseUrl = 'http://localhost:5000/v1/user/'
       const response = await axios.get(`${baseUrl}filtered?leagueId=${leagueId}&teamId=${teamId}&name=${name}` , config);
       return response;
     } catch (error) {
+      console.log(error)
     }
   }
   

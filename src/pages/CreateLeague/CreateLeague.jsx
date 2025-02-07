@@ -56,6 +56,7 @@ function CreateLeague() {
         }
 
         try {
+            console.log(auth.accessToken)
             const response = await createLeague(auth.accessToken, formData);
             if (response.status === 200 || response.status === 201) {
                 navigate('/app/leagues');
