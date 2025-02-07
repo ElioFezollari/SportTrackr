@@ -48,7 +48,7 @@ const getLeagueList = async (credentials) => {
   }
 };
 
-const createLeague = async (credentials) => {
+const createLeague = async (credentials, formData) => {
   const config = {
     headers : {
       Authorization : `Bearer ${credentials}`,

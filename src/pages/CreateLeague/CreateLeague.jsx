@@ -52,22 +52,19 @@ function CreateLeague() {
         formData.append("gameAmount", gameAmount);
 
         if (leagueLogo) {
-            formData.append("logo", leagueLogo);
+            formData.append("file", leagueLogo);
         }
 
         try {
-            const response = await createLeague(formData, auth.accessToken);
+            const response = await createLeague(auth.accessToken, formData);
             if (response.status === 200 || response.status === 201) {
                 navigate('/app/leagues');
             } else if (response.status >= 400 && response.status < 500) {
                 setError("Error Creating League: " + response.data?.message || response.statusText);
-                console.error("Error creating league:", response.status, response.data);
             } else {
                 setError("An unexpected error occurred. Please try again later.")
-                console.error("Error creating league:", response.status, response.data);
             }
         } catch (error) {
-            console.error("Error creating league:", error);
             setError("An unexpected error occurred. Please try again later.");
         }
     };
