@@ -13,7 +13,6 @@ const getDashboardStats = async (credentials) => {
       const response = await axios.get(`${baseUrl}dashboard` , config);
       return response;
     } catch (error) {
-      console.error('Error fetching employees:', error);
     }
   };
 
@@ -32,15 +31,30 @@ const getDashboardStats = async (credentials) => {
       roleId = ""; 
     }
 
-    console.log(`${baseUrl}filtered?league=${leagueId}&role=${roleId}&name=${name}`)
     try {
       const response = await axios.get(`${baseUrl}filtered?league=${leagueId}&role=${roleId}&name=${name}` , config);
       return response;
     } catch (error) {
-      console.error('Error fetching employees:', error);
     }
   }
+  const addEmployee = async (credentials, email, roleId, leagueId) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${credentials}`, 
+      },
+    };
+
+    const data = {
+      email: email,
+      role: roleId,
+    };
+  
+    try {
+      const response = await axios.post(`${baseUrl}${leagueId}`, data, config);
+      return response;
+    } catch (error) {
+    }
+  };
 
 
-
-export {getDashboardStats,getFilteredEmployees}
+export {getDashboardStats,getFilteredEmployees,addEmployee}
