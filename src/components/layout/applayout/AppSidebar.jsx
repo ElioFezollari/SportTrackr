@@ -118,14 +118,14 @@ function AppSidebar({ isActive, setIsActive }) {
                 <span>&gt;</span> Transactions
               </h2>
               <div>
-                <Link>
+                <Link to="./transactions">
                   {" "}
                   <img
                     className="sidebar-icon"
                     src={wallet}
                     alt="icon of a wallet"
                   />{" "}
-                  Balance
+                  Transactions
                 </Link>
               </div>
             </div>

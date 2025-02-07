@@ -25,6 +25,7 @@ import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import ForgotPasswordEmail from "./pages/ForgotPassword/ForgotPasswordEmail";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 import CreateLeague from "./pages/CreateLeague/CreateLeague";
+import Transactions from "./pages/Transactions/Transactions";
 
 function App() {
 const router = createBrowserRouter([
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
               {
                 path:"myteam",
                 element:<MyTeam/>
+              },
+              {
+                path:"transactions",
+                element: <Transactions/>
               }
             ],
           }

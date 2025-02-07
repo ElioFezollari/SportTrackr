@@ -7,7 +7,6 @@ import file_upload from '../../assets/images/createTeam/file_upload.svg'
 import useAuth from "../../hooks/useAuth";
 import {createTeam} from "../../services/team";
 import { getLeague } from "../../services/leagues";
-import { useNavigate } from 'react-router-dom';
 
 function CreateTeam() {
 
@@ -23,7 +22,6 @@ function CreateTeam() {
     const { auth } = useAuth();
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
 
     const colorOptions = [
         { value: 'red', label: 'Red' },
@@ -50,7 +48,6 @@ function CreateTeam() {
 
     useEffect(() => {
         const getOneLeague = async () => {
-
             try {
                 const res = await getLeague(auth.accessToken, id);
                 if (res.status === 200 || res.status === 201) {
@@ -83,7 +80,6 @@ function CreateTeam() {
 
         if (file) {
             if (file.type.startsWith('image/')) {
-                console.log("Here")
                 setTeamLogo(file);
             } else {
                 setError('Please select an image file.');
@@ -108,7 +104,7 @@ function CreateTeam() {
         
         let formData = new FormData();
 
-        let teamInfo = `{"name":"${teamName}","leagueId":6,"homeColor":"${primaryColor.value}","awayColor":"${secondaryColor.value}","teamDescription":"${teamDescription}","teamVisibility":"${teamVisibility}"
+        let teamInfo = `{"name":"${teamName}","leagueId":${id},"homeColor":"${primaryColor.value}","awayColor":"${secondaryColor.value}","teamDescription":"${teamDescription}","teamVisibility":"${teamVisibility}"
         `
         
         if (teamVisibility){
@@ -121,6 +117,7 @@ function CreateTeam() {
         formData.append("logo", teamLogo);
 
         try {
+            console.log(formData.getAll("teamInfo"))
             const response = await createTeam(formData, auth.accessToken);
             if (response.status === 200 || response.status === 201) {
                 const redirectUrl = response.data.url;
