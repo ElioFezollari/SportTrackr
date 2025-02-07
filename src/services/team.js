@@ -43,4 +43,20 @@ const getTeamsByLeagueId = async (credentials, leagueId) => {
   }
 };
 
-export {createTeam, getTeam, getTeamsByLeagueId}
+const getTeamsByLeagueOwner = async (credentials)=>{
+  const config = {
+    headers: {
+      Authorization: `Bearer ${credentials}`,
+    },
+  };
+
+  try {
+    const response = await axios.get(`${baseUrl}`, config);
+    return response;
+  } catch (error) {
+    console.error('Error fetching teams:', error);
+  }
+};
+
+export { getTeamsByLeagueId,getTeamsByLeagueOwner,createTeam, getTeam, };
+
