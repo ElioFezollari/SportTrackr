@@ -1,34 +1,53 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom"; 
 import "../../styles/matchStatiscian.css";
-import Bayern from "../../assets/temp/teamLogos/Bayern.png";
-import Skenderbeu from "../../assets/temp/teamLogos/mls.webp"; // Ensure this path is correct
+import { getMatchById } from "../../services/match";
+import useAuth from "../../hooks/useAuth";
 
-const MatchCard = () => {
-  const navigate = useNavigate(); // Hook for navigation
+const MatchStatiscian = () => {
+  const { matchId } = useParams();
+  const navigate = useNavigate(); 
+  const { auth } = useAuth();
+  const [match, setMatch] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Function to navigate to match upload
-  const handleUploadStats = () => {
-    navigate("/app/match-upload"); // Navigate to Match Upload
-  };
+  useEffect(() => {
+    if (!matchId) return;
 
-  // Function to navigate to highlight upload
-  const handleUploadHigh = () => {
-    navigate("/app/hightlight-upload"); // Navigate to Highlight Upload
-  };
+    const fetchMatch = async () => {
+      setLoading(true);
+      try {
+        const response = await getMatchById(auth.accessToken, matchId);
+        setMatch(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching match:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMatch();
+  }, [matchId, auth.accessToken]);
+
+  if (loading) return <p>Loading match details...</p>;
+  if (!match) return <p>Match not found!</p>;
+
+  const handleUploadStats = () => navigate(`/app/match-upload`);
+  const handleUploadHigh = () => navigate(`/app/highlight-upload`);
 
   return (
     <div className="match-statiscian-container">
       <h2 className="match-statiscian-title">
-        Match <span className="match-statiscian-number">#50</span> - 
-        <img src={Bayern} alt="Bayern Munich" className="match-statiscian-team-logo" /> Bayern Munchen vs 
-        <img src={Skenderbeu} alt="Skenderbeu" className="match-statiscian-team-logo" /> Skenderbeu
+        Match <span className="match-statiscian-number">#{match.id}</span> - 
+        <img src={match.home_team_logo} alt={match.home_team_name} className="match-statiscian-team-logo" /> {match.home_team_name} vs 
+        <img src={match.away_team_logo} alt={match.away_team_name} className="match-statiscian-team-logo" /> {match.away_team_name}
       </h2>
 
       <div className="match-statiscian-box">
-        {/* Bayern Team Section */}
+        {/* Home Team Section */}
         <div className="match-statiscian-team">
-          <img src={Bayern} alt="Bayern Munich" className="match-statiscian-team-icon" />
+          <img src={match.home_team_logo} alt={match.home_team_name} className="match-statiscian-team-icon" />
           <button className="match-statiscian-upload-btn" onClick={handleUploadStats}>
             Upload Stats
           </button>
@@ -37,9 +56,9 @@ const MatchCard = () => {
 
         <div className="match-statiscian-vs">vs.</div>
 
-        {/* Skenderbeu Team Section */}
+        {/* Away Team Section */}
         <div className="match-statiscian-team">
-          <img src={Skenderbeu} alt="Skenderbeu" className="match-statiscian-team-icon" />
+          <img src={match.away_team_logo} alt={match.away_team_name} className="match-statiscian-team-icon" />
           <button className="match-statiscian-upload-btn" onClick={handleUploadStats}>
             Upload Stats
           </button>
@@ -47,7 +66,6 @@ const MatchCard = () => {
         </div>
       </div>
 
-      {/* Fixed the onClick for Upload Highlights button */}
       <button className="match-statiscian-upload-highlights" onClick={handleUploadHigh}>
         Upload Highlights
       </button>
@@ -55,4 +73,4 @@ const MatchCard = () => {
   );
 };
 
-export default MatchCard;
+export default MatchStatiscian;

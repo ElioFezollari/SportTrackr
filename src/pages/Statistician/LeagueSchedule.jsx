@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getLeagues } from "../../services/leagues";
-import { getMatchesByLeagueId } from "../../services/match"; // Import the function
+import { getMatchesByLeagueId } from "../../services/match";
 import useAuth from "../../hooks/useAuth";
 import "../../styles/leagueSchedule.css";
+import { useNavigate } from "react-router-dom"; 
 
 const LeagueSchedule = () => {
   const { auth } = useAuth();
@@ -10,8 +11,12 @@ const LeagueSchedule = () => {
   const [leagues, setLeagues] = useState([]);
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); 
 
-  // Fetch leagues on component mount
+  const handleUpdateMatch = (matchId) => {
+    navigate(`../match-statiscian/${matchId}`);
+  };
+
   useEffect(() => {
     const fetchLeagues = async () => {
       setLoading(true);
@@ -28,7 +33,6 @@ const LeagueSchedule = () => {
     fetchLeagues();
   }, [auth.accessToken]);
 
-  // Fetch matches when a league is selected
   useEffect(() => {
     if (!selectedLeague) return;
 
@@ -97,7 +101,10 @@ const LeagueSchedule = () => {
                 </td>
                 <td className="league-schedule-team-name">{match.team2}</td>
                 <td>
-                  <button className="league-schedule-update-button">
+                 <button
+                    className="league-schedule-update-button"
+                    onClick={() => handleUpdateMatch(match.matchId)} 
+                  >
                     Update Match
                   </button>
                 </td>

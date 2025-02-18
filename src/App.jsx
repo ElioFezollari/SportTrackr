@@ -163,7 +163,7 @@ const router = createBrowserRouter([
                 element: <MatchSchedule/>
               },
               {
-                path:"match-statiscian",
+                path:"match-statiscian/:matchId",
                 element: <MatchStatiscian/>
               }
             ],

@@ -9,6 +9,10 @@
     max-width: 900px;
     margin: 20px auto;
   }
+  .match-statiscian-team-icon {
+    width: 200px;
+    height: 200px;
+  }
   
   .match-statiscian-team {
     text-align: center;
@@ -18,10 +22,6 @@
     gap: 10px; /* Space between elements */
   }
   
-  .match-statiscian-team-icon {
-    width: 100px;
-    height: 100px;
-  }
   
   .match-statiscian-upload-btn,
   .match-statiscian-forfeit-btn {
@@ -76,28 +76,24 @@
     text-align: center;
   }
   
-  .match-statiscian-team-icon {
-    width: 200px;
-    height: 200px;
-  }
-  
+
   .match-statiscian-upload-btn {
     background: #d3d3d3;
     border: none;
     padding: 8px 12px;
     margin-top: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
   }
   
   .match-statiscian-forfeit-btn {
-    background: #d9534f;
+    background: #D22B2B;
     color: white;
     border: none;
     padding: 8px 12px;
     margin-top: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
   }
@@ -118,3 +114,65 @@
     font-size: large;
   }
   
+/* iPhone SE & small screens */
+@media (max-width: 375px) {
+  .match-statiscian-box {
+      width: 95%;
+      padding: 10px;
+  }
+
+  .match-statiscian-title {
+      font-size: 24px;
+      gap: 5px;
+  }
+
+  .match-statiscian-team-icon {
+      width: 60px;
+      height: 60px;
+  }
+
+  .match-statiscian-vs {
+      font-size: 16px;
+  }
+
+  .match-statiscian-upload-btn,
+  .match-statiscian-forfeit-btn {
+      font-size: small;
+      padding: 8px;
+      width: 80%;
+  }
+
+  .match-statiscian-team-icon {
+    width: 100px;
+    height: 100px;
+  }
+   
+}
+
+@media (max-width: 414px) {
+  .match-statiscian-box {
+      flex-direction: row;
+      align-items: center;
+      width: 95%;
+  }
+
+  .match-statiscian-title {
+      font-size: 28px;
+  }
+
+  .match-statiscian-team-icon {
+      width: 120px;
+      height: 120px;
+  }
+
+  .match-statiscian-vs {
+      font-size: 18px;
+      margin: 10px 0;
+  }
+
+  .match-statiscian-upload-btn,
+  .match-statiscian-forfeit-btn {
+      width: 90%;
+      font-size: medium;
+  }
+}

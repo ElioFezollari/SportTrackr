@@ -34,5 +34,21 @@ const getMatch = async (credentials) => {
   };
 
 
+  const getMatchById = async (credentials, matchId) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${credentials}`, 
+      },
+    };
+    
+    try {
+      const response = await axios.get(`${baseUrl}general/${matchId}` , config);
+      return response;
+    } catch (error) {
+      console.error('Error fetching match:', error);
+    }
+  };
 
-export {getMatch, getMatchesByLeagueId}
+
+
+export {getMatch, getMatchesByLeagueId,getMatchById}
