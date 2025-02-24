@@ -94,6 +94,7 @@ const router = createBrowserRouter([
         element: <FailureOnboarding/>
       },
       {
+        element:<RequireAuth allowedRoles={['user']}/>,
         children:[
           {
             path:"/app",
