@@ -24,7 +24,6 @@ function AppNavbar({ isActive, setIsActive }) {
       <div className="app-nav-icons">
         <Link>
           <button
-            onClick={() => setProfileOpen((prev) => !prev)}
             className="profile-button"
           >
             <img className="profile-icon" src={profile} alt="profile icon" />
