@@ -8,34 +8,38 @@
     cursor: pointer;
 }
 .b-white{
-    background-color: white; 
-    color: #31363F; 
+    background-color: white;
+    color: #31363F;
     border: 1px solid white;
 }
+
 .b-white:hover{
     background-color: transparent;
     color: white;
     box-shadow: none;
 }
+
 .b-gray{
-    background-color: #31363F; 
-    color: white;  
+    background-color: #31363F;
+    color: white;
     border: 1px solid #31363F;
 }
+
 .b-gray:hover{
     background-color: transparent;
     box-shadow: none;
     color: #31363F;
 }
+
 .shadow-bottom{
     box-shadow: 0px 3px  4px black;
 }
 
 .active{
-    color: red !important;
-    text-decoration: underline !important;
+    color: #1D3C6A !important;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px white;
 }
-
 
 .absolute {
     position: absolute;
