@@ -96,7 +96,6 @@ const UserProfile = () => {
         newPassword,
         newConfirmPassword
       });
-      console.log(res)
       if (res.status === 200) {
         setIsUpdatingPassword(false);
         setOldPassword('');
