@@ -71,4 +71,17 @@ const updatePassword = async (token, data) => {
   }
 }
 
-export {getUserProfile, getUser, toggleProfileVisibility, updateUserName, updatePassword}
+const uploadProfilePhoto = async (formData, token)=> {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  const response = await axios.post(baseUrl + 'upload-photo', formData, config);
+  return response;
+  
+}
+
+export {getUserProfile, getUser, toggleProfileVisibility, updateUserName, updatePassword, uploadProfilePhoto}

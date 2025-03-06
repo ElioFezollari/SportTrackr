@@ -99,6 +99,28 @@
     border-color: var(--user-profile-secondary);
   }
   
+  .user-profile-photo-edit-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+  }
+  
+  .user-profile-photo-edit-overlay:hover {
+      opacity: 1;
+  }
+
   .user-profile-header-details {
     flex: 1;
   }

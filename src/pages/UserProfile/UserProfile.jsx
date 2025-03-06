@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { getUserProfile, toggleProfileVisibility, updateUserName, updatePassword } from "../../services/user";
+import React, { useEffect, useState, useRef } from "react";
+import { getUserProfile, toggleProfileVisibility, updateUserName, updatePassword, uploadProfilePhoto } from "../../services/user";
 import useAuth from "../../hooks/useAuth";
 import "../../styles/userProfile.css";
 import defaultProfilePhoto from '../../assets/images/userProfile/default_profile_photo.svg';
@@ -15,6 +15,10 @@ const UserProfile = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [newConfirmPassword, setNewConfirmPassword] = useState('');
+  const [isEditingPhoto, setIsEditingPhoto] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const photoRef = useRef(null);
+  const [profilePhotoUrl, setProfilePhotoUrl] = useState(null);
   const { auth } = useAuth();
 
   useEffect(() => {
@@ -109,15 +113,47 @@ const UserProfile = () => {
     }
   };
 
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handlePhotoUpdate = async () => {
+    if (!selectedFile) return;
+    
+    let formData = new FormData();
+    formData.append("file", selectedFile);
+
+    try {
+      const res = await uploadProfilePhoto(formData, auth.accessToken);
+      if (res.status === 200) {
+        setProfilePhotoUrl(res.data.profilePictureUrl)
+        setUser((prevUser) => ({
+          ...prevUser,
+          pictureUrl: res.data.pictureUrl,
+        }));
+        setIsEditingPhoto(false);
+        setSelectedFile(null);
+        alert("Profile photo updated successfully");
+      }
+    } catch (error) {
+      console.error("Failed to update profile photo:", error);
+      alert("Failed to update profile photo. Please try again.");
+    }
+  };
+
   return (
     <div className="user-profile-container">
       <section className="user-profile-header-section">
-        <div className="user-profile-header-photo-container">
-          <img
-            src={user.pictureUrl || defaultProfilePhoto}
-            alt={`${user.firstName}'s profile`}
-            className="user-profile-header-photo"
-          />
+        <div className="user-profile-header-photo-container" ref={photoRef}>
+            <img
+                src={user.pictureUrl || profilePhotoUrl || defaultProfilePhoto}
+                alt={`${user.firstName}'s profile`}
+                className="user-profile-header-photo"
+                onClick={() => setIsEditingPhoto(true)}
+            />
+            <div className="user-profile-photo-edit-overlay" style={{display : photoRef.current && photoRef.current.matches(':hover') ? 'flex' : 'none'}} onClick={() => setIsEditingPhoto(true)}>
+                <span className="user-profile-photo-edit-text">Edit</span>
+            </div>
         </div>
         <div className="user-profile-header-details">
             <h1 
@@ -294,6 +330,37 @@ const UserProfile = () => {
             </div>
             </div>
         </div>
+        )}
+        {isEditingPhoto && (
+            <div className="user-profile-modal-overlay">
+                <div className="user-profile-modal">
+                <div className="user-profile-modal-header">
+                    <h2>Change Profile Photo</h2>
+                </div>
+                <div className="user-profile-modal-content">
+                    <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="user-profile-modal-input"
+                    />
+                </div>
+                <div className="user-profile-modal-footer">
+                    <button
+                    className="user-profile-modal-cancel"
+                    onClick={() => setIsEditingPhoto(false)}
+                    >
+                    Cancel
+                    </button>
+                    <button
+                    className="user-profile-modal-save"
+                    onClick={handlePhotoUpdate}
+                    >
+                    Save
+                    </button>
+                </div>
+                </div>
+            </div>
         )}
     </div>
   );
