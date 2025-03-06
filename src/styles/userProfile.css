@@ -1,0 +1,387 @@
+:root {
+    --user-profile-primary: #0066cc;
+    --user-profile-secondary: #4d94ff;
+    --user-profile-accent: #001f4d;
+    --user-profile-light: #f0f6ff;
+    --user-profile-gray-100: #f8f9fa;
+    --user-profile-gray-200: #e9ecef;
+    --user-profile-gray-300: #dee2e6;
+    --user-profile-gray-400: #ced4da;
+    --user-profile-gray-500: #adb5bd;
+    --user-profile-gray-600: #6c757d;
+    --user-profile-gray-700: #495057;
+    --user-profile-gray-800: #343a40;
+    --user-profile-gray-900: #212529;
+    --user-profile-white: #ffffff;
+    --user-profile-text-primary: #212529;
+    --user-profile-text-secondary: #6c757d;
+    --user-profile-offensive: #2c7be5;
+    --user-profile-defensive: #00b894;
+    --user-profile-yellow: #ffc107;
+    --user-profile-red: #dc3545;
+    --user-profile-card-bg: #343a40;
+    --user-profile-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --user-profile-shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --user-profile-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    --user-profile-border-radius: 0.5rem;
+    --user-profile-transition: all 0.25s ease-in-out;
+  }
+  
+  .user-profile-container {
+    max-width: 1000px;
+    margin: 2.5rem auto;
+    padding: 2rem;
+    background-color: var(--user-profile-white);
+    border-radius: var(--user-profile-border-radius);
+    box-shadow: var(--user-profile-shadow-md);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  .user-profile-loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    gap: 1rem;
+    color: var(--user-profile-primary);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .user-profile-loading-spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 0.25rem solid var(--user-profile-gray-200);
+    border-top-color: var(--user-profile-primary);
+    border-radius: 50%;
+    animation: user-profile-spinner 1s linear infinite;
+  }
+  
+  @keyframes user-profile-spinner {
+    to { transform: rotate(360deg); }
+  }
+  
+  .user-profile-error-container {
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--user-profile-gray-100);
+    border-radius: var(--user-profile-border-radius);
+    color: var(--user-profile-red);
+    font-weight: 500;
+  }
+  
+  .user-profile-header-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--user-profile-gray-200);
+    margin-bottom: 1.5rem;
+  }
+  
+  .user-profile-header-photo-container {
+    position: relative;
+  }
+  
+  .user-profile-header-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--user-profile-primary);
+    box-shadow: var(--user-profile-shadow-sm);
+    transition: var(--user-profile-transition);
+  }
+  
+  .user-profile-header-photo:hover {
+    transform: scale(1.05);
+    border-color: var(--user-profile-secondary);
+  }
+  
+  .user-profile-header-details {
+    flex: 1;
+  }
+  
+  .user-profile-header-name {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--user-profile-text-primary);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+  
+  .user-profile-header-visibility-badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    background-color: var(--user-profile-light);
+    color: var(--user-profile-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 1rem;
+    border: 1px solid var(--user-profile-gray-300);
+  }
+  
+  .user-profile-affiliations-section {
+    display: flex;
+    justify-content: space-between;
+    background: var(--user-profile-card-bg);
+    border-radius: var(--user-profile-border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--user-profile-shadow-sm);
+  }
+  
+  .user-profile-team-container, .user-profile-league-container {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: var(--user-profile-border-radius);
+    transition: var(--user-profile-transition);
+  }
+  
+  .user-profile-team-container:hover, .user-profile-league-container:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: var(--user-profile-shadow-sm);
+  }
+  
+  .user-profile-team-logo-wrapper, .user-profile-league-logo-wrapper {
+    margin-right: 1rem;
+  }
+  
+  .user-profile-team-logo, .user-profile-league-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 0.75rem;
+    object-fit: cover;
+    background-color: var(--user-profile-white);
+    padding: 0.375rem;
+    border: 1px solid var(--user-profile-gray-300);
+    box-shadow: var(--user-profile-shadow-sm);
+    transition: var(--user-profile-transition);
+  }
+  
+  .user-profile-team-logo:hover, .user-profile-league-logo:hover {
+    transform: rotate(5deg);
+  }
+  
+  .user-profile-team-name, .user-profile-league-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--user-profile-text-primary);
+    margin: 0;
+  }
+  
+  .user-profile-team-label, .user-profile-league-label {
+    font-size: 1rem;
+    color: var(--user-profile-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0.25rem 0 0;
+    font-weight: 500;
+  }
+  
+  .user-profile-stats-dashboard {
+    margin-top: 2rem;
+  }
+  
+  .user-profile-stats-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--user-profile-text-primary);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--user-profile-gray-200);
+  }
+  
+  .user-profile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .user-profile-stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--user-profile-white);
+    border-radius: var(--user-profile-border-radius);
+    padding: 1.25rem 1rem;
+    box-shadow: var(--user-profile-shadow-sm);
+    transition: var(--user-profile-transition);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .user-profile-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: currentColor;
+  }
+  
+  .user-profile-stat-card:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: var(--user-profile-shadow-md);
+  }
+  
+  .user-profile-stat-card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--user-profile-text-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  
+  .user-profile-stat-card-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--user-profile-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .user-profile-stat-card-offensive {
+    color: var(--user-profile-offensive);
+    background-color: rgba(44, 123, 229, 0.05);
+  }
+  
+  .user-profile-stat-card-defensive {
+    color: var(--user-profile-defensive);
+    background-color: rgba(0, 184, 148, 0.05);
+  }
+  
+  .user-profile-stat-card-yellow {
+    color: var(--user-profile-yellow);
+    background-color: rgba(255, 193, 7, 0.05);
+  }
+  
+  .user-profile-stat-card-red {
+    color: var(--user-profile-red);
+    background-color: rgba(220, 53, 69, 0.05);
+  }
+  
+  .user-profile-stat-card-default {
+    color: var(--user-profile-primary);
+    background-color: rgba(0, 102, 204, 0.05);
+  }
+  
+.user-profile-visibility-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .toggle-label {
+    font-size: 14px;
+    color: var(--user-profile-text-primary);
+  }
+  
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--user-profile-gray-400);
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+  
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  .toggle-switch input:checked + .toggle-slider {
+    background-color: var(--user-profile-primary);
+  }
+  
+  .toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(24px);
+  }
+  
+  .toggle-switch input:disabled + .toggle-slider {
+    background-color: var(--user-profile-gray-500);
+    cursor: not-allowed;
+  }
+  
+
+  @media (max-width: 768px) {
+    .user-profile-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+  
+    .user-profile-header-section {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+  
+    .user-profile-header-photo {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .user-profile-affiliations-section {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .user-profile-team-container, .user-profile-league-container {
+      width: 100%;
+    }
+  
+    .user-profile-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .user-profile-stats-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .user-profile-affiliations-section {
+      padding: 1rem;
+    }
+    
+    .user-profile-team-container, .user-profile-league-container {
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem 0.5rem;
+    }
+    
+    .user-profile-team-logo-wrapper, .user-profile-league-logo-wrapper {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
