@@ -5,6 +5,7 @@ import "../../styles/userProfile.css";
 import defaultProfilePhoto from '../../assets/images/userProfile/default_profile_photo.svg';
 import defaultLeaguePhoto from '../../assets/images/userProfile/default_league_photo.svg';
 import { ToastProvider, useToast } from "../../context/ToastContext";
+import SkeletonUserProfile from "../../components/skeletons/SkeletonUserProfile";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -41,6 +42,10 @@ const UserProfile = () => {
     fetchUserProfile();
   }, [auth.accessToken]);
 
+  if (!user) {
+    return <div className="user-profile-error-container">Unable to load profile data</div>;
+  }
+  
   const handleVisibilityToggle = async () => {
     if (!user) return;
   
@@ -62,17 +67,8 @@ const UserProfile = () => {
   };
   
 
-  if (isLoading) {
-    return <div className="user-profile-loading-container">
-      <div className="user-profile-loading-spinner"></div>
-      <span>Loading your profile...</span>
-    </div>;
-  }
-
-  if (!user) {
-    return <div className="user-profile-error-container">Unable to load profile data</div>;
-  }
-
+  
+  
   const handleNameUpdate = async () => {
     if (!user) return;
     try {
@@ -95,7 +91,7 @@ const UserProfile = () => {
       addToast("Failure in Updating Name", "failure");
     }
   };
-
+  
   const handlePasswordUpdate = async () => {
     if (!user) return;
     if (newPassword !== newConfirmPassword) {
@@ -128,17 +124,17 @@ const UserProfile = () => {
       addToast('Failed to update password. Please try again', "failure");
     }
   };
-
+  
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
-
+  
   const handlePhotoUpdate = async () => {
     if (!selectedFile) return;
     
     let formData = new FormData();
     formData.append("file", selectedFile);
-
+    
     try {
       const res = await uploadProfilePhoto(formData, auth.accessToken);
       console.log(res)
@@ -158,6 +154,10 @@ const UserProfile = () => {
       addToast("Failed to update profile photo! Please try again", "failure");
     }
   };
+  
+  if (isLoading) {
+    return <SkeletonUserProfile/>;
+  }
 
   return (
     <div className="user-profile-container">
