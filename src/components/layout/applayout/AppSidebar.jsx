@@ -9,6 +9,8 @@ import jersey from "../../../assets/images/appSidebar/jersey.svg";
 import questionMark from "../../../assets/images/appSidebar/question-mark.svg";
 import { Link } from "react-router";
 import useAuth from "../../../hooks/useAuth";
+import { decodeJWT } from "../../../utils/decode";
+
 function AppSidebar({ isActive, setIsActive }) {
   const { auth } = useAuth();
 
@@ -17,9 +19,10 @@ function AppSidebar({ isActive, setIsActive }) {
   const [transactions, setTransactions] = useState(true);
 
   const isAdmin = auth.roles && auth.roles.includes("owner");
-
+  const [ifPartOfTeam, setIfPartOfTeam] = useState(false);
   useEffect(() => {
-
+    const decodeToken = decodeJWT(auth.accessToken);
+    setIfPartOfTeam(decodeToken?.teamId ? true : false);
   }, [auth.roles]);
   return (
     <div
@@ -98,7 +101,8 @@ function AppSidebar({ isActive, setIsActive }) {
                 </Link>
               </div>
             )}
-            <div>
+            {ifPartOfTeam &&
+              <div>
               <Link to="./myteam">
                 {" "}
                 <img
@@ -109,6 +113,7 @@ function AppSidebar({ isActive, setIsActive }) {
                 My Team
               </Link>
             </div>
+            }
           </div>
         </div>
         {isAdmin && (

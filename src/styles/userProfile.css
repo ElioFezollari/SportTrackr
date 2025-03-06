@@ -20,6 +20,7 @@
     --user-profile-yellow: #ffc107;
     --user-profile-red: #dc3545;
     --user-profile-card-bg: #343a40;
+    --user-profile-change-pass-bg: #e07511;
     --user-profile-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     --user-profile-shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     --user-profile-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
@@ -142,8 +143,8 @@
   }
 
   .user-profile-password-button {
-    padding: 0.75rem 1.5rem;
-    background-color: var(--user-profile-gray-600);
+    padding: 0.5rem;
+    background-color: var(--user-profile-change-pass-bg);
     color: var(--user-profile-white);
     border: none;
     border-radius: var(--user-profile-border-radius);
@@ -249,6 +250,19 @@
     font-weight: 500;
   }
   
+  .browse-leagues-button{
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--user-profile-gray-600);
+    color: var(--user-profile-white);
+    border: none;
+    border-radius: var(--user-profile-border-radius);
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--user-profile-transition);
+  }
+
   .user-profile-stats-dashboard {
     margin-top: 2rem;
   }

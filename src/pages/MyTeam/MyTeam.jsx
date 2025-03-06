@@ -7,6 +7,7 @@ import { getLeague } from "../../services/leagues";
 import { getUser } from "../../services/user";
 import SkeletonTeam from "../../components/skeletons/SkeletonTeam";
 import '../../styles/myTeam.css'
+import { decodeJWT } from "../../utils/decode";
 
 function MyTeam() {
     const { auth } = useAuth();
@@ -17,16 +18,6 @@ function MyTeam() {
     const [league, setLeague] = useState(null);
     const [error, setError] = useState(null);
     const [teamOwner, setTeamOwner] = useState(null);
-    
-    function decodeJWT(token) {
-        try {
-            const payload = token.split(".")[1];
-            return JSON.parse(atob(payload));
-        } catch (error) {
-            console.error("Error decoding JWT:", error);
-            return null;
-        }
-    }
 
     useEffect(() => {
         const getMyTeam = async () => {

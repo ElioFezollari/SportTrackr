@@ -6,6 +6,7 @@ import defaultProfilePhoto from '../../assets/images/userProfile/default_profile
 import defaultLeaguePhoto from '../../assets/images/userProfile/default_league_photo.svg';
 import { ToastProvider, useToast } from "../../context/ToastContext";
 import SkeletonUserProfile from "../../components/skeletons/SkeletonUserProfile";
+import { Link } from "react-router";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -200,35 +201,40 @@ const UserProfile = () => {
         </div>
       </section>
 
-      <section className="user-profile-affiliations-section">
-        <div className="user-profile-team-container">
-          <div className="user-profile-team-logo-wrapper">
-            <img
-              src={user.teamLogo || defaultProfilePhoto}
-              alt={`${user.teamName} logo`}
-              className="user-profile-team-logo"
-            />
-          </div>
-          <div className="user-profile-team-details">
-            <h2 className="user-profile-team-name">{user.teamName}</h2>
-            <p className="user-profile-team-label">Team</p>
-          </div>
-        </div>
-
-        <div className="user-profile-league-container">
-          <div className="user-profile-league-logo-wrapper">
-            <img
-              src={user.leagueLogo || defaultLeaguePhoto}
-              alt={`${user.leagueName} logo`}
-              className="user-profile-league-logo"
-            />
-          </div>
-          <div className="user-profile-league-details">
-            <h2 className="user-profile-league-name">{user.leagueName}</h2>
-            <p className="user-profile-league-label">League</p>
-          </div>
-        </div>
-      </section>
+      {user.teamName && user.leagueName ? (
+        <section className="user-profile-affiliations-section">
+              <div className="user-profile-team-container">
+                  <div className="user-profile-team-logo-wrapper">
+                    <img
+                      src={user.teamLogo || defaultProfilePhoto}
+                      alt={`${user.teamName} logo`}
+                      className="user-profile-team-logo"
+                    />
+                  </div>
+                  <div className="user-profile-team-details">
+                    <h2 className="user-profile-team-name">{user.teamName}</h2>
+                    <p className="user-profile-team-label">Team</p>
+                  </div>
+              </div>
+            <div className="user-profile-league-container">
+                <div className="user-profile-league-logo-wrapper">
+                  <img
+                    src={user.leagueLogo || defaultLeaguePhoto}
+                    alt={`${user.leagueName} logo`}
+                    className="user-profile-league-logo"
+                  />
+                </div>
+                <div className="user-profile-league-details">
+                  <h2 className="user-profile-league-name">{user.leagueName}</h2>
+                  <p className="user-profile-league-label">League</p>
+                </div>
+            </div>
+        </section>
+      ):(
+        <Link to='../leagues' className="browse-leagues-button">
+          Browse Leagues
+        </Link>
+      )}
 
       <section className="user-profile-stats-dashboard">
         <h2 className="user-profile-stats-title">Player Statistics</h2>
