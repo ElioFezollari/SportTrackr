@@ -57,4 +57,18 @@ const updateUserName = async (token, data) => {
   }
 }
 
-export {getUserProfile, getUser, toggleProfileVisibility, updateUserName}
+const updatePassword = async (token, data) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+  }
+  try{
+    const response = await axios.put(baseUrl + 'update-pass',data, config);
+    return response
+  }catch(e){
+    return e;
+  }
+}
+
+export {getUserProfile, getUser, toggleProfileVisibility, updateUserName, updatePassword}

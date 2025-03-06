@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUserProfile, toggleProfileVisibility, updateUserName } from "../../services/user";
+import { getUserProfile, toggleProfileVisibility, updateUserName, updatePassword } from "../../services/user";
 import useAuth from "../../hooks/useAuth";
 import "../../styles/userProfile.css";
 import defaultProfilePhoto from '../../assets/images/userProfile/default_profile_photo.svg';
@@ -11,6 +11,10 @@ const UserProfile = () => {
   const [isEditingName, setIsEditingName] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [newConfirmPassword, setNewConfirmPassword] = useState('');
   const { auth } = useAuth();
 
   useEffect(() => {
@@ -79,6 +83,33 @@ const UserProfile = () => {
     }
   };
 
+  const handlePasswordUpdate = async () => {
+    if (!user) return;
+    if (newPassword !== newConfirmPassword) {
+      alert('New password and confirmation do not match');
+      return;
+    }
+    
+    try {
+      const res = await updatePassword(auth.accessToken, {
+        oldPassword,
+        newPassword,
+        newConfirmPassword
+      });
+      console.log(res)
+      if (res.status === 200) {
+        setIsUpdatingPassword(false);
+        setOldPassword('');
+        setNewPassword('');
+        setNewConfirmPassword('');
+        alert('Password updated successfully');
+      }
+    } catch (error) {
+      console.error("Failed to update password:", error);
+      alert('Failed to update password. Please try again.');
+    }
+  };
+
   return (
     <div className="user-profile-container">
       <section className="user-profile-header-section">
@@ -94,7 +125,12 @@ const UserProfile = () => {
               className="user-profile-header-name"
               onClick={() => setIsEditingName(true)}
             >{user.firstName} {user.lastName}</h1>
-
+            <button 
+                className="user-profile-password-button"
+                onClick={() => setIsUpdatingPassword(true)}
+                >
+                Change Password
+            </button>
           <div className="user-profile-visibility-toggle">
           <span className="toggle-label">
             {user.profileVisibility ? "Public Profile" : "Private Profile"}
@@ -200,6 +236,66 @@ const UserProfile = () => {
           </div>
         </div>
       )}
+      {isUpdatingPassword && (
+        <div className="user-profile-modal-overlay">
+            <div className="user-profile-modal">
+            <div className="user-profile-modal-header">
+                <h2>Change Password</h2>
+            </div>
+            <div className="user-profile-modal-content">
+                <div className="user-profile-modal-form">
+                <div className="user-profile-modal-input-group">
+                    <label htmlFor="oldPassword">Current Password</label>
+                    <input
+                    id="oldPassword"
+                    type="password"
+                    value={oldPassword}
+                    onChange={(e) => setOldPassword(e.target.value)}
+                    className="user-profile-modal-input"
+                    placeholder="Enter current password"
+                    />
+                </div>
+                <div className="user-profile-modal-input-group">
+                    <label htmlFor="newPassword">New Password</label>
+                    <input
+                    id="newPassword"
+                    type="password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    className="user-profile-modal-input"
+                    placeholder="Enter new password"
+                    />
+                </div>
+                <div className="user-profile-modal-input-group">
+                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    <input
+                    id="confirmPassword"
+                    type="password"
+                    value={newConfirmPassword}
+                    onChange={(e) => setNewConfirmPassword(e.target.value)}
+                    className="user-profile-modal-input"
+                    placeholder="Confirm new password"
+                    />
+                </div>
+                </div>
+            </div>
+            <div className="user-profile-modal-footer">
+                <button 
+                className="user-profile-modal-cancel"
+                onClick={() => setIsUpdatingPassword(false)}
+                >
+                Cancel
+                </button>
+                <button 
+                className="user-profile-modal-save"
+                onClick={handlePasswordUpdate}
+                >
+                Update Password
+                </button>
+            </div>
+            </div>
+        </div>
+        )}
     </div>
   );
 };

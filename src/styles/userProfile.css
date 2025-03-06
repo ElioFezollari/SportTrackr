@@ -111,13 +111,50 @@
     line-height: 1.2;
     cursor: pointer;
     transition: var(--user-profile-transition);
-    width: 30%;
+    width: 100%;
   }
   
   .user-profile-header-name:hover {
     color: var(--user-profile-gray-700);
     transform: scale(1.01);
   }
+
+  .user-profile-password-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--user-profile-gray-600);
+    color: var(--user-profile-white);
+    border: none;
+    border-radius: var(--user-profile-border-radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--user-profile-transition);
+  }
+  
+  .user-profile-password-button:hover {
+    background-color: var(--user-profile-gray-900);
+  }
+  
+  .user-profile-modal-input-group {
+    position: relative;
+  }
+  
+  .user-profile-modal-input-group::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--user-profile-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .user-profile-modal-input-group:focus-within::after {
+    transform: scaleX(1);
+  }
+  
   
   .user-profile-header-visibility-badge {
     display: inline-block;
@@ -458,6 +495,12 @@
   }
 
   @media (max-width: 768px) {
+
+    .user-profile-password-button {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
     .user-profile-container {
       margin: 1rem;
       padding: 1.5rem;
