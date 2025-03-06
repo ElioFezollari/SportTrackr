@@ -33,8 +33,10 @@ const MatchStatiscian = () => {
   if (loading) return <p>Loading match details...</p>;
   if (!match) return <p>Match not found!</p>;
 
-  const handleUploadStats = () => navigate(`/app/match-upload`);
-  const handleUploadHigh = () => navigate(`/app/highlight-upload`);
+  const handleUploadStats = (team) => {
+    navigate(`/app/match-upload/${match.id}/${team}`);
+  };
+    const handleUploadHigh = () => navigate(`/app/highlight-upload`);
 
   return (
     <div className="match-statiscian-container">
@@ -48,7 +50,7 @@ const MatchStatiscian = () => {
         {/* Home Team Section */}
         <div className="match-statiscian-team">
           <img src={match.home_team_logo} alt={match.home_team_name} className="match-statiscian-team-icon" />
-          <button className="match-statiscian-upload-btn" onClick={handleUploadStats}>
+          <button className="match-statiscian-upload-btn" onClick={() => handleUploadStats('home')}>
             Upload Stats
           </button>
           <button className="match-statiscian-forfeit-btn">FORFEIT</button>
@@ -59,7 +61,7 @@ const MatchStatiscian = () => {
         {/* Away Team Section */}
         <div className="match-statiscian-team">
           <img src={match.away_team_logo} alt={match.away_team_name} className="match-statiscian-team-icon" />
-          <button className="match-statiscian-upload-btn" onClick={handleUploadStats}>
+          <button className="match-statiscian-upload-btn" onClick={() => handleUploadStats('away')}>
             Upload Stats
           </button>
           <button className="match-statiscian-forfeit-btn">FORFEIT</button>

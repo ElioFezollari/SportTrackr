@@ -131,7 +131,7 @@ const router = createBrowserRouter([
                 element: <Dashboard/>
               },
               {
-                path: "match-upload",
+                path: "match-upload/:matchId/:team",
                 element:<MatchUpload/>
               },
               {
