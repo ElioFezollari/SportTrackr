@@ -43,4 +43,18 @@ const toggleProfileVisibility = async (token) => {
   }
 }
 
-export {getUserProfile, getUser, toggleProfileVisibility}
+const updateUserName = async (token, data) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+  }
+  try{
+    const response = await axios.put(baseUrl + 'update',data, config);
+    return response
+  }catch(e){
+    return e;
+  }
+}
+
+export {getUserProfile, getUser, toggleProfileVisibility, updateUserName}

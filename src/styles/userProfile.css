@@ -109,6 +109,14 @@
     color: var(--user-profile-text-primary);
     margin: 0 0 0.5rem 0;
     line-height: 1.2;
+    cursor: pointer;
+    transition: var(--user-profile-transition);
+    width: 30%;
+  }
+  
+  .user-profile-header-name:hover {
+    color: var(--user-profile-gray-700);
+    transform: scale(1.01);
   }
   
   .user-profile-header-visibility-badge {
@@ -334,6 +342,121 @@
   }
   
 
+  .user-profile-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .user-profile-modal {
+    background-color: var(--user-profile-white);
+    border-radius: var(--user-profile-border-radius);
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: var(--user-profile-shadow-lg);
+    animation: user-profile-modal-fade-in 0.3s ease-out;
+  }
+  
+  .user-profile-modal-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .user-profile-modal-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--user-profile-text-primary);
+    margin: 0;
+  }
+  
+  .user-profile-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .user-profile-modal-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .user-profile-modal-input-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--user-profile-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .user-profile-modal-input {
+    padding: 0.75rem;
+    border: 1px solid var(--user-profile-gray-300);
+    border-radius: var(--user-profile-border-radius);
+    font-size: 1rem;
+    transition: var(--user-profile-transition);
+  }
+  
+  .user-profile-modal-input:focus {
+    border-color: var(--user-profile-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.25);
+  }
+  
+  .user-profile-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--user-profile-gray-200);
+  }
+  
+  .user-profile-modal-cancel,
+  .user-profile-modal-save {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--user-profile-border-radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--user-profile-transition);
+  }
+  
+  .user-profile-modal-cancel {
+    background-color: var(--user-profile-gray-100);
+    color: var(--user-profile-text-primary);
+  }
+  
+  .user-profile-modal-cancel:hover {
+    background-color: var(--user-profile-gray-200);
+  }
+  
+  .user-profile-modal-save {
+    background-color: var(--user-profile-primary);
+    color: var(--user-profile-white);
+  }
+  
+  .user-profile-modal-save:hover {
+    background-color: var(--user-profile-secondary);
+  }
+
+  @keyframes user-profile-modal-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @media (max-width: 768px) {
     .user-profile-container {
       margin: 1rem;
@@ -362,6 +485,21 @@
   
     .user-profile-stats-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .user-profile-modal {
+        width: 90%;
+        padding: 1.5rem;
+      }
+      
+    .user-profile-modal-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .user-profile-modal-cancel,
+    .user-profile-modal-save {
+        width: 100%;
     }
   }
   

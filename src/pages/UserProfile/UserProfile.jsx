@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUserProfile, toggleProfileVisibility } from "../../services/user";
+import { getUserProfile, toggleProfileVisibility, updateUserName } from "../../services/user";
 import useAuth from "../../hooks/useAuth";
 import "../../styles/userProfile.css";
 import defaultProfilePhoto from '../../assets/images/userProfile/default_profile_photo.svg';
@@ -8,6 +8,9 @@ import defaultLeaguePhoto from '../../assets/images/userProfile/default_league_p
 const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const { auth } = useAuth();
 
   useEffect(() => {
@@ -56,6 +59,26 @@ const UserProfile = () => {
     return <div className="user-profile-error-container">Unable to load profile data</div>;
   }
 
+  const handleNameUpdate = async () => {
+    if (!user) return;
+    try {
+      const res = await updateUserName(auth.accessToken, {
+        firstName,
+        lastName
+      });
+      if (res.status === 200) {
+        setUser(prevUser => ({
+          ...prevUser,
+          firstName,
+          lastName
+        }));
+        setIsEditingName(false);
+      }
+    } catch (error) {
+      console.error("Failed to update user name:", error);
+    }
+  };
+
   return (
     <div className="user-profile-container">
       <section className="user-profile-header-section">
@@ -67,7 +90,10 @@ const UserProfile = () => {
           />
         </div>
         <div className="user-profile-header-details">
-          <h1 className="user-profile-header-name">{user.firstName} {user.lastName}</h1>
+            <h1 
+              className="user-profile-header-name"
+              onClick={() => setIsEditingName(true)}
+            >{user.firstName} {user.lastName}</h1>
 
           <div className="user-profile-visibility-toggle">
           <span className="toggle-label">
@@ -127,6 +153,53 @@ const UserProfile = () => {
           <PlayerStat label="Red Cards" value={user.totalRedCards} category="disciplinary" />
         </div>
       </section>
+      {isEditingName && (
+        <div className="user-profile-modal-overlay">
+          <div className="user-profile-modal">
+            <div className="user-profile-modal-header">
+              <h2>Edit Name</h2>
+            </div>
+            <div className="user-profile-modal-content">
+              <div className="user-profile-modal-form">
+                <div className="user-profile-modal-input-group">
+                  <label htmlFor="firstName">First Name</label>
+                  <input
+                    id="firstName"
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className="user-profile-modal-input"
+                  />
+                </div>
+                <div className="user-profile-modal-input-group">
+                  <label htmlFor="lastName">Last Name</label>
+                  <input
+                    id="lastName"
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    className="user-profile-modal-input"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="user-profile-modal-footer">
+              <button 
+                className="user-profile-modal-cancel"
+                onClick={() => setIsEditingName(false)}
+              >
+                Cancel
+              </button>
+              <button 
+                className="user-profile-modal-save"
+                onClick={handleNameUpdate}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
