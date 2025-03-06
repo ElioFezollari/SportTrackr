@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import "../../styles/userProfile.css";
 import defaultProfilePhoto from '../../assets/images/userProfile/default_profile_photo.svg';
 import defaultLeaguePhoto from '../../assets/images/userProfile/default_league_photo.svg';
+import { ToastProvider, useToast } from "../../context/ToastContext";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -20,6 +21,7 @@ const UserProfile = () => {
   const photoRef = useRef(null);
   const [profilePhotoUrl, setProfilePhotoUrl] = useState(null);
   const { auth } = useAuth();
+  const { addToast } = useToast();
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -27,6 +29,8 @@ const UserProfile = () => {
         setIsLoading(true);
         const response = await getUserProfile(auth.accessToken);
         setUser(response.data.user);
+        setFirstName(response.data.user.firstName);
+        setLastName(response.data.user.lastName);
       } catch (error) {
         console.error("Error fetching user profile:", error);
       } finally {
@@ -43,15 +47,17 @@ const UserProfile = () => {
     try {
       const res = await toggleProfileVisibility(auth.accessToken);
       if (res.status === 200) {
-        alert("Profile Visibility Updated");
+        addToast("Profile Visibility Updated", "success");
         
         setUser((prevUser) => ({
           ...prevUser,
           profileVisibility: !prevUser.profileVisibility,
         }));
+      }else{
+        addToast("Failure in Updating Profile Visibility", "failure");
       }
     } catch (error) {
-      console.error("Failed to update profile visibility:", error);
+      addToast("Failure in Updating Profile Visibility", "failure");
     }
   };
   
@@ -75,22 +81,25 @@ const UserProfile = () => {
         lastName
       });
       if (res.status === 200) {
+        addToast("Name Updated Successfully!", "success");
         setUser(prevUser => ({
           ...prevUser,
           firstName,
           lastName
         }));
         setIsEditingName(false);
+      }else{
+        addToast("Failure in Updating Name", "failure");
       }
     } catch (error) {
-      console.error("Failed to update user name:", error);
+      addToast("Failure in Updating Name", "failure");
     }
   };
 
   const handlePasswordUpdate = async () => {
     if (!user) return;
     if (newPassword !== newConfirmPassword) {
-      alert('New password and confirmation do not match');
+      addToast('New password and confirmation do not match', "failure");
       return;
     }
     
@@ -105,11 +114,18 @@ const UserProfile = () => {
         setOldPassword('');
         setNewPassword('');
         setNewConfirmPassword('');
-        alert('Password updated successfully');
+        addToast('Password updated successfully', "success");
+      }else{
+        setOldPassword('');
+        setNewPassword('');
+        setNewConfirmPassword('');
+        addToast('Failed to Updated Password', "failure");
       }
     } catch (error) {
-      console.error("Failed to update password:", error);
-      alert('Failed to update password. Please try again.');
+      setOldPassword('');
+      setNewPassword('');
+      setNewConfirmPassword('');
+      addToast('Failed to update password. Please try again', "failure");
     }
   };
 
@@ -125,6 +141,7 @@ const UserProfile = () => {
 
     try {
       const res = await uploadProfilePhoto(formData, auth.accessToken);
+      console.log(res)
       if (res.status === 200) {
         setProfilePhotoUrl(res.data.profilePictureUrl)
         setUser((prevUser) => ({
@@ -133,11 +150,12 @@ const UserProfile = () => {
         }));
         setIsEditingPhoto(false);
         setSelectedFile(null);
-        alert("Profile photo updated successfully");
+        addToast("Profile photo updated successfully", "success");
+      }else{
+        addToast("Failed to update profile photo! Please try again", "failure");
       }
     } catch (error) {
-      console.error("Failed to update profile photo:", error);
-      alert("Failed to update profile photo. Please try again.");
+      addToast("Failed to update profile photo! Please try again", "failure");
     }
   };
 
