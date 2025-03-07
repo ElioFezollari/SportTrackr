@@ -31,11 +31,12 @@ const UserProfile = () => {
       try {
         setIsLoading(true);
         const response = await getUserProfile(auth.accessToken);
-        setUser(response.data.user);
-        setFirstName(response.data.user.firstName);
-        setLastName(response.data.user.lastName);
+        if (response.status === 200){
+          setUser(response.data.user);
+          setFirstName(response.data.user.firstName);
+          setLastName(response.data.user.lastName);
+        }
       } catch (error) {
-        console.error("Error fetching user profile:", error);
       } finally {
         setIsLoading(false);
       }
