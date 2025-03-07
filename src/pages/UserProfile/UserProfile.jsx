@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import "../../styles/userProfile.css";
 import defaultProfilePhoto from '../../assets/images/userProfile/default_profile_photo.svg';
 import defaultLeaguePhoto from '../../assets/images/userProfile/default_league_photo.svg';
-import { ToastProvider, useToast } from "../../context/ToastContext";
+import { useToast } from "../../context/ToastContext";
 import SkeletonUserProfile from "../../components/skeletons/SkeletonUserProfile";
 import { Link } from "react-router";
 
