@@ -9,6 +9,7 @@ import { Link } from "react-router";
 import { getLeagues } from "../../services/leagues";
 import useAuth from "../../hooks/useAuth";
 import SkeletonLeagues from "../../components/skeletons/SkeletonLeagues";
+import defaultLeagueLogo from '../../assets/images/defaultLogo/default_league_logo.svg'
 
 function MyLeaguesDisplay({ leagues, setLeagues }) {
   const { auth } = useAuth();
@@ -35,7 +36,7 @@ function MyLeaguesDisplay({ leagues, setLeagues }) {
       { leagues ? (
         leagues.map((league) => (
           <div className="league-card" key={league.id}>
-            <img src={league.logoUrl} alt={league.leagueName + " logo"} />
+            <img src={league.logoUrl || defaultLeagueLogo} alt={league.leagueName + " logo"} />
             <div>
               <h3>{league.leagueName}</h3>
               <p>Starts {league.startTime}</p>

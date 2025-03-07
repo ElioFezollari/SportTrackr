@@ -7,6 +7,7 @@ import file_upload from '../../assets/images/createTeam/file_upload.svg'
 import useAuth from "../../hooks/useAuth";
 import {createTeam} from "../../services/team";
 import { getLeague } from "../../services/leagues";
+import defaultLeagueLogo from '../../assets/images/defaultLogo/default_league_logo.svg';
 
 function CreateTeam() {
 
@@ -146,7 +147,7 @@ function CreateTeam() {
             ) : league ? (
                 <>
                     <div className="create-team-header-container">
-                        <img src={league.logoUrl} alt="league-logo" className="create-team-league-logo" />
+                        <img src={league.logoUrl || defaultLeagueLogo} alt="league-logo" className="create-team-league-logo" />
                         <h2 className="create-team-league-name">{league.leagueName}</h2>
                     </div>
             {error ? (<p className="error">{error}</p>) : (<></> )}

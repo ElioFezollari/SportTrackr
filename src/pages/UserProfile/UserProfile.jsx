@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import { getUserProfile, toggleProfileVisibility, updateUserName, updatePassword, uploadProfilePhoto } from "../../services/user";
 import useAuth from "../../hooks/useAuth";
 import "../../styles/userProfile.css";
-import defaultProfilePhoto from '../../assets/images/userProfile/default_profile_photo.svg';
-import defaultLeaguePhoto from '../../assets/images/userProfile/default_league_photo.svg';
+import defaultProfileLogo from '../../assets/images/defaultLogo/default_profile_logo.svg';
+import defaultLeagueLogo from '../../assets/images/defaultLogo/default_league_logo.svg';
+import defaultTeamLogo from '../../assets/images/defaultLogo/deafult_team_logo.svg';
 import { useToast } from "../../context/ToastContext";
 import SkeletonUserProfile from "../../components/skeletons/SkeletonUserProfile";
 import { Link } from "react-router";
@@ -165,7 +166,7 @@ const UserProfile = () => {
       <section className="user-profile-header-section">
         <div className="user-profile-header-photo-container" ref={photoRef}>
             <img
-                src={user.pictureUrl || profilePhotoUrl || defaultProfilePhoto}
+                src={user.pictureUrl || profilePhotoUrl || defaultProfileLogo}
                 alt={`${user.firstName}'s profile`}
                 className="user-profile-header-photo"
                 onClick={() => setIsEditingPhoto(true)}
@@ -206,7 +207,7 @@ const UserProfile = () => {
               <div className="user-profile-team-container">
                   <div className="user-profile-team-logo-wrapper">
                     <img
-                      src={user.teamLogo || defaultProfilePhoto}
+                      src={user.teamLogo || defaultTeamLogo}
                       alt={`${user.teamName} logo`}
                       className="user-profile-team-logo"
                     />
@@ -219,7 +220,7 @@ const UserProfile = () => {
             <div className="user-profile-league-container">
                 <div className="user-profile-league-logo-wrapper">
                   <img
-                    src={user.leagueLogo || defaultLeaguePhoto}
+                    src={user.leagueLogo || defaultLeagueLogo}
                     alt={`${user.leagueName} logo`}
                     className="user-profile-league-logo"
                   />
