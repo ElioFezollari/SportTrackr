@@ -139,7 +139,7 @@ const router = createBrowserRouter([
                 element:<League/>
               },
               {
-                path:"hightlight-upload",
+                path:"highlight-upload/:matchId",
                 element:<HighlightUpload/>
               },
               {

@@ -58,7 +58,6 @@ const getMatch = async (credentials) => {
     };
     
     try {
-      console.log(matchId)
       const response = await axios.get(`${baseUrl}${matchId}` , config);
       return response;
     } catch (error) {
@@ -74,35 +73,59 @@ const getMatch = async (credentials) => {
       },
     };
   
-    // Prepare the data to send in the POST request
     const statsData = {
       matchId,
       homeTeam: {
         id: homeTeam.id,
-        players: homeTeam.players, // Home team players stats
+        players: homeTeam.players,
       },
       awayTeam: {
         id: awayTeam.id,
-        players: awayTeam.players, // Away team players stats
+        players: awayTeam.players, 
       },
     };
   
     try {
-      // Send the POST request to the backend
       const response = await axios.post(baseUrl, statsData, config);
   
-      // Check if the response was successful
       if (response.status === 200) {
         console.log('Match stats updated successfully!');
-        return response.data;  // Or return a success message, or just `true`
+        return response.data;  
       } else {
         console.error('Failed to update match stats:', response.status);
-        return null;  // Or return an error message if needed
+        return null; 
       }
     } catch (error) {
       console.error('Error updating match:', error);
       throw new Error('Error updating match stats. Please try again later.');
     }
   };
+
+  const uploadHighlights = async (credentials, leagueId, highlights) => {
+    const formData = new FormData();
   
-export {getMatch, getMatchesByLeagueId,getMatchById,getMatchDetails,updateMatch}
+    highlights.forEach((highlight, index) => {
+      formData.append(`highlights[${index}][video]`, highlight.file);
+      formData.append(`highlights[${index}][playerId]`, highlight.playerId); 
+      formData.append(`highlights[${index}][matchId]`, leagueId);  
+      formData.append(`highlights[${index}][type]`, highlight.type); 
+    });
+  
+    const config = {
+      headers: {
+        Authorization: `Bearer ${credentials}`,
+        "Content-Type": "multipart/form-data", 
+      },
+    };
+  
+    try {
+      const response = await axios.post(`${baseUrl}highlights`, formData, config);
+      return response.data; 
+    } catch (error) {
+      console.error('Error uploading highlights:', error);
+      throw error;
+    }
+  };
+  
+  
+export {getMatch, getMatchesByLeagueId,getMatchById,getMatchDetails,updateMatch, uploadHighlights}

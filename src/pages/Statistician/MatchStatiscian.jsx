@@ -36,7 +36,7 @@ const MatchStatiscian = () => {
   const handleUploadStats = (team) => {
     navigate(`/app/match-upload/${match.id}/${team}`);
   };
-    const handleUploadHigh = () => navigate(`/app/highlight-upload`);
+    const handleUploadHigh = () => navigate(`/app/highlight-upload/${matchId}`);
 
   return (
     <div className="match-statiscian-container">
