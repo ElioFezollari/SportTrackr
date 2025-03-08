@@ -19,7 +19,6 @@ const MatchStatiscian = () => {
       try {
         const response = await getMatchById(auth.accessToken, matchId);
         setMatch(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching match:", error);
       } finally {

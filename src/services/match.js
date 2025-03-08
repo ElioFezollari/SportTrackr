@@ -26,6 +26,7 @@ const getMatch = async (credentials) => {
     };
     
     try {
+      console.log(leagueId)
       const response = await axios.get(`${baseUrl}league/${leagueId}` , config);
       return response;
     } catch (error) {
@@ -101,31 +102,25 @@ const getMatch = async (credentials) => {
     }
   };
 
-  const uploadHighlights = async (credentials, leagueId, highlights) => {
-    const formData = new FormData();
-  
-    highlights.forEach((highlight, index) => {
-      formData.append(`highlights[${index}][video]`, highlight.file);
-      formData.append(`highlights[${index}][playerId]`, highlight.playerId); 
-      formData.append(`highlights[${index}][matchId]`, leagueId);  
-      formData.append(`highlights[${index}][type]`, highlight.type); 
-    });
-  
+  const uploadHighlights = async (credentials, formData) => {
     const config = {
       headers: {
         Authorization: `Bearer ${credentials}`,
-        "Content-Type": "multipart/form-data", 
+        "Content-Type": "multipart/form-data", // Important to send as form data
       },
     };
   
     try {
+      // Send the formData directly to the server
       const response = await axios.post(`${baseUrl}highlights`, formData, config);
-      return response.data; 
+      return response.data;
     } catch (error) {
-      console.error('Error uploading highlights:', error);
+      console.error("Error uploading highlights:", error);
       throw error;
     }
   };
+  
+  
   
   
 export {getMatch, getMatchesByLeagueId,getMatchById,getMatchDetails,updateMatch, uploadHighlights}

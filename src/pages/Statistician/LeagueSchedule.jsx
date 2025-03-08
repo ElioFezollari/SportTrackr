@@ -41,6 +41,7 @@ const LeagueSchedule = () => {
       try {
         const response = await getMatchesByLeagueId(auth.accessToken, selectedLeague);
         setMatches(response.data.matches);
+        console.log(response.data.matches)
       } catch (error) {
         console.error("Error fetching matches:", error);
       } finally {

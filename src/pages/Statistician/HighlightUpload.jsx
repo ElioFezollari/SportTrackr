@@ -49,36 +49,36 @@ function HighlightUpload() {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (!file) return;
-
+  
     if (highlights.length >= 3) {
       setError("You can only upload a maximum of 3 videos.");
       return;
     }
-
+  
     if (!highlightType || !selectedPlayerId) {
       setError("Please select a highlight type and a player.");
       return;
     }
-
+  
     const videoURL = URL.createObjectURL(file);
     const videoElement = document.createElement("video");
     videoElement.src = videoURL;
     videoElement.crossOrigin = "anonymous";
     videoElement.muted = true;
     videoElement.playsInline = true;
-
+  
     videoElement.addEventListener("loadeddata", () => {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
-
+  
       canvas.width = videoElement.videoWidth;
       canvas.height = videoElement.videoHeight;
       videoElement.currentTime = 0.5;
-
+  
       videoElement.addEventListener("seeked", () => {
         ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
         const thumbnail = canvas.toDataURL("image/png");
-
+  
         setHighlights((prevHighlights) => [
           ...prevHighlights,
           {
@@ -92,28 +92,41 @@ function HighlightUpload() {
         ]);
         setError("");  // Reset error after successful upload
       });
-
+  
       videoElement.currentTime = 0.5;
     });
   };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    // Prepare FormData
+  
+    // Validate highlights length
+    if (highlights.length === 0 || highlights.length > 3) {
+      setError("Please upload between 1 and 3 highlights.");
+      return;
+    }
+  
+    // Prepare FormData only once
     const formData = new FormData();
-
+  
     highlights.forEach((highlight, index) => {
       formData.append(`highlights[${index}][video]`, highlight.file);
       formData.append(`highlights[${index}][playerId]`, highlight.playerId);
       formData.append(`highlights[${index}][matchId]`, matchId);
       formData.append(`highlights[${index}][type]`, highlight.type);
     });
-
+  
+    // Optional: Log the form data for debugging
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ": " + pair[1]);
+    }
+  
     try {
-      const response = await uploadHighlights(auth.accessToken, matchId, formData);
+      // Pass the formData to the upload function
+      const response = await uploadHighlights(auth.accessToken, formData);
+      console.log(response);
+      
       if (response) {
-        console.log("Highlights uploaded successfully!");
         navigate(`/app/match-statiscian/${matchId}`);
       }
     } catch (error) {
@@ -121,7 +134,7 @@ function HighlightUpload() {
       setError("Failed to upload highlights. Please try again.");
     }
   };
-
+  
   if (isLoading) {
     return <p>Loading match details...</p>;
   }
