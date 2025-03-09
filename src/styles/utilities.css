@@ -31,11 +31,17 @@
     box-shadow: 0px 3px  4px black;
 }
 
-.active{
-    color: red !important;
-    text-decoration: underline !important;
+.active {
+    color: rgb(230, 149, 0) !important;
+    /* font-weight: bold; */
+    text-decoration: none !important;
+    position: relative;
+    transition: color 0.3s ease-in-out;
 }
 
+.static-nav a:hover {
+    color: #000000ee;
+}
 
 .absolute {
     position: absolute;
