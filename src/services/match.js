@@ -120,7 +120,60 @@ const getMatch = async (credentials) => {
     }
   };
   
+  const getDataCreateMatch = async (credentials, leagueId) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${credentials}`, 
+      },
+    };
+    
+    try {
+      const response = await axios.get(`${baseUrl}createMatches/${leagueId}` , config);
+      return response;
+    } catch (error) {
+      console.error('Error fetching match:', error);
+    }
+  };
+  const createMatch = async (credentials, leagueId, matchData) => {
+    try {
+      console.log(matchData)
+      const config = {
+        headers: {
+          Authorization: `Bearer ${credentials}`,
+          "Content-Type": "application/json",
+        },
+      };
   
+      // Prepare data once and send it
+      const response = await axios.post(`${baseUrl}createMatches`, {
+        leagueId,
+        ...matchData, // Spread the matchData into the request payload
+      }, config);
   
+      return response.data;
+    } catch (error) {
+      console.error("Error creating match:", error);
+      throw error;
+    }
+  };
   
-export {getMatch, getMatchesByLeagueId,getMatchById,getMatchDetails,updateMatch, uploadHighlights}
+
+  const updateForfeited = async (credentials, matchId, forfeitedBy) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${credentials}`, 
+      },
+    };
+  
+    try {
+      console.log("Updating match forfeited status:", matchId, "Forfeited By:", forfeitedBy);
+  
+      const response = await axios.put(`${baseUrl}/${matchId}/forfeit`, { forfeitedBy }, config);
+      return response.data;
+    } catch (error) {
+      console.error("Error updating match forfeited status:", error);
+      throw error;
+    }
+  };
+  
+export {getMatch, getMatchesByLeagueId,getMatchById,getMatchDetails,updateMatch, uploadHighlights, getDataCreateMatch, createMatch, updateForfeited}

@@ -106,7 +106,6 @@ function HighlightUpload() {
       return;
     }
   
-    // Prepare FormData only once
     const formData = new FormData();
   
     highlights.forEach((highlight, index) => {
@@ -116,13 +115,11 @@ function HighlightUpload() {
       formData.append(`highlights[${index}][type]`, highlight.type);
     });
   
-    // Optional: Log the form data for debugging
     for (let pair of formData.entries()) {
       console.log(pair[0] + ": " + pair[1]);
     }
   
     try {
-      // Pass the formData to the upload function
       const response = await uploadHighlights(auth.accessToken, formData);
       console.log(response);
       
@@ -134,7 +131,7 @@ function HighlightUpload() {
       setError("Failed to upload highlights. Please try again.");
     }
   };
-  
+
   if (isLoading) {
     return <p>Loading match details...</p>;
   }
