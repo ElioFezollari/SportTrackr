@@ -76,7 +76,7 @@ function EmployeePopUp({
             setSelectedLeague={setEmployeeLeagues}
           />
           {error && <p>{error}</p>}
-          <button onClick={handleAddEmployee} disabled={loading}>
+          <button className="add-employee-button" onClick={handleAddEmployee} disabled={loading}>
             {loading ? "Adding..." : "Add"}
           </button>
         </div>
