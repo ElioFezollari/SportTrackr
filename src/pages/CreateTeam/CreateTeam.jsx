@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import {createTeam} from "../../services/team";
 import { getLeague } from "../../services/leagues";
 import defaultLeagueLogo from '../../assets/images/defaultLogo/default_league_logo.svg';
+import { useToast } from "../../context/ToastContext";
 
 function CreateTeam() {
 
@@ -21,8 +22,8 @@ function CreateTeam() {
     const { id } = useParams("id");
     const [league, setLeague] = useState(null);
     const { auth } = useAuth();
-    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const { addToast } = useToast();
 
     const colorOptions = [
         { value: 'red', label: 'Red' },
@@ -53,14 +54,8 @@ function CreateTeam() {
                 const res = await getLeague(auth.accessToken, id);
                 if (res.status === 200 || res.status === 201) {
                     setLeague(res.data.league);
-                    setError(null);
-                } else {
-                    console.error("Error fetching league:", res.status, res.data);
-                    setError("Error fetching league");
                 }
             } catch (e) {
-                console.error("Error fetching league:", e);
-                setError("There was an error fetching this league. Please try again later.");
             } finally {
                 setLoading(false);
             }
@@ -83,7 +78,7 @@ function CreateTeam() {
             if (file.type.startsWith('image/')) {
                 setTeamLogo(file);
             } else {
-                setError('Please select an image file.');
+                addToast("Only Image file are allowed for team logo", "failure")
             }
         } else {
           setTeamLogo(null)
@@ -93,13 +88,8 @@ function CreateTeam() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         
-        if(!teamLogo){
-            setError("Team Logo is required");
-            return;
-        }
-
         if (teamVisibility && !privateKey) {
-            console.log("Error: Private key is required for private teams.");
+           addToast("Private key is required for private teams.", "failure");
             return;
         }
         
@@ -115,7 +105,8 @@ function CreateTeam() {
         }
 
         formData.append("teamInfo", teamInfo);
-        formData.append("logo", teamLogo);
+        if(teamLogo)
+            formData.append("logo", teamLogo);
 
         try {
             console.log(formData.getAll("teamInfo"))
@@ -125,18 +116,15 @@ function CreateTeam() {
                 if (redirectUrl) {
                     window.location.href = redirectUrl;
                 } else {
-                    setError("Internal Server Error. Please try again")
+                    addToast("Internal Server Error. Please try again", "failure");
                 }
             } else if (response.status >= 400 && response.status < 500) {
-                setError("Error Creating Team: " + response.data?.message || response.statusText);
-                console.error("Error creating team:", response.status, response.data);
+                addToast(response.data?.message || response.statusText, "failure");
             } else {
-              setError("An unexpected error occurred. Please try again later.")
-              console.error("Error creating team:", response.status, response.data);
+              addToast("An unexpected error occurred. Please try again later", "failure")
             }
         } catch (error) {
-            console.error("Error creating team:", error);
-            setError("An unexpected error occurred. Please try again later.");
+            addToast("An unexpected error occurred. Please try again later", "failre");
         }
     };
     
@@ -150,7 +138,6 @@ function CreateTeam() {
                         <img src={league.logoUrl || defaultLeagueLogo} alt="league-logo" className="create-team-league-logo" />
                         <h2 className="create-team-league-name">{league.leagueName}</h2>
                     </div>
-            {error ? (<p className="error">{error}</p>) : (<></> )}
         <form className="create-team-form" onSubmit={handleSubmit}>
             <div className="create-team-row-1">
                 <div className="create-team-name-input">
