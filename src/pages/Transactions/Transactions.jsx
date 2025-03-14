@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/transactions.css';
 import { getLeagueOwnerTransactions } from '../../services/transaction';
+import { getDashboardUrl } from '../../services/onboarding';
 import useAuth from "../../hooks/useAuth";
+import { useToast } from "../../context/ToastContext";
 
 function Transactions() {
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const { auth } = useAuth();
+    const { addToast } = useToast();
 
     useEffect(() => {
         const fetchTransactions = async () => {
@@ -42,8 +45,22 @@ function Transactions() {
         return date.toLocaleDateString(undefined, options);
     };
 
+    const goToDashboard = async()=>{
+        try{
+            const res = await getDashboardUrl(auth.accessToken);
+            if (res.status == 200){
+                window.location.href = res.data.url;
+            }else{
+                addToast("Failed to Open Dashboard", "failure")
+            }
+        }catch(e){
+            addToast("Failed to Open Dashboard", "failure")
+        }
+    }
+
     return (
         <div className="transactions-container">
+            <button onClick={goToDashboard} className='dashboard-button'>Dashboard</button>
             <h1>Transactions</h1>
             {loading && <p>Loading transactions...</p>}
             {error && <p className="error">{error}</p>}

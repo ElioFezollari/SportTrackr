@@ -7,53 +7,134 @@
     background-color: #ffffff;
     padding: 20px;
     color: #BBBFCA;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 80px; 
+}
+
+.dashboard-button {
+    position: fixed;
+    top: 160px; 
+    right: 30px;
+    background-color: #31363F;
+    color: #ffffff;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 18px; 
+    cursor: pointer;
+    z-index: 1000;
+    max-width: 200px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .transactions-container h1 {
-    margin-bottom: 20px;
-    font-size: 5em;
+    margin-bottom: 30px;
+    font-size: 4rem; 
+    text-align: center;
+    width: 100%;
+    word-wrap: break-word;
+    padding: 0 15px;
+    box-sizing: border-box;
 }
 
 .transactions-cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px; 
+    width: 100%;
     max-width: 1200px;
-    align-self: center;
+    padding: 0 15px;
+    box-sizing: border-box;
 }
 
 .transaction-card {
     background-color: #31363F;
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
     box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.3);
-    min-width: 300px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .league-name {
     color: #BBBFCA;
-    margin-bottom: 10px;
-    font-size: 1.5em;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    word-wrap: break-word;
 }
 
 .transaction-details {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .transaction-details p {
-    margin-bottom: 5px;
-    font-size: 1em;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    word-wrap: break-word;
 }
 
 .error {
     color: red;
-    margin-top: 10px;
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+    font-size: 1.2rem;
 }
 
-@media (max-width: 600px) {
-    .transactions-cards-container {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .transactions-container h1 {
+        font-size: 3.5rem;
+    }
+    
+    .league-name {
+        font-size: 1.6rem;
+    }
+    
+    .transaction-details p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .transactions-container h1 {
+        font-size: 2.8rem;
+    }
+    
+    .dashboard-button {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+    
+    .transaction-card {
+        padding: 20px;
+    }
+    
+    .league-name {
+        font-size: 1.4rem;
+    }
+    
+    .transaction-details p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .transactions-container h1 {
+        font-size: 2.2rem;
+    }
+    
+    .dashboard-button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .league-name {
+        font-size: 1.2rem;
     }
 }

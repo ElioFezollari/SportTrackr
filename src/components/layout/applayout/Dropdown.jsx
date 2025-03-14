@@ -16,12 +16,12 @@ const Dropdown = ({ options, onSelect, label }) => {
   };
 
   return (
-    <div className="dropdown">
-      <div onClick={handleToggle} className="dropdown-toggle">
+    <div className="createteam-dropdown">
+      <div onClick={handleToggle} className="createteam-dropdown-toggle">
         {selectedOption ? selectedOption.label : label}
       </div>
       {isOpen && (
-        <ul className="dropdown-menu">
+        <ul className="createteam-dropdown-menu">
           {options.map((option) => (
             <li key={option.value} onClick={() => handleSelect(option)}>
               {option.label}

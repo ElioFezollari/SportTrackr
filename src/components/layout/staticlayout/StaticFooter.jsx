@@ -8,7 +8,7 @@ function StaticFooter() {
   return (
     <div className='static-footer'>
     <footer>
-      <div className='footer-install-banner'><h2>Try SportTrackr for free</h2><div><a className='btn b-gray'>Install Our App</a> <Link href="" className='btn b-gray'>Create an account</Link></div></div>
+      <div className='footer-install-banner'><h2>Try SportTrackr for free</h2><div><a className='btn b-gray'>Install Our App</a> <Link to="/register" className='btn b-gray'>Create an account</Link></div></div>
       <div className='static-footer-wrapper'>
       <div className='static-footer-image'><img src={logo} alt="SportTrackr Logo" /> <h2>SportTrackr</h2></div>
       <div className='static-footer-link'>            

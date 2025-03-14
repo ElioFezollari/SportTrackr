@@ -7,6 +7,10 @@ import { getLeague } from "../../services/leagues";
 import { getUser } from "../../services/user";
 import SkeletonTeam from "../../components/skeletons/SkeletonTeam";
 import '../../styles/myTeam.css'
+import { decodeJWT } from "../../utils/decode";
+import defaultProfileLogo from '../../assets/images/defaultLogo/default_profile_logo.svg';
+import defaultLeagueLogo from '../../assets/images/defaultLogo/default_league_logo.svg';
+import defaultTeamLogo from '../../assets/images/defaultLogo/deafult_team_logo.svg';
 
 function MyTeam() {
     const { auth } = useAuth();
@@ -17,16 +21,6 @@ function MyTeam() {
     const [league, setLeague] = useState(null);
     const [error, setError] = useState(null);
     const [teamOwner, setTeamOwner] = useState(null);
-    
-    function decodeJWT(token) {
-        try {
-            const payload = token.split(".")[1];
-            return JSON.parse(atob(payload));
-        } catch (error) {
-            console.error("Error decoding JWT:", error);
-            return null;
-        }
-    }
 
     useEffect(() => {
         const getMyTeam = async () => {
@@ -101,19 +95,19 @@ function MyTeam() {
             ) : team && league && teamOwner ? (
                 <div className="team-details">
                     <div className="league-header">
-                        <img src={league.logoUrl} alt={league.leagueName + " Logo"} className="league-logo" />
+                        <img src={league.logoUrl || defaultLeagueLogo} alt={league.leagueName + " Logo"} className="league-logo" />
                         <h2 className="league-name">{league.leagueName}</h2>
                     </div>
 
                     <div className="team-card">
                         <div className="team-image-container">
-                            <img src={team.signedUrl} alt={team.name + " Logo"} className="team-logo" />
+                            <img src={team.signedUrl || defaultTeamLogo} alt={team.name + " Logo"} className="team-logo" />
                         </div>
                         <div className="team-info">
                             <div className="first-row">
                             <h3 className="team-name">{team.name}</h3>
                             <div className="owner-overlay">
-                                <img src={teamOwner.pictureUrl} alt={teamOwner.firstName + " " + teamOwner.lastName + "'s picture"} className="owner-picture" />
+                                <img src={teamOwner.pictureUrl || defaultProfileLogo} alt={teamOwner.firstName + " " + teamOwner.lastName + "'s picture"} className="owner-picture" />
                                 <p className="owner-name">{teamOwner.firstName} {teamOwner.lastName}</p>
                             </div>
                             </div>

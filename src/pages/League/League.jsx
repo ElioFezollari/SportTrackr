@@ -10,6 +10,7 @@ import maxTeam from "../../assets/images/league/max-team.svg"
 import coin from "../../assets/images/league/coin.svg"
 import "../../styles/league.css";
 import SkeletonLeague from "../../components/skeletons/SkeletonLeague";
+import defaultLeagueLogo from '../../assets/images/defaultLogo/default_league_logo.svg'
 
 function League() {
   const { id } = useParams("id");
@@ -67,7 +68,7 @@ function League() {
                 <div className="league-content-wrapper">
                 <div className="league-information">
                   <img
-                    src={league.logoUrl}
+                    src={league.logoUrl || defaultLeagueLogo}
                     alt={`logo of ${league.leagueName}`}
                   />
 

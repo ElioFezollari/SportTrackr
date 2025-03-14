@@ -17,7 +17,7 @@
 .create-team-league-name {
   font-size: 80px;
   padding-left: 0.25em;
-  color: #BBBFCA;
+  color: #31363F;
 }
 
 .create-team-form {
@@ -160,8 +160,11 @@
 }
 
 .create-team-file-upload:hover {
-  border-color: #0080FF;
-  background-color: #3B4252;
+  background-color: #cfcfcf;
+}
+
+.create-team-file-upload:hover .create-team-file-text {
+color: #414141;
 }
 
 .create-team-file-icon {
@@ -171,10 +174,6 @@
   width: 50%;
 }
 
-.create-team-file-upload:hover .create-team-file-icon {
-  color: #3B4252;
-}
-
 .create-team-file-text {
   font-size: 20px;
   color: #BBBFCA;
@@ -182,8 +181,10 @@
   transition: color 0.3s;
 }
 
-.create-team-file-upload:hover .create-team-file-text {
-  color: #ffffff;
+
+.create-team-visibility-span{
+  padding-left: 10px;
+  color: #BBBFCA;
 }
 
 .create-team-file-input {

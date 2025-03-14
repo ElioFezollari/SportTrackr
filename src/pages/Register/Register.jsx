@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 import logo from "../../assets/images/Logo3.png"
 import womanKickingBall from "../../assets/images/register/woman-kicking.svg"
@@ -9,20 +9,29 @@ import timer from "../../assets/images/register/timer.svg"
 import "../../styles/register.css"
 import { register } from '../../services/auth'
 import useAuth from '../../hooks/useAuth'
+import { terms } from '../../utils/terms'
+
 function Register() {
   const {token} = useParams("token")
   const [firstName,setFirstName] = useState("")
   const [lastName,setLastName] = useState("")
   const [password,setPassword] = useState("")
   const [confirmPassword,setConfirmPassword] = useState("")
+  const [agreed, setAgreed] = useState(false)
+  const [termsModal, setTermsModal] = useState(false)
   const {auth,setAuth} = useAuth()
   const [error,setError] = useState()
   const navigate = useNavigate()
+
+  useEffect(()=>{
+  }, [termsModal])
+
   const handleRegister = async (e) => {
     e.preventDefault();
+    console.log(agreed)
     setError("");
     try {
-      const response = await register({ firstName,lastName,password,confirmPassword },token);
+      const response = await register({ firstName,lastName,password,confirmPassword, agreed },token);
       setAuth({accessToken:response.data.token,roles:response.data.roles})
       if (response.status >= 400 && response.status < 500) {
         setError(err.response.data.message);
@@ -60,12 +69,36 @@ function Register() {
               </div>
               <label htmlFor="password"><input placeholder='Enter your password' type="password" name="password" id="password" value={password} onChange={(e)=>setPassword(e.target.value)} /></label>
               <label htmlFor="confirmPassword"><input placeholder='Confirm your password' type="password" name="confirmPassword" id="confirmPassword" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} /></label>
-              <input type="submit" value="Sign Up" />
+              <label className="terms-label">
+                <input
+                  type="checkbox"
+                  checked={agreed}
+                  onChange={() => setAgreed(!agreed)}
+                  className="terms-checkbox"
+                />
+                <span className="custom-checkbox"></span>
+                <div>I accept the</div>
+                <button type="button" onClick={() => setTermsModal(!termsModal)} className="terms-con">
+                  Terms & Conditions
+                </button>
+              </label>
+              <input type="submit" value="Sign Up"/>
             </form>
             {error && <p className='error'>{error}</p>}
             <p>Already have an account? <Link to="../login">Login</Link></p>
-              </div>
+            </div>
         </div>
+        {termsModal && (
+          <div className="terms-con-modal">
+            <div className="terms-modal-content">
+              <h2>Terms & Conditions</h2>
+              <div className="terms-text">
+                {terms}
+              </div>
+              <button onClick={() => setTermsModal(false)} className="close-terms">Close</button>
+            </div>
+          </div>
+        )}
     </div>
   )
 }

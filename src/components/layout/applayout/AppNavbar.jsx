@@ -3,7 +3,7 @@ import '../../../styles/components/layouts/appNavbar.css';
 import logo from '../../../assets/images/Logo3.png';
 import profile from '../../../assets/images/appNavbar/profile.svg';
 import settings from '../../../assets/images/appNavbar/settings.svg';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Hamburger from './Hamburger';
 import SettingsDropdown from '../../SettingsDropdown';
 import UserProfileDropDown from '../../UserProfileDropDown';
@@ -12,7 +12,8 @@ function AppNavbar({ isActive, setIsActive }) {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [isProfileVisible, setIsProfileVisible] = useState(true);
   const [profileOpen, setProfileOpen] = useState(false);
-
+  const navigate = useNavigate();
+  
   return (
     <header className="app-header">
       <Hamburger isActive={isActive} setIsActive={setIsActive} />
@@ -22,25 +23,24 @@ function AppNavbar({ isActive, setIsActive }) {
       </div>
 
       <div className="app-nav-icons">
-        <Link>
+        <Link to='./profile'>
           <button
-            onClick={() => setProfileOpen((prev) => !prev)}
             className="profile-button"
           >
             <img className="profile-icon" src={profile} alt="profile icon" />
           </button>
         </Link>
-        <div className="settings-wrapper">
-          <button
-            onClick={() => setSettingsOpen((prev) => !prev)}
-            className="settings-button"
-          >
-            <img className="settings-icon" src={settings} alt="settings icon" />
-          </button>
+          <div className="settings-wrapper">
+            <button
+              onClick={() => setSettingsOpen((prev) => !prev)}
+              className="settings-button"
+            >
+              <img className="settings-icon" src={settings} alt="settings icon" />
+            </button>
 
-          {settingsOpen && <SettingsDropdown isProfileVisible={isProfileVisible} setIsProfileVisible={setIsProfileVisible}/>}
-          {profileOpen && <UserProfileDropDown/>}
-        </div>
+            {settingsOpen && <SettingsDropdown isProfileVisible={isProfileVisible} setIsProfileVisible={setIsProfileVisible}/>}
+            {profileOpen && <UserProfileDropDown/>}
+          </div>
       </div>
     </header>
   );
