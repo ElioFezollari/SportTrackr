@@ -1,10 +1,4 @@
 import React, { useEffect, useState } from "react";
-import bundesliga from "../../assets/temp/teamLogos/bundesliga.jpg";
-import premierleague from "../../assets/temp/teamLogos/premierleague.png";
-import mls from "../../assets/temp/teamLogos/mls.webp";
-import laliga from "../../assets/temp/teamLogos/laliga.webp";
-import ligue1 from "../../assets/temp/teamLogos/ligue1.png";
-import seriaa from "../../assets/temp/teamLogos/seriaa.png";
 import { Link } from "react-router";
 import { getLeagues } from "../../services/leagues";
 import useAuth from "../../hooks/useAuth";

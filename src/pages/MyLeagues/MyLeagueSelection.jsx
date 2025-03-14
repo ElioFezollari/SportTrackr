@@ -15,6 +15,9 @@ function MyLeagueSelection() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  
+
   return (
     <div>
       {isAdmin && (
