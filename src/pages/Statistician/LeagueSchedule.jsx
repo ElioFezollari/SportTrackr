@@ -1,65 +1,119 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { getLeagues } from "../../services/leagues";
+import { getMatchesByLeagueId } from "../../services/match";
+import useAuth from "../../hooks/useAuth";
 import "../../styles/leagueSchedule.css";
-
+import { useNavigate } from "react-router-dom"; 
 
 const LeagueSchedule = () => {
+  const { auth } = useAuth();
   const [selectedLeague, setSelectedLeague] = useState("");
+  const [leagues, setLeagues] = useState([]);
+  const [matches, setMatches] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); 
 
-  const matches = [
-    { team1: "Leverkusen", logo1: "🇩🇪", result: "3-1", team2: "Wolfsburg", logo2: "🇩🇪" },
-    { team1: "Stuttgart", logo1: "🇩🇪", result: "2-1", team2: "Skenderbeu", logo2: "🇦🇱" },
-    { team1: "Bayern", logo1: "🇩🇪", result: "4-0", team2: "Hoffenheim", logo2: "🇩🇪" },
-    { team1: "Leipzig", logo1: "🇩🇪", result: "TBD", team2: "Frankfurt", logo2: "🇩🇪" },
-    { team1: "Dortmund", logo1: "🇩🇪", result: "TBD", team2: "Leipzig", logo2: "🇩🇪" },
-    { team1: "Frankfurt", logo1: "🇩🇪", result: "TBD", team2: "Dortmund", logo2: "🇩🇪" },
-    { team1: "Hoffenheim", logo1: "🇩🇪", result: "TBD", team2: "Stuttgart", logo2: "🇩🇪" },
-    { team1: "Skenderbeu", logo1: "🇦🇱", result: "TBD", team2: "Bayern", logo2: "🇩🇪" },
-    { team1: "Wolfsburg", logo1: "🇩🇪", result: "TBD", team2: "Leverkusen", logo2: "🇩🇪" },
-  ];
+  const handleUpdateMatch = (matchId) => {
+    navigate(`../match-statiscian/${matchId}`);
+  };
+
+  useEffect(() => {
+    const fetchLeagues = async () => {
+      setLoading(true);
+      try {
+        const response = await getLeagues(auth.accessToken);
+        setLeagues(response.data.leagues);
+      } catch (error) {
+        console.error("Error fetching leagues:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLeagues();
+  }, [auth.accessToken]);
+
+  useEffect(() => {
+    if (!selectedLeague) return;
+
+    const fetchMatches = async () => {
+      setLoading(true);
+      try {
+        const response = await getMatchesByLeagueId(auth.accessToken, selectedLeague);
+        setMatches(response.data.matches);
+        console.log(response.data.matches)
+      } catch (error) {
+        console.error("Error fetching matches:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMatches();
+  }, [selectedLeague, auth.accessToken]);
 
   return (
-    <div className="league-container">
-      <h1 className="league-title">League Schedule</h1>
+    <div className="league-schedule-container">
+      <h1 className="league-schedule-title">League Schedule</h1>
 
-      <select
-        className="league-dropdown"
-        value={selectedLeague}
-        onChange={(e) => setSelectedLeague(e.target.value)}
-      >
-        <option value="">Pick a league</option>
-        <option value="bundesliga">Bundesliga</option>
-        <option value="laliga">La Liga</option>
-        <option value="premierleague">Premier League</option>
-      </select>
+      <div className="league-schedule-header">
+        <select
+          className="league-schedule-league-dropdown"
+          value={selectedLeague}
+          onChange={(e) => setSelectedLeague(e.target.value)}
+        >
+          <option value="">Pick a league</option>
+          {leagues.length > 0 ? (
+            leagues.map((league) => (
+              <option key={league.id} value={league.id}>
+                {league.leagueName}
+              </option>
+            ))
+          ) : (
+            <option value="">No leagues available</option>
+          )}
+        </select>
+      </div>
 
-      <button className="export-button">⚙ EXPORT</button>
-
-      <table className="schedule-table">
-        <thead>
-          <tr>
-            <th>Team</th>
-            <th>Team's Name</th>
-            <th>Result</th>
-            <th>Team 2</th>
-            <th>Team 2 Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matches.map((match, index) => (
-            <tr key={index}>
-              <td className="team-logo">{match.logo1}</td>
-              <td className="team-name">{match.team1}</td>
-              <td className="match-result">{match.result}</td>
-              <td className="team-logo">{match.logo2}</td>
-              <td className="team-name">{match.team2}</td>
-              <td>
-                <button className="update-button">Update Match</button>
-              </td>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <table className="league-schedule-table">
+          <thead>
+            <tr>
+              <th>Home Teame</th>
+              <th>Home Team Name</th>
+              <th>Result</th>
+              <th>Away Team </th>
+              <th>Away Team Name</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {matches.map((match, index) => (
+              <tr key={index}>
+                <td className="league-schedule-team-logo">
+                  <img src={match.logo1} alt={match.team1} width="50" />
+                </td>
+                <td className="league-schedule-team-name">{match.team1}</td>
+                <td className="league-schedule-match-result">{match.result}</td>
+                <td className="league-schedule-team-logo">
+                  <img src={match.logo2} alt={match.team2} width="50" />
+                </td>
+                <td className="league-schedule-team-name">{match.team2}</td>
+                <td>
+                 <button
+                    className="league-schedule-update-button"
+                    onClick={() => handleUpdateMatch(match.matchId)} 
+                  >
+                    Update Match
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
