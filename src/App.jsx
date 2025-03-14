@@ -33,6 +33,8 @@ import Transactions from "./pages/Transactions/Transactions";
 import Step1Confetti from "./pages/SuccessConfetti/leagueOwnerOnboardingStep1"
 import FailureOnboarding from './pages/FailurePages/FailureOnboarding'
 import UserProfile from "./pages/UserProfile/UserProfile";
+import MatchSchedule from './pages/Schedule/matchSchedule'
+import MatchStatiscian from './pages/Statistician/MatchStatiscian'
 
 function App() {
 const router = createBrowserRouter([
@@ -94,6 +96,7 @@ const router = createBrowserRouter([
         element: <FailureOnboarding/>
       },
       {
+        element:<RequireAuth allowedRoles={['user']}/>,
         children:[
           {
             path:"/app",
@@ -132,7 +135,7 @@ const router = createBrowserRouter([
                 element: <Dashboard/>
               },
               {
-                path: "match-upload",
+                path: "match-upload/:matchId/:team",
                 element:<MatchUpload/>
               },
               {
@@ -140,7 +143,7 @@ const router = createBrowserRouter([
                 element:<League/>
               },
               {
-                path:"hightlight-upload",
+                path:"highlight-upload/:matchId",
                 element:<HighlightUpload/>
               },
               {
@@ -159,6 +162,14 @@ const router = createBrowserRouter([
                 path:"transactions",
                 element: <Transactions/>
               },
+              {
+                path:"match-schedule/:leagueId",
+                element: <MatchSchedule/>
+              },
+              {
+                path:"match-statiscian/:matchId",
+                element: <MatchStatiscian/>
+              }
             ],
           }
         ]

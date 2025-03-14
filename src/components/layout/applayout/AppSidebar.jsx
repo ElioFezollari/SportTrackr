@@ -17,9 +17,10 @@ function AppSidebar({ isActive, setIsActive }) {
   const [dashboard, setDashboard] = useState(true);
   const [leagues, setLeagues] = useState(true);
   const [transactions, setTransactions] = useState(true);
-
   const isAdmin = auth.roles && auth.roles.includes("owner");
   const [ifPartOfTeam, setIfPartOfTeam] = useState(false);
+  const isStatistician = auth.roles && auth.roles.includes("statistician"); 
+
   useEffect(() => {
     const decodeToken = decodeJWT(auth.accessToken);
     setIfPartOfTeam(decodeToken?.teamId ? true : false);
@@ -75,6 +76,19 @@ function AppSidebar({ isActive, setIsActive }) {
                 Leagues
               </Link>
             </div>
+            {isStatistician && (
+              <div>
+                <Link to={"./league-schedule"}>
+                  {" "}
+                  <img
+                    className="sidebar-icon"
+                    src={soccerBall}
+                    alt="icon of soccer ball"
+                  />{" "}
+                  Matches
+                </Link>
+              </div>
+            )}
             {isAdmin && (
               <div>
                 <Link to={"./users"}>
