@@ -17,7 +17,7 @@ function CreateTeam() {
     const [secondaryColor, setSecondaryColor] = useState('');
     const [teamDescription, setTeamDescription] = useState('');
     const [teamLogo, setTeamLogo] = useState();
-    const [teamVisibility, setTeamVisibility] = useState(false)
+    const [teamVisibility, setTeamVisibility] = useState(true)
     const [privateKey, setPrivateKey] = useState('');
     const { id } = useParams("id");
     const [league, setLeague] = useState(null);
@@ -66,7 +66,7 @@ function CreateTeam() {
     
     const handleVisibilityChange = (value) => {
         setTeamVisibility(value);
-        if (value !== 'private') {
+        if (value === 'private') {
           setPrivateKey('');
         }
     };
@@ -87,7 +87,6 @@ function CreateTeam() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
         if (teamVisibility && !privateKey) {
            addToast("Private key is required for private teams.", "failure");
             return;
@@ -95,7 +94,7 @@ function CreateTeam() {
         
         let formData = new FormData();
 
-        let teamInfo = `{"name":"${teamName}","leagueId":${id},"homeColor":"${primaryColor.value}","awayColor":"${secondaryColor.value}","teamDescription":"${teamDescription}","teamVisibility":"${teamVisibility}"
+        let teamInfo = `{"name":"${teamName}","leagueId":${id},"homeColor":"${primaryColor.value}","awayColor":"${secondaryColor.value}","description":"${teamDescription}","teamVisibility":"${teamVisibility}"
         `
         
         if (teamVisibility){
@@ -109,7 +108,6 @@ function CreateTeam() {
             formData.append("logo", teamLogo);
 
         try {
-            console.log(formData.getAll("teamInfo"))
             const response = await createTeam(formData, auth.accessToken);
             if (response.status === 200 || response.status === 201) {
                 const redirectUrl = response.data.url;
@@ -185,8 +183,8 @@ function CreateTeam() {
                         type="radio"
                         name="visibility"
                         value="private"
-                        checked={teamVisibility === true}
-                        onChange={() => handleVisibilityChange(true)}
+                        checked={teamVisibility === false}
+                        onChange={() => handleVisibilityChange(false)}
                         className="radio-button-input"
                     />
                     <span className="create-team-visibility-span">Private</span>
@@ -196,16 +194,16 @@ function CreateTeam() {
                         type="radio"
                         name="visibility"
                         value="public"
-                        checked={teamVisibility === false}
-                        onChange={() => handleVisibilityChange(false)}
+                        checked={teamVisibility === true}
+                        onChange={() => handleVisibilityChange(true)}
                         className="radio-button-input"
                     />
                     <span className="create-team-visibility-span">Public</span>
                     </label>
-                    {teamVisibility && (
+                    {!teamVisibility && (
                     <>
                     <input
-                        type="text"
+                        type="password"
                         placeholder="Enter private key"
                         value={privateKey}
                         onChange={(e) => setPrivateKey(e.target.value)}

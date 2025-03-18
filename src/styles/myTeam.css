@@ -10,6 +10,8 @@
 }
 
 .team-details {
+    display: flex;
+    flex-direction: column;
     width: 90%;
     max-width: 960px;
     background-color: #343a40;
@@ -142,6 +144,74 @@
     color: #dc3545;
     text-align: center;
     margin-top: 20px;
+}
+
+.customise-team-button-container{
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    margin-top: 20px;
+}
+
+.delete-team-button{
+    color: white;
+    border-radius: 5px;
+    font-size: large;
+    background-color: #dc3545;
+    padding: 5px 10px;
+    margin-left: 15px;
+}
+
+.edit-team-button{
+    color: black;
+    border-radius: 5px;
+    font-size: large;
+    background-color: #BBBFCA;
+    padding: 5px 10px;
+}
+
+.delete-team-modal-button{
+    color: white;
+    border-radius: 5px;
+    font-size: large;
+    background-color: #dc3545;
+    padding: 5px 10px;
+    margin-right: 50px;
+}
+
+.edit-team-modal-button{
+    color: black;
+    border-radius: 5px;
+    font-size: large;
+    background-color: #BBBFCA;
+    padding: 5px 10px;
+}
+
+.edit-team-modal-row-4{
+    margin: 0 auto;
+    align-self: center;
+}
+
+.edit-modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.563);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+    overflow: hidden;
+}
+
+.edit-team-file-icon{
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {

@@ -11,7 +11,6 @@ function TeamsFilter({ selectedTeam, setSelectedTeam }) {
     const fetchTeams = async () => {
       const response = await getTeamsByLeagueOwner(auth.accessToken);
       if (response && response.data) {
-        console.log(response);
         setTeams(response.data.teams);
       }
     };

@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5001/v1/team/'
+const baseUrl = 'http://localhost:5000/v1/team/'
 
 const createTeam = async (formData, token)=> {
   const config = {
@@ -59,5 +59,33 @@ const getTeamsByLeagueOwner = async (credentials)=>{
   }
 };
 
-export { getTeamsByLeagueId,getTeamsByLeagueOwner,createTeam, getTeam, };
+const deleteTeam = async (credentials)=>{
+  const config = {
+    headers : {
+      Authorization : `Bearer ${credentials}`,
+    },
+  }
+  try{
+    const response = await axios.delete(baseUrl, config);
+    return response;
+  }catch(e){
+    return e;
+  }
+}
+
+const updateTeam = async (teamId, data, credentials)=>{
+  const config = {
+    headers : {
+      Authorization : `Bearer ${credentials}`,
+      "Content-Type": "multipart/form-data",
+    },
+  }
+  try{
+    const response = await axios.patch(baseUrl + teamId, data, config);
+    return response;
+  }catch(e){
+    return e;
+  }
+}
+export { getTeamsByLeagueId,getTeamsByLeagueOwner,createTeam, getTeam, deleteTeam, updateTeam};
 
