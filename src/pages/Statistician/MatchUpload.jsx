@@ -1,225 +1,209 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { getMatchDetails } from "../../services/match";
+import { updateMatch } from "../../services/match";
+
 import "../../styles/statistician.css";
-import mls from "../../assets/temp/teamLogos/mls.webp";
-import Bayern from "../../assets/temp/teamLogos/Bayern.png";
+import useAuth from "../../hooks/useAuth";
 
 const MatchUpload = () => {
-  const [activePlayer, setActivePlayer] = useState(null);
-  const [players, setPlayers] = useState([
+  const { matchId, team } = useParams();
+  const navigate = useNavigate();
+  const { auth } = useAuth();
 
-    //DUMB DB 
-    {
-      id: 1,
-      name: "Manuel Neuer (C)",
-      position: "Goalkeeper",
-      number: 8,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none", // cards for each player
-    },
-    {
-      id: 2,
-      name: "Dayot Upamecano",
-      position: "Defender",
-      number: 11,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 3,
-      name: "Eric Dier",
-      position: "Defender",
-      number: 69,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 4,
-      name: "Alphonso Davies",
-      position: "Defender",
-      number: 7,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 5,
-      name: "Aleksandar Pavlović",
-      position: "Midfielder",
-      number: 19,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 6,
-      name: "Leon Goretzka",
-      position: "Midfielder",
-      number: 62,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 7,
-      name: "Joshua Kimmich",
-      position: "Midfielder",
-      number: 81,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 8,
-      name: "Jamal Musiala",
-      position: "Forward",
-      number: 14,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-    {
-      id: 9,
-      name: "Kingsley Coman",
-      position: "Forward",
-      number: 61,
-      stats: { goals: 0, attempts: 0, assists: 0, saves: 0, interceptions: 0 },
-      cards: "none",
-    },
-  ]);
+  const [match, setMatch] = useState(null);
+  const [players, setPlayers] = useState([]);
+  const [activePlayer, setActivePlayer] = useState(null);
+  const [updatedTeams, setUpdatedTeams] = useState({ home: false, away: false });
+  const [homeTeam, setHomeTeam] = useState({ id: null, players: [] });
+  const [awayTeam, setAwayTeam] = useState({ id: null, players: [] });
+  
+  useEffect(() => {
+    const fetchMatch = async () => {
+      try {
+        console.log("Fetching match data for matchId:", matchId);
+        const response = await getMatchDetails(auth.accessToken, matchId);
+        setMatch(response.data);
+        console.log("Match data:", response.data);
+
+        //  players based on the selected team
+        if (team === "home") {
+          setPlayers(response.data.homeTeam.players || []);
+        } else {
+          setPlayers(response.data.awayTeam.players || []);
+        }
+
+        setUpdatedTeams((prev) => ({
+          ...prev,
+          [team === "home" ? "away" : "home"]: true,
+        }));      } 
+        catch (error) {
+        console.error("Error fetching match:", error);
+      }
+    };
+
+    fetchMatch();
+  }, [matchId, team, auth.accessToken]);
 
   const togglePlayer = (id) => {
     setActivePlayer(activePlayer === id ? null : id);
   };
-//Change stat func
+
+
   const updateStat = (playerId, stat, delta) => {
-    setPlayers((prev) =>
-      prev.map((player) =>
-        player.id === playerId
+    setPlayers((prevPlayers) => {
+      const updatedPlayers = prevPlayers.map((player) =>
+        player.user_id === playerId
           ? {
               ...player,
               stats: {
                 ...player.stats,
-                [stat]: Math.max(0, player.stats[stat] + delta), 
+                [stat]: Math.max(0, (Number(player.stats?.[stat]) || 0) + delta),
               },
             }
           : player
-      )
-    );
+      );
+  
+      if (team === "home") {
+        // Save current team stats (home)
+        setHomeTeam({ id: match.homeTeam.id, players: match.homeTeam.players });
+    
+        // Save the other team stats (away)
+        setAwayTeam({ id: match.awayTeam.id, players: match.awayTeam.players });
+      } else {
+        // Save current team stats (away)
+        setAwayTeam({ id: match.awayTeam.id, players: match.awayTeam.players });
+    
+        // Save the other team stats (home)
+        setHomeTeam({ id: match.homeTeam.id, players: match.homeTeam.players });
+      }
+  
+      return updatedPlayers;
+    });
   };
-//liittoo function to change card value
-  const updateCard = (playerId, cardValue) => {
-    setPlayers((prev) =>
-      prev.map((player) =>
-        player.id === playerId
-          ? { ...player, cards: cardValue } // Update card value
-          : player
-      )
-    );
+  
+  const handleNextTeam = () => {
+    setUpdatedTeams((prev) => ({ ...prev, [team]: true }));
+  
+    const nextTeam = team === "home" ? "away" : "home";
+    if (team === "home") {
+      // Save current team stats (home)
+      setHomeTeam({ id: match.homeTeam.id, players: match.homeTeam.players });
+  
+      // Save the other team stats (away)
+      setAwayTeam({ id: match.awayTeam.id, players: match.awayTeam.players });
+    } else {
+      // Save current team stats (away)
+      setAwayTeam({ id: match.awayTeam.id, players: match.awayTeam.players });
+  
+      // Save the other team stats (home)
+      setHomeTeam({ id: match.homeTeam.id, players: match.homeTeam.players });
+    }
+  
+  
+    navigate(`/app/match-upload/${matchId}/${nextTeam}`);
   };
+  
+  const handleUpload = async () => {
+    try {
+      const finalHomeTeam = team === "home" ? { id: match.homeTeam.id, players } : homeTeam;
+      const finalAwayTeam = team === "away" ? { id: match.awayTeam.id, players } : awayTeam;
+  
+      console.log("Uploading final stats:", { finalHomeTeam, finalAwayTeam });
+  
+      const response = await updateMatch(auth.accessToken, matchId, finalHomeTeam, finalAwayTeam);
+  
+      if (response) {
+        console.log("Match stats uploaded successfully!");
+        navigate(`/app/match-statiscian/${matchId}`);
+      } else {
+        console.error("Error uploading match stats");
+      }
+    } catch (error) {
+      console.error("Error uploading match stats:", error);
+    }
+  };
+  
+  
+  if (!match) return <p>Loading match data...</p>;
 
   return (
     <div className="stats-container">
       <header className="match-upload-header">
-        <h1 className>
-          Match #50 Player Stats Upload -{" "}
-          <img src={Bayern} alt="Bayern Munchen" className="team-logo-match"/> Bayern Munchen vs{" "} 
-          <img src={mls} alt="Skenderbeu" className="team-logo-match" /> Skenderbeu
+        <h1>
+          Match #{matchId} Player Stats Upload -{" "}
+          <img src={match?.homeTeam?.logo} alt={match?.homeTeam?.name} className="team-logo-match" /> {match?.homeTeam?.name} vs{" "}
+          <img src={match?.awayTeam?.logo} alt={match?.awayTeam?.name} className="team-logo-match" /> {match?.awayTeam?.name}
         </h1>
       </header>
-      <div className="team-container">
-        <div className="team-header">
-          <img
-            // Placeholder for now
-            src={Bayern}
-            alt="Bayern Munchen Logo"
-            className="team-logo-match"
-          />
-          <h2>Bayern Munchen</h2>
-        </div>
+
+      <div className="matchUpload-team-container">
+        <h1>{team === "home" ? match?.homeTeam?.name : match?.awayTeam?.name}</h1>
+
         <table className="stats-table">
           <thead>
             <tr>
               <th>Name</th>
-              <th>Position this game</th>
+              <th>Position</th>
               <th>Number</th>
               <th>More info</th>
             </tr>
           </thead>
           <tbody>
-            {players.map((player) => (
-              <React.Fragment key={player.id}>
-                <tr
-                  className="player-row"
-                  onClick={() => togglePlayer(player.id)}
-                >
-                  <td>{player.name}</td>
-                  <td>{player.position}</td>
-                  <td>{player.number}</td>
-                  <td className="more-info">
-                    <span className={`arrow ${ activePlayer === player.id ? "rotated" : ""}`}>
-                    &gt;
-                   </span>
+          {players.map((player) => (
+            <React.Fragment key={player.user_id}>
+              <tr className="player-row" onClick={() => togglePlayer(player.user_id)}>
+                <td>{player.user_name}</td>
+                <td>{player.position_played}</td>
+                <td>{player.number}</td>
+                <td className="more-info">
+                  <span className={`arrow ${activePlayer === player.user_id ? "rotated" : ""}`}>&gt;</span>
+                </td>
+              </tr>
+
+              {activePlayer === player.user_id && (
+                <tr className="player-details">
+                  <td colSpan="4">
+                    <div className="stats">
+                      {[
+                        { name: "goals", label: "Goals" },
+                        { name: "shots", label: "Shots" },
+                        { name: "assists", label: "Assists" },
+                        { name: "saves", label: "Saves" },
+                        { name: "interceptions", label: "Interceptions" },
+                        { name: "yellow_card", label: "Yellow Cards" },
+                        { name: "red_card", label: "Red Cards" },
+                      ].map((stat) => (
+                        <div key={stat.name} className="stat-box">
+                          <label>{stat.label}</label>
+                          <div className="counter">
+                            <button onClick={() => updateStat(player.user_id, stat.name, -1)}>-</button>
+                            <span>{player.stats?.[stat.name] || 0}</span>
+                            <button onClick={() => updateStat(player.user_id, stat.name, 1)}>+</button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </td>
                 </tr>
-                {activePlayer === player.id && (
-                  <tr className="player-details">
-                    <td colSpan="4">
-                      <div className="stats">
-                        {[
-                          "goals",
-                          "attempts",
-                          "assists",
-                          "saves",
-                          "interceptions",
-                        ].map((stat) => (
-                          <div key={stat} className="stat-box">
-                            <label>
-                              {stat.charAt(0).toUpperCase() + stat.slice(1)}
-                            </label>
-                            <div className="counter">
-                              <button
-                                onClick={() =>
-                                  updateStat(player.id, stat, -1)
-                                }
-                              >
-                                -
-                              </button>
-                              <span>{player.stats[stat]}</span>
-                              <button
-                                onClick={() =>
-                                  updateStat(player.id, stat, 1)
-                                }
-                              >
-                                +
-                              </button>
-                            </div>
-                          </div>
-                        ))}
-                        <div className="stat-box">
-                          <label>Cards</label>
-                          <select
-                            className="cards-select"
-                            value={player.cards}
-                            onChange={(e) =>
-                              updateCard(player.id, e.target.value)
-                            }
-                          >
-                            <option value="none">None</option>
-                            <option value="yellow">Yellow</option>
-                            <option value="red">Red</option>
-                          </select>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </React.Fragment>
-            ))}
-          </tbody>
+              )}
+            </React.Fragment>
+          ))}
+        </tbody>
+
         </table>
 
-        {/* THIS NEED TO BE ADJUST WHEN IMPLEMENT DB */}
-        <div className="page-container">
-          <button className="upload-button">
-            <img src={Bayern} alt="Logo" className="upload-logo-button" />
-            &nbsp;Upload for Skenderbeu
+        {/* Show the Next Button only once for the first team */}
+        {(!updatedTeams.home && team === "home") || (!updatedTeams.away && team === "away" && updatedTeams.home) ? (
+          <button className="upload-button" onClick={handleNextTeam}>
+            Next Team ({team === "home" ? match?.awayTeam?.name : match?.homeTeam?.name})
           </button>
-        </div>
+        ) : updatedTeams.home && updatedTeams.away ? (
+          <button className="upload-button" onClick={handleUpload}>
+            Upload Stats
+          </button>
+        ) : null}
+
       </div>
     </div>
   );
