@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5001/v1/team/'
+const baseUrl = 'http://localhost:5000/v1/team/'
 
 const createTeam = async (formData, token)=> {
   const config = {

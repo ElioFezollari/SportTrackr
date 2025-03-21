@@ -14,8 +14,6 @@ const getUserProfile = async (token) => {
     return e;
   }
 }
-=======
-const baseUrl = 'http://localhost:5001/v1/user'
 
 const getUser = async (id, token)=>{
   const config = {
