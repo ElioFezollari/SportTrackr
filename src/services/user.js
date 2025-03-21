@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5000/v1/user/'
+const baseUrl = 'http://localhost:5001/v1/user/'
 
 const getUserProfile = async (token) => {
   const config = {
@@ -14,8 +14,6 @@ const getUserProfile = async (token) => {
     return e;
   }
 }
-=======
-const baseUrl = 'http://localhost:5001/v1/user'
 
 const getUser = async (id, token)=>{
   const config = {

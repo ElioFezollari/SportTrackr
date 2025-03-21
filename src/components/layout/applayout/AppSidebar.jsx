@@ -19,11 +19,11 @@ function AppSidebar({ isActive, setIsActive }) {
   const [transactions, setTransactions] = useState(true);
   const isAdmin = auth.roles && auth.roles.includes("owner");
   const [ifPartOfTeam, setIfPartOfTeam] = useState(false);
-  const isStatistician = auth.roles && auth.roles.includes("statistician"); 
+  const [isStatistician, setStatistician] = useState(false); 
 
   useEffect(() => {
-
     const decodeToken = decodeJWT(auth.accessToken);
+    console.log(decodeToken.roles.includes("statistician"));
     setIfPartOfTeam(decodeToken?.teamId ? true : false);
   }, [auth.roles]);
   return (

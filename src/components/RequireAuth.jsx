@@ -5,7 +5,7 @@ const RequireAuth = ({ allowedRoles }) => {
     const { auth } = useAuth();
     const location = useLocation();
     const hasAccess = auth?.roles?.some(role => allowedRoles?.includes(role));
-    console.log(auth)
+
     if (!auth?.accessToken) {
         return hasAccess ? <Outlet /> : <Navigate to='/' state={{ from: location }} replace />;
     }
