@@ -3,9 +3,16 @@
     margin: 0 auto;
     text-align: end;
     margin-top: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+
 }
 
-
+.league-main-btn{
+    margin-left: 10px;
+    margin-right: 10px;
+}
 .league-nav-history{
     width: 100%;
     display: flex;

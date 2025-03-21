@@ -19,7 +19,7 @@ function AppSidebar({ isActive, setIsActive }) {
   const isStatistician = auth.roles && auth.roles.includes("statistician"); 
 
   useEffect(() => {
-
+    console.log(auth.accessToken);
   }, [auth.roles]);
   return (
     <div

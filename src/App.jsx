@@ -159,7 +159,7 @@ const router = createBrowserRouter([
                 element: <Transactions/>
               },
               {
-                path:"match-schedule/:leagueId",
+                path:"leagues/:id/match-schedule",
                 element: <MatchSchedule/>
               },
               {

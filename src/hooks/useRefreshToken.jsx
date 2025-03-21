@@ -5,6 +5,7 @@ const useRefreshToken = () => {
   const { auth, setAuth } = useAuth();
   const refresh = async () => {
     const response = await refreshToken();
+    console.log(response.roles);
     setAuth(prev => {
       return {
         ...prev,
