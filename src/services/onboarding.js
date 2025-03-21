@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5001/v1/connect'
+const baseUrl = 'http://localhost:5000/v1/connect/'
 
 const getOnboardingUrl = async (token) => {
     try {
@@ -15,4 +15,18 @@ const getOnboardingUrl = async (token) => {
     }
 }
 
-export { getOnboardingUrl }
+const getDashboardUrl = async (token) => {
+    try {
+        const response = await axios.get(baseUrl + "dashboard", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            withCredentials: true 
+        });
+        return response;
+    } catch (e) {
+        console.error("Error fetching URL:", e);
+    }
+}
+
+export { getOnboardingUrl, getDashboardUrl }

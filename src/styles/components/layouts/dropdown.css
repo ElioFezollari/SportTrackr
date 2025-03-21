@@ -1,10 +1,10 @@
-.dropdown {
+.createteam-dropdown {
   position: relative;
   display: inline-block;
   width: 100%;
 }
 
-.dropdown-toggle {
+.createteam-dropdown-toggle {
   padding: 11px 16px;
   background-color: #fff;
   border: none;
@@ -20,12 +20,12 @@
   transition: background-color 0.3s ease;
 }
 
-.dropdown-toggle:hover {
-  background-color: #3B4252;
-  color: #fff;
+.createteam-dropdown-toggle:hover {
+  background-color: #cfcfcf;
+  color: #414141;
 }
 
-.dropdown-menu {
+.createteam-dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -41,35 +41,41 @@
   z-index: 1000;
 }
 
-.dropdown-menu li {
+.createteam-dropdown-menu li {
   padding: 10px;
   cursor: pointer;
   color: black;
   font-size: 16px;
 }
 
-.dropdown-menu li:hover {
-  background-color: #f1f1f1;
+.createteam-dropdown-menu li:hover {
+  background-color: #cfcfcf;
+}
+
+.create-team-submit-button:hover{
+  background-color: #e4e4e4;
+  color: #080808;
+  box-shadow: 0 0 10px #e4e4e4;
 }
 
 @media (max-width: 768px) {
-  .dropdown-toggle {
+  .createteam-dropdown-toggle {
     font-size: 20px;
     padding: 11px 16px;
   }
   
-  .dropdown-menu {
+  .createteam-dropdown-menu {
     max-height: 180px;
   }
 }
 
 @media (max-width: 480px) {
-  .dropdown-toggle {
+  .createteam-dropdown-toggle {
     font-size: 14px;
     padding: 10px;
   }
   
-  .dropdown-menu {
+  .createteam-dropdown-menu {
     max-height: 150px;
   }
 }

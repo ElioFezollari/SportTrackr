@@ -4,6 +4,7 @@ import file_upload from '../../assets/images/createTeam/file_upload.svg';
 import { createLeague } from '../../services/leagues';
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from 'react-router-dom';
+import { useToast } from "../../context/ToastContext";
 
 
 function CreateLeague() {
@@ -15,9 +16,9 @@ function CreateLeague() {
     const [endTime, setEndTime] = useState('');
     const [gameAmount, setGameAmount] = useState('');
     const [leagueLogo, setLeagueLogo] = useState(null);
-    const [error, setError] = useState(null);
     const { auth } = useAuth();
     const navigate = useNavigate();
+    const { addToast } = useToast();
 
     const handleLogoChange = (e) => {
         const file = e.target.files[0];
@@ -26,7 +27,7 @@ function CreateLeague() {
             if (file.type.startsWith('image/')) {
                 setLeagueLogo(file);
             } else {
-                setError('Please select an image file.');
+                addToast("Only Image file are allowed for team logo", "failure");
             }
         } else {
             setLeagueLogo(null);
@@ -35,10 +36,9 @@ function CreateLeague() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(null);
 
         if (!leagueName || !price || !maxTeamSize || !teamStarterSize || !startTime || !endTime || !gameAmount) {
-            setError("All fields except League Logo are required.");
+            addToast("All fields except League Logo are required", "failure");
             return;
         }
 
@@ -61,19 +61,17 @@ function CreateLeague() {
             if (response.status === 200 || response.status === 201) {
                 navigate('/app/leagues');
             } else if (response.status >= 400 && response.status < 500) {
-                setError("Error Creating League: " + response.data?.message || response.statusText);
+                addToast(response.data?.message || response.statusText, "failure");
             } else {
-                setError("An unexpected error occurred. Please try again later.")
+                addToast("An unexpected error occurred. Please try again later", "failure")
             }
         } catch (error) {
-            setError("An unexpected error occurred. Please try again later.");
+            addToast("An unexpected error occurred. Please try again later", "failure");
         }
     };
 
     return (
-        <div className="create-league-container">
-            
-            {error && <p className="error">{error}</p>}
+        <div className="create-league-container">            
             <form className="create-league-form" onSubmit={handleSubmit}>
                 <div className='create-league-heading'>
                     Create League

@@ -53,17 +53,17 @@ function ForgotPasswordEmail() {
     <div className='email-verification-wrapper'>
       <div className='email-verification'>
         <div className='verification-form'>
-          <img src={logo} alt="logo of SportTrackr" />
-          <h1>Verify Your Email</h1>
+          <img src={logo} alt="logo of SportTrackr"/>
+          <h1>Forgot Password</h1>
           <form onSubmit={handleSubmit} className="email-form">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder="Get Forgot Password Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <button type="submit">Get Verification Email</button>
+            <button type="submit">Send</button>
             <p >Go <Link to="../login">Back</Link></p>
           </form>
           {error && <p className="error">{error}</p>}
