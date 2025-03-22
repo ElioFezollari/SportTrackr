@@ -23,7 +23,11 @@ function AppSidebar({ isActive, setIsActive }) {
 
   useEffect(() => {
     const decodeToken = decodeJWT(auth.accessToken);
-    console.log(decodeToken.roles.includes("statistician"));
+    console.log(decodeToken?.roles)
+    if(decodeToken?.roles.includes("statistician")){
+      console.log("Here")
+      setStatistician(true)
+    }
     setIfPartOfTeam(decodeToken?.teamId ? true : false);
   }, [auth.roles]);
   return (
