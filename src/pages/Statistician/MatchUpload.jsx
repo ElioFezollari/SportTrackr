@@ -87,17 +87,9 @@ const MatchUpload = () => {
   
     const nextTeam = team === "home" ? "away" : "home";
     if (team === "home") {
-      // Save current team stats (home)
-      setHomeTeam({ id: match.homeTeam.id, players: match.homeTeam.players });
-  
-      // Save the other team stats (away)
-      setAwayTeam({ id: match.awayTeam.id, players: match.awayTeam.players });
+      setHomeTeam({ id: match.homeTeam.id, players });
     } else {
-      // Save current team stats (away)
-      setAwayTeam({ id: match.awayTeam.id, players: match.awayTeam.players });
-  
-      // Save the other team stats (home)
-      setHomeTeam({ id: match.homeTeam.id, players: match.homeTeam.players });
+      setAwayTeam({ id: match.awayTeam.id, players });
     }
   
   
@@ -193,7 +185,6 @@ const MatchUpload = () => {
 
         </table>
 
-        {/* Show the Next Button only once for the first team */}
         {(!updatedTeams.home && team === "home") || (!updatedTeams.away && team === "away" && updatedTeams.home) ? (
           <button className="upload-button" onClick={handleNextTeam}>
             Next Team ({team === "home" ? match?.awayTeam?.name : match?.homeTeam?.name})

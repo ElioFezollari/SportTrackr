@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { getLeagues } from "../../services/leagues";
+import { getLeaguesbyStatistician } from "../../services/leagues";
 import { getMatchesByLeagueId, deleteMatch} from "../../services/match";
 import useAuth from "../../hooks/useAuth";
 import "../../styles/leagueSchedule.css";
 import { useNavigate } from "react-router-dom"; 
+import { decodeJWT } from "../../utils/decode";
 
 const LeagueSchedule = () => {
   const { auth } = useAuth();
@@ -16,7 +17,9 @@ const LeagueSchedule = () => {
 
   const [deleteLoading, setDeleteLoading] = useState(false); 
   const [modal, setModal] = useState({ open: false, matchId: null });
+  const [userId, setUserId] = useState(""); 
 
+ 
   const openDeleteModal = (matchId) => {
     setModal({ open: true, matchId });
   };
@@ -49,20 +52,31 @@ const LeagueSchedule = () => {
   
 
   useEffect(() => {
+    const decodeToken = decodeJWT(auth.accessToken);
+    setUserId(decodeToken?.id);
+  }, [auth.accessToken]); // Runs when accessToken changes
+  
+  useEffect(() => {
+    console.log(userId)
+    if (!userId) return; // Prevent unnecessary fetches
+  
     const fetchLeagues = async () => {
       setLoading(true);
       try {
-        const response = await getLeagues(auth.accessToken);
-        setLeagues(response.data.leagues);
+        const response = await getLeaguesbyStatistician(auth.accessToken, userId);
+
+        setLeagues(response);
+        // console.log(response)
       } catch (error) {
         console.error("Error fetching leagues:", error);
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchLeagues();
-  }, [auth.accessToken]);
+  }, [userId]); // Runs when userId is set
+  
 
   useEffect(() => {
     if (!selectedLeague) return;
@@ -72,7 +86,7 @@ const LeagueSchedule = () => {
       try {
         const response = await getMatchesByLeagueId(auth.accessToken, selectedLeague);
         setMatches(response.data.matches);
-        console.log(response.data.matches)
+        // console.log(response.data.matches)
       } catch (error) {
         console.error("Error fetching matches:", error);
       } finally {
@@ -97,7 +111,7 @@ const LeagueSchedule = () => {
           {leagues.length > 0 ? (
             leagues.map((league) => (
               <option key={league.id} value={league.id}>
-                {league.leagueName}
+                {league.name}
               </option>
             ))
           ) : (

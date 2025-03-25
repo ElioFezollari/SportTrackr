@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { getDataCreateMatch, createMatch } from "../../services/match"; // Import API calls
 import useAuth from "../../hooks/useAuth";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MatchSchedule = () => {
   const dateInputRef = useRef(null);
@@ -12,6 +13,7 @@ const MatchSchedule = () => {
   const [statisticians, setStatisticians] = useState([]);
   const [league, setLeague] = useState();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   // Form selections
   const [selectedHomeTeam, setSelectedHomeTeam] = useState("");
@@ -32,6 +34,7 @@ const MatchSchedule = () => {
         setReferees(response?.data?.employees || []);
         setStatisticians(response?.data?.employees || []);
         setLeague(response?.data?.league?.[0]?.league_name || "Unknown League");
+        
       } catch (error) {
         console.error("Error fetching match data:", error);
       } finally {
@@ -71,6 +74,8 @@ const MatchSchedule = () => {
       // Call createMatch and pass matchData along with leagueId
       const response = await createMatch(auth.accessToken, id, matchData);
       console.log("Match scheduled successfully:", response);
+      navigate(-1);
+
     } catch (error) {
       console.error("Error scheduling match:", error);
     }
