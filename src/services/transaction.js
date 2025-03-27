@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:5001/v1/transaction'
+const baseUrl = 'http://localhost:5000/v1/transaction'
 
 const getLeagueOwnerTransactions = async (token)=>{
     const config = {
