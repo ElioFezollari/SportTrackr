@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { getDataCreateMatch, createMatch } from "../../services/match"; // Import API calls
 import useAuth from "../../hooks/useAuth";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MatchSchedule = () => {
   const dateInputRef = useRef(null);
@@ -12,6 +13,7 @@ const MatchSchedule = () => {
   const [statisticians, setStatisticians] = useState([]);
   const [league, setLeague] = useState();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   // Form selections
   const [selectedHomeTeam, setSelectedHomeTeam] = useState("");
@@ -20,17 +22,19 @@ const MatchSchedule = () => {
   const [selectedStatistician, setSelectedStatistician] = useState("");
 
   const { auth } = useAuth();
-  const { leagueId } = useParams(); 
+  const { id } = useParams(); 
+  console.log(id)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getDataCreateMatch(auth.accessToken, leagueId);
+        const response = await getDataCreateMatch(auth.accessToken, id);
         
         setTeams(response?.data?.teams || []);
         setReferees(response?.data?.employees || []);
         setStatisticians(response?.data?.employees || []);
         setLeague(response?.data?.league?.[0]?.league_name || "Unknown League");
+        
       } catch (error) {
         console.error("Error fetching match data:", error);
       } finally {
@@ -38,10 +42,10 @@ const MatchSchedule = () => {
       }
     };
 
-    if (leagueId && auth.accessToken) {
+    if (id && auth.accessToken) {
       fetchData();
     }
-  }, [leagueId, auth.accessToken]);
+  }, [id, auth.accessToken]);
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -68,8 +72,10 @@ const MatchSchedule = () => {
   
     try {
       // Call createMatch and pass matchData along with leagueId
-      const response = await createMatch(auth.accessToken, leagueId, matchData);
+      const response = await createMatch(auth.accessToken, id, matchData);
       console.log("Match scheduled successfully:", response);
+      navigate(-1);
+
     } catch (error) {
       console.error("Error scheduling match:", error);
     }
@@ -112,7 +118,7 @@ const MatchSchedule = () => {
       </div>
 
       <div className="match-details">
-        <select className="dropdown" value={selectedReferee} onChange={(e) => setSelectedReferee(e.target.value)}>
+        <select className="match-details-dropdown" value={selectedReferee} onChange={(e) => setSelectedReferee(e.target.value)}>
           <option value="">Assign Referee</option>
           {referees.map((referee) => (
             <option key={referee.emp_id} value={referee.emp_id}>
@@ -121,7 +127,7 @@ const MatchSchedule = () => {
           ))}
         </select>
 
-        <select className="dropdown" value={selectedStatistician} onChange={(e) => setSelectedStatistician(e.target.value)}>
+        <select className="match-details-dropdown" value={selectedStatistician} onChange={(e) => setSelectedStatistician(e.target.value)}>
           <option value="">Assign Statistician</option>
           {statisticians.map((statistician) => (
             <option key={statistician.emp_id} value={statistician.emp_id}>
@@ -138,7 +144,7 @@ const MatchSchedule = () => {
           onChange={handleDateChange}
         />
 
-        <button className="date-time-btn" onClick={handleDateClick}>
+        <button className="match-details-date-time-btn" onClick={handleDateClick}>
           {selectedDate ? selectedDate.replace("T", " ") : "Date & Time 📅"}
         </button>
       </div>

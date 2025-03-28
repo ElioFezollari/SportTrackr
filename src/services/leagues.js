@@ -61,4 +61,17 @@ const createLeague = async (credentials, formData) => {
 
 }
 
-export {getLeagues,getLeague,getLeagueList, createLeague}
+const getLeaguesbyStatistician = async (credentials, userId) => {
+  const config = {
+    headers : {
+      Authorization : `Bearer ${credentials}`,
+      "Content-Type": "application/json",
+    }
+  }
+
+  const response = await axios.get(`${baseUrl}leagues-by-statistician/${userId}`, config);
+  return response.data;
+
+}
+
+export {getLeagues,getLeague,getLeagueList, createLeague, getLeaguesbyStatistician}

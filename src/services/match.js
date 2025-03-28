@@ -175,5 +175,21 @@ const getMatch = async (credentials) => {
       throw error;
     }
   };
+
+
+  const deleteMatch = async (credentials, matchId) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${credentials}`, 
+      },
+    };
+    
+    try {
+      const response = await axios.delete(`${baseUrl}${matchId}` , config);
+      return response;
+    } catch (error) {
+      console.error('Error delete match:', error);
+    }
+  };
   
-export {getMatch, getMatchesByLeagueId,getMatchById,getMatchDetails,updateMatch, uploadHighlights, getDataCreateMatch, createMatch, updateForfeited}
+export {getMatch, getMatchesByLeagueId,getMatchById,getMatchDetails,updateMatch, uploadHighlights, getDataCreateMatch, createMatch, updateForfeited, deleteMatch}
