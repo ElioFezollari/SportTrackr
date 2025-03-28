@@ -15,8 +15,6 @@ function Users() {
   const [users,setUsers] = useState([])
 
   useEffect(() => {
-    console.log(auth.accessToken)
-
     const fetchUsers = async () => {
       try {
         const userData = await getFilteredUsers(
@@ -27,7 +25,6 @@ function Users() {
         );
 
         setUsers(userData.data);
-        console.log(userData.data)
       } catch (error) {
         console.error("Error fetching teams:", error);
       }

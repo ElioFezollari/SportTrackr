@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import '../../../styles/components/layouts/dropdown.css'
+import React, { useState } from "react";
+import "../../../styles/components/layouts/dropdown.css";
 
-const Dropdown = ({ options, onSelect, label }) => {
+const Dropdown = ({ options, onSelect, label, defaultValue }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(defaultValue || null);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -12,7 +12,7 @@ const Dropdown = ({ options, onSelect, label }) => {
   const handleSelect = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
-    onSelect(option);
+    onSelect(option); 
   };
 
   return (
