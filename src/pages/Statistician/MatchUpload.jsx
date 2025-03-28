@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getMatchDetails } from "../../services/match";
 import { updateMatch } from "../../services/match";
-
+import defaultTeamLogo from '../../assets/images/defaultLogo/deafult_team_logo.svg';
 import "../../styles/statistician.css";
 import useAuth from "../../hooks/useAuth";
 
@@ -124,8 +124,8 @@ const MatchUpload = () => {
       <header className="match-upload-header">
         <h1>
           Match #{matchId} Player Stats Upload -{" "}
-          <img src={match?.homeTeam?.logo} alt={match?.homeTeam?.name} className="team-logo-match" /> {match?.homeTeam?.name} vs{" "}
-          <img src={match?.awayTeam?.logo} alt={match?.awayTeam?.name} className="team-logo-match" /> {match?.awayTeam?.name}
+          <img src={match.homeTeam.logo ? match.homeTeam.logo : defaultTeamLogo} alt={match?.homeTeam?.name} className="team-logo-match" /> {match?.homeTeam?.name} vs{" "}
+          <img src={match.awayTeam.logo ? match.awayTeam.logo : defaultTeamLogo} alt={match?.awayTeam?.name} className="team-logo-match" /> {match?.awayTeam?.name}
         </h1>
       </header>
 

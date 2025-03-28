@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../../styles/matchStatiscian.css";
 import { getMatchById, updateForfeited } from "../../services/match"; 
 import useAuth from "../../hooks/useAuth";
+import defaultTeamLogo from '../../assets/images/defaultLogo/deafult_team_logo.svg';
 
 const MatchStatiscian = () => {
   const { matchId } = useParams();
@@ -70,14 +71,14 @@ const MatchStatiscian = () => {
     <div className="match-statiscian-container">
       <h2 className="match-statiscian-title">
         Match <span className="match-statiscian-number">#{match.id}</span> - 
-        <img src={match.home_team_logo} alt={match.home_team_name} className="match-statiscian-team-logo" /> {match.home_team_name} vs 
-        <img src={match.away_team_logo} alt={match.away_team_name} className="match-statiscian-team-logo" /> {match.away_team_name}
+        <img src={match.home_team_logo ? match.home_team_logo : defaultTeamLogo} alt={match.home_team_name} className="match-statiscian-team-logo" /> {match.home_team_name} vs 
+        <img src={match.away_team_logo ? match.away_team_logo : defaultTeamLogo} alt={match.away_team_name} className="match-statiscian-team-logo" /> {match.away_team_name}
       </h2>
 
       <div className="match-statiscian-box">
         {/* Home Team Section */}
         <div className="match-statiscian-team">
-          <img src={match.home_team_logo} alt={match.home_team_name} className="match-statiscian-team-icon" />
+          <img src={match.home_team_logo ? match.home_team_logo : defaultTeamLogo} alt={match.home_team_name} className="match-statiscian-team-icon" />
           <button className="match-statiscian-upload-btn" onClick={() => handleUploadStats("home")}>
             Upload Stats
           </button>
@@ -94,7 +95,7 @@ const MatchStatiscian = () => {
 
         {/* Away Team Section */}
         <div className="match-statiscian-team">
-          <img src={match.away_team_logo} alt={match.away_team_name} className="match-statiscian-team-icon" />
+          <img src={match.away_team_logo ? match.away_team_logo : defaultTeamLogo} alt={match.away_team_name} className="match-statiscian-team-icon" />
           <button className="match-statiscian-upload-btn" onClick={() => handleUploadStats("away")}>
             Upload Stats
           </button>

@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import "../../styles/leagueSchedule.css";
 import { useNavigate } from "react-router-dom"; 
 import { decodeJWT } from "../../utils/decode";
+import defaultTeamLogo from '../../assets/images/defaultLogo/deafult_team_logo.svg';
 
 const LeagueSchedule = () => {
   const { auth } = useAuth();
@@ -138,12 +139,12 @@ const LeagueSchedule = () => {
             {matches.map((match, index) => (
               <tr key={index}>
                 <td className="league-schedule-team-logo">
-                  <img src={match.logo1} alt={match.team1} width="50" />
+                  <img src={match.logo1 ? match.logo1 : defaultTeamLogo} alt={match.team1} width="50" />
                 </td>
                 <td className="league-schedule-team-name">{match.team1}</td>
                 <td className="league-schedule-match-result">{match.result}</td>
                 <td className="league-schedule-team-logo">
-                  <img src={match.logo2} alt={match.team2} width="50" />
+                  <img src={match.logo2 ? match.logo2 : defaultTeamLogo} alt={match.team2} width="50" />
                 </td>
                 <td className="league-schedule-team-name">{match.team2}</td>
                 <td className="league-schedule-team-button-container">

@@ -5,6 +5,7 @@ import { getMatchDetails } from "../../services/match";
 import { useParams, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { uploadHighlights } from "../../services/match"; 
+import defaultTeamLogo from '../../assets/images/defaultLogo/deafult_team_logo.svg';
 
 function HighlightUpload() {
   const { auth } = useAuth();
@@ -146,13 +147,13 @@ function HighlightUpload() {
         <h1>
           Match #{matchDetails.matchId} -{" "}
           <img
-            src={matchDetails.homeTeam.logo}
+            src={matchDetails.homeTeam.logo ? matchDetails.homeTeam.logo : defaultTeamLogo}
             alt={matchDetails.homeTeam.name}
             className="team-logo-highlight-up"
           />{" "}
           {matchDetails.homeTeam.name} vs{" "}
           <img
-            src={matchDetails.awayTeam.logo}
+            src={matchDetails.awayTeam.logo ? matchDetails.awayTeam.logo : defaultTeamLogo}
             alt={matchDetails.awayTeam.name}
             className="team-logo-highlight-up"
           />{" "}
